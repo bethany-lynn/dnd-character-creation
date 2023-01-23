@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}the dungeon{% endblock %}
+
+{% block body %}
+  <h1>Welcome to the dungeon of creation!</h1>
+
+  <h2>Navigation</h2>
+
+
+  <h2>Create an Account</h2>
+  <form action="/users" method="POST">
+    <p>
+      Email <input type="text" name="email">
+    </p>
+
+    <p>
+      Password <input type="password" name="password">
+    </p>
+
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+<!-- create an account ^ -->
+
+
+<!-- log back in if already have account -->
+    <h2>Log In</h2>
+  <form action="/login" method="POST">
+    <p>
+      Email <input type="text" name="email">
+    </p>
+
+    <p>
+      Password <input type="password" name="password">
+    </p>
+
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+  
+{% endblock %}
