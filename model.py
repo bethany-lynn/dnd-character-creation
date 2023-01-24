@@ -245,11 +245,7 @@ if __name__ == "__main__":
 
 #------------------------------------------------------------------------------------#
 # things to do TUESDAY JAN 23:
-# check if any columns need to be booleans or nullable
-# add reprs to all of my model functions
-# colorize data model
 
 
-# finish login with correct wording
 # add all templates to folder
 # figure out one query string with AJAX

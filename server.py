@@ -19,7 +19,7 @@ def homepage():
 @app.route("/users", methods=["POST"])
 def register_user():
     """create a new user"""
-# redirect to homepage when done
+
 
     email = request.form.get("email")
     password = request.form.get("password")
@@ -30,7 +30,7 @@ def register_user():
     else:
         user = crud.create_user(email, password)
         db.session.add(user)
-        db.session.commit(user)
+        db.session.commit()
         flash("Hail and well met, adventurer, your account has been created!")
 
     return redirect("/")
@@ -54,8 +54,10 @@ def login():
 
     return redirect("/")
 
-
-    
+@app.route('/create_character')
+def create_page():
+    """create a character after logging in or creating an account"""
+    return render_template('create_character.html')
 
 if __name__ == "__main__":
     connect_to_db(app)
