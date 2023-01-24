@@ -248,3 +248,8 @@ if __name__ == "__main__":
 # colorize data model
 # test all data in the terminal
 # if all data works as intended, create a seed database for future use - refer to movie ratings
+# create and drop db
+# session
+# create all
+# add things to server
+# app route to homepage and pass
