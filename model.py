@@ -2,7 +2,7 @@
 
 from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy
+db = SQLAlchemy()
 
 class User(db.Model):
     """A user"""
@@ -54,7 +54,7 @@ class Character_sheet(db.Model):
     passive_perception = db.Column(db.Integer)
     passive_insight = db.Column(db.Integer)
     language = db.Column(db.String(50))
-    inspiration = db.Column(db.String, boolean=True)
+    inspiration = db.Column(db.Boolean, default=True)
     acrobatics = db.Column(db.Integer)
     sleight_of_hand = db.Column(db.Integer)
     stealth = db.Column(db.Integer)
@@ -78,13 +78,13 @@ class Character_sheet(db.Model):
     user = db.relationship("User", back_populates="character_sheet")
     inventory_table = db.relationship("Inventory", back_populates="character_sheet")
     spell_slots = db.relationship("Spell_slots", back_populates="character_sheet")
-    spells = db.relationship("Spells", back_populates="character_sheet")
+    character_spells = db.relationship("Char_spells", back_populates="character_sheet")
     character_weapons = db.relationship("Char_weapons", back_populates="character_sheet")
 
     def __repr__(self):
         return f'<>'
 
-class Inventory(db.model):
+class Inventory(db.Model):
     """A character's starting bag"""
 
     __tablename__ = "inventory_table"
@@ -93,7 +93,7 @@ class Inventory(db.model):
                             autoincrement=True,
                             primary_key=True)
     character_id = db.Column(db.Integer, db.ForeignKey("character_sheet.character_id"))
-    item_id = db.Column(db.Integer, db.ForeignKey("bag_items.item_id"))
+    inventory_item_id = db.Column(db.Integer, db.ForeignKey("inventory_items.inventory_item_id"))
 
     character_sheet = db.relationship("Character_sheet", back_populates="inventory_table")
     inventory_items = db.relationship("Inventory_items", back_populates="inventory_table")
@@ -101,7 +101,7 @@ class Inventory(db.model):
     def __repr__(self):
         return f'<>'
 
-class Inventory_items(db.model):
+class Inventory_items(db.Model):
     """The contents of the character's bag"""
 
     __tablename__ = "inventory_items"
@@ -120,7 +120,7 @@ class Inventory_items(db.model):
     def __repr__(self):
         return f'<>'
 
-class Spell_slots(db.model):
+class Spell_slots(db.Model):
     """Spell slots for characters with casting abilities"""
 
     __tablename__ = "spell_slots"
@@ -129,6 +129,9 @@ class Spell_slots(db.model):
                             autoincrement=True,
                             primary_key=True)
     character_id = db.Column(db.Integer, db.ForeignKey("character_sheet.character_id"))
+    spell_level = db.Column(db.Integer)
+    num_of_slots = db.Column(db.Integer)
+    currently_user = db.Column(db.Integer)
 
     character_sheet = db.relationship("Character_sheet", back_populates="spell_slots")    
 
@@ -147,7 +150,7 @@ class Char_spells(db.Model):
     char_spell_id = db.Column(db.Integer, db.ForeignKey("spells_table.spell_id"))
 
     character_sheet = db.relationship("Character_sheet", back_populates="character_spells")    
-    spells = db.relatonship("Spells", back_populates="character_spells")
+    spells = db.relationship("Spells", back_populates="character_spells")
 
     def __repr__(self):
         return f'<>'
@@ -160,7 +163,6 @@ class Spells(db.Model):
     spell_id = db.Column(db.Integer,
                          autoincrement=True,
                          primary_key=True)
-    char_spell_id = db.Column(db.Integer, db.ForeignKey("character_spells.char_spell_id"))
     magic_type = db.Column(db.Integer)
     spell_level = db.Column(db.Integer)
     duration = db.Column(db.Integer)
@@ -246,10 +248,8 @@ if __name__ == "__main__":
 # check if any columns need to be booleans or nullable
 # add reprs to all of my model functions
 # colorize data model
-# test all data in the terminal
-# if all data works as intended, create a seed database for future use - refer to movie ratings
-# create and drop db
-# session
-# create all
-# add things to server
-# app route to homepage and pass
+
+
+# finish login with correct wording
+# add all templates to folder
+# figure out one query string with AJAX
