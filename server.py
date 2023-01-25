@@ -42,22 +42,27 @@ def login():
 
     email = request.form.get("email")
     password = request.form.get("password")
-
     user = crud.get_user_by_email(email)
 
     if not user or user.password != password:
         flash("Your email or password is incorrect, adventurer!")
-
+        return redirect('/')
     else:
         session['user_email'] = user.email
         flash(f'Welcome back, {user.email}!')
 
-    return redirect("/")
+    return redirect("/user_profile")
 
 @app.route('/create_character')
 def create_page():
     """create a character after logging in or creating an account"""
     return render_template('create_character.html')
+
+@app.route('/user_profile')
+def profile_page():
+    """where a user can access previously saved sheets"""
+    return render_template('user_profile.html')
+    # have option to go to character creation page for new character
 
 if __name__ == "__main__":
     connect_to_db(app)
