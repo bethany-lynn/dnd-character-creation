@@ -1,4 +1,16 @@
 # might need jsonify
+# going to use api to fetch information based off of a users selected class and race to fill in specific data 
+# for those respective form inputs 
+
+# will need to hard code some dnd info (classes, races, name, etc)
+
+# fetching api requests on the backend will be done in a python file, not in the frontend
+# will be using jinja to do so - use the balloonicorn party api lab for reference
+# if class == druid, weapons == _____, gp == _____, wisdom == _____, etc
+# if race == human, atheltics == _____, etc
+
+# backstory will be a text input field
+# alignment can be random or selected from a form
 
 from flask import Flask, render_template, request, flash, session, redirect
 from model import connect_to_db, db
@@ -8,6 +20,26 @@ from jinja2 import StrictUndefined
 app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
+
+
+dungeons_classes = ["barbarian", "bard", "cleric", "druid", "fighter", "monk",
+                    "paladin", "ranger", "rogue", "sorcerer", "warlock",
+                    "wizard", "artificer", "blood hunter"]
+dungeons_races = ["dragonbord", "dwarf", "elf", "gnome", "half-elf",
+                    "halfling", "half-orc", "human", "tiefling", "leonin", 
+                    "satyr", "owlin", "bugbear", "centaur", "fairy"
+                    "minotaur", "sea elf"]
+dungeons_alignments = ["lawful good", "neutral good", "chaotic good",
+                        "lawful neutral", "true neutral", "chaotic neutral",
+                        "lawful evil", "neutral evil", "chaotic evil"]
+dungeons_genders = ["female", "male", "non-binary", "gender fluid", 
+                    "agender", "transgender", "other"]
+dungeons_eye_colors = ["brown", "gray", "black", "green", "hazel", 
+                    "blue", "orange", "pink", "purple", "red", "white"]
+dungeons_hair_colors = [
+                    "brown", "gray," "black", "green", "mint", "blue", 
+                    "copper", "pink", "purple", "red", "silver", 
+                    "white", "blonde", "yellow"]
 
 
 @app.route('/')
@@ -67,3 +99,11 @@ def profile_page():
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(host="0.0.0.0", debug=True)
+
+
+
+# WEDNESDAY TO DO AFTER LUNCH
+# connect lists in this file to html code and correct routes
+# make sure when on the character creation page, there are forms to select from these lists
+# check that the api im using has all of these races and classes available to populate information about them into users form
+# consider layout for a form with empty "inputs" where all stats and numbers will go
