@@ -3,18 +3,99 @@
 
 {% block body %}
 <h1>this is the creation page</h1>
-<h4>side bar</h4>
+<h4></h4>
     <div class="container-fluid">
-        ...
+        
     </div>
     <ul>
-        <li>add form to pick class</li>
-        <li>add form to pick race</li>
         <li>add form to input backstory</li>
         <li>add form to pick spells for slots if magic user</li>
         <li>add form to input character name</li>
-        <li>add form for alignment</li>
         <li>add form for experience</li>
-        <li>etc for all character sheet inputs...</li>
     </ul>
+
+
+    <section id="class">
+    <form>
+        <label for="dungeons_classes"> Select your character's class: </label>
+        <select id="dungeons_classes" name="dungeons_classes">
+            {% for dungeons_class in dungeons_classes %}
+            <option value="{{ dungeons_class }}">{{ dungeons_class }}</option>
+            {% endfor %}
+            <input type="submit"/>
+        </select>
+    </form>
+    </section>
+
+    <section id="race">
+    <form>
+        <label for="dungeons_races"> Select your character's race: </label>
+        <select id="dungeons_races" name="dungeons_races">
+            {% for dungeons_race in dungeons_races %}
+            <option value="{{ dungeons_race }}">{{ dungeons_race }}</option>
+            {% endfor %}
+            <input type="submit"/>
+        </select>
+    </form>
+    </section>
+
+    <section id="alignment">
+    <form>
+        <label for="dungeons_alignments"> Select your character's alignment: </label>
+        <select id="dungeons_alignments" name="dungeons_alignments">
+            {% for dungeons_alignment in dungeons_alignments %}
+            <option value="{{ dungeons_alignment }}">{{ dungeons_alignment }}</option>
+            {% endfor %}
+            <input type="submit"/>
+        </select>
+    </form>
+    </section>
+
+    <section id="gender">
+    <form>
+        <label for="dungeons_genders"> Select your character's gender: </label>
+        <select id="dungeons_genders" name="dungeons_genders">
+            {% for dungeons_gender in dungeons_genders %}
+            <option value="{{ dungeons_gender }}">{{ dungeons_gender }}</option>
+            {% endfor %}
+            <input type="submit"/>
+        </select>
+    </form>
+    </section>
+
+    <section id="eye-color">
+    <form>
+        <label for="dungeons_eye_colors"> Select your character's eye color: </label>
+        <select id="dungeons_eye_colors" name="dungeons_eye_colors">
+            {% for dungeons_eye_color in dungeons_eye_colors %}
+            <option value="{{ dungeons_eye_color }}">{{ dungeons_eye_color }}</option>
+            {% endfor %}
+            <input type="submit"/>
+        </select>
+    </form>
+    </section>
+
+    <section id="hair-color">
+    <form>
+        <h3> Select your character's hair color: </h3>
+        <select id="dungeons_hair_colors" name="dungeons_hair_colors">
+            {% for dungeons_hair_color in dungeons_hair_colors %}
+            <option value="{{ dungeons_hair_color }}">{{ dungeons_hair_color }}</option>
+            {% endfor %}
+            <input type="submit"/>
+        </select>
+    </form>
+    </section>
+    <p>you picked: <span id="hair-color-result"> color </span></p>
+
+
+
 {% endblock %}
+
+
+
+<!-- your class is:
+    your rase is: 
+    your alignment is:
+    etc
+    all in a form that fills out based on other form's selection-->

@@ -12,7 +12,7 @@
 # backstory will be a text input field
 # alignment can be random or selected from a form
 
-from flask import Flask, render_template, request, flash, session, redirect
+from flask import Flask, render_template, request, flash, session, redirect, jsonify
 from model import connect_to_db, db
 import crud
 from jinja2 import StrictUndefined
@@ -20,26 +20,6 @@ from jinja2 import StrictUndefined
 app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
-
-
-dungeons_classes = ["barbarian", "bard", "cleric", "druid", "fighter", "monk",
-                    "paladin", "ranger", "rogue", "sorcerer", "warlock",
-                    "wizard", "artificer", "blood hunter"]
-dungeons_races = ["dragonbord", "dwarf", "elf", "gnome", "half-elf",
-                    "halfling", "half-orc", "human", "tiefling", "leonin", 
-                    "satyr", "owlin", "bugbear", "centaur", "fairy"
-                    "minotaur", "sea elf"]
-dungeons_alignments = ["lawful good", "neutral good", "chaotic good",
-                        "lawful neutral", "true neutral", "chaotic neutral",
-                        "lawful evil", "neutral evil", "chaotic evil"]
-dungeons_genders = ["female", "male", "non-binary", "gender fluid", 
-                    "agender", "transgender", "other"]
-dungeons_eye_colors = ["brown", "gray", "black", "green", "hazel", 
-                    "blue", "orange", "pink", "purple", "red", "white"]
-dungeons_hair_colors = [
-                    "brown", "gray," "black", "green", "mint", "blue", 
-                    "copper", "pink", "purple", "red", "silver", 
-                    "white", "blonde", "yellow"]
 
 
 @app.route('/')
@@ -88,7 +68,28 @@ def login():
 @app.route('/create_character')
 def create_page():
     """create a character after logging in or creating an account"""
-    return render_template('create_character.html')
+
+    dungeons_classes = ["barbarian", "bard", "cleric", "druid", "fighter", "monk",
+                    "paladin", "ranger", "rogue", "sorcerer", "warlock",
+                    "wizard"]
+    dungeons_races = ["dragonborn", "dwarf", "elf", "gnome", "half-elf",
+                    "halfling", "half-orc", "human", "tiefling"]
+    dungeons_alignments = ["lawful-good", "neutral-good", "chaotic-good",
+                        "lawful-neutral", "neutral", "chaotic-neutral",
+                        "lawful-evil", "neutral-evil", "chaotic-evil"]
+    dungeons_genders = ["female", "male", "non-binary", "gender fluid", 
+                    "agender", "transgender", "other"]
+    dungeons_eye_colors = ["brown", "gray", "black", "green", "hazel", 
+                    "blue", "orange", "pink", "purple", "red", "white"]
+    dungeons_hair_colors = [
+                    "chartreuse", "brown", "gray", "black", "green", "mint", "blue", 
+                    "copper", "pink", "purple", "red", "silver", 
+                    "white", "blonde", "yellow"]
+
+    return render_template('create_character.html', dungeons_classes=dungeons_classes, 
+                            dungeons_races=dungeons_races, dungeons_alignments=dungeons_alignments,
+                            dungeons_genders=dungeons_genders, dungeons_eye_colors=dungeons_eye_colors,
+                            dungeons_hair_colors=dungeons_hair_colors)
 
 @app.route('/user_profile')
 def profile_page():
@@ -105,5 +106,4 @@ if __name__ == "__main__":
 # WEDNESDAY TO DO AFTER LUNCH
 # connect lists in this file to html code and correct routes
 # make sure when on the character creation page, there are forms to select from these lists
-# check that the api im using has all of these races and classes available to populate information about them into users form
 # consider layout for a form with empty "inputs" where all stats and numbers will go
