@@ -29,7 +29,7 @@
 
     <section id="race">
     <form>
-        <label for="dungeons_races"> Select your character's race: </label>
+        <h7> Select your character's race: </h7>
         <select id="dungeons_races" name="dungeons_races">
             {% for dungeons_race in dungeons_races %}
             <option value="{{ dungeons_race }}">{{ dungeons_race }}</option>
@@ -41,7 +41,7 @@
 
     <section id="alignment">
     <form>
-        <label for="dungeons_alignments"> Select your character's alignment: </label>
+        <h7> Select your character's alignment: </h7>
         <select id="dungeons_alignments" name="dungeons_alignments">
             {% for dungeons_alignment in dungeons_alignments %}
             <option value="{{ dungeons_alignment }}">{{ dungeons_alignment }}</option>
@@ -53,7 +53,7 @@
 
     <section id="gender">
     <form>
-        <label for="dungeons_genders"> Select your character's gender: </label>
+        <h7> Select your character's gender: </h7>
         <select id="dungeons_genders" name="dungeons_genders">
             {% for dungeons_gender in dungeons_genders %}
             <option value="{{ dungeons_gender }}">{{ dungeons_gender }}</option>
@@ -65,7 +65,7 @@
 
     <section id="eye-color">
     <form>
-        <label for="dungeons_eye_colors"> Select your character's eye color: </label>
+        <h7> Select your character's eye color: </h7>
         <select id="dungeons_eye_colors" name="dungeons_eye_colors">
             {% for dungeons_eye_color in dungeons_eye_colors %}
             <option value="{{ dungeons_eye_color }}">{{ dungeons_eye_color }}</option>
@@ -77,7 +77,7 @@
 
     <section id="hair-color">
     <form>
-        <h3> Select your character's hair color: </h3>
+        <h7> Select your character's hair color: </h7>
         <select id="dungeons_hair_colors" name="dungeons_hair_colors">
             {% for dungeons_hair_color in dungeons_hair_colors %}
             <option value="{{ dungeons_hair_color }}">{{ dungeons_hair_color }}</option>
@@ -86,14 +86,20 @@
         </select>
     </form>
     </section>
-    <p>you picked: <span id="hair-color-result"> color </span></p>
-
+    <p>
+    <p>class: <span id="class-result">   </span></p>
+    <p>race: <span id="race-result">   </span></p>
+    <p>alignment: <span id="alignment-result">   </span></p>
+    <p>gender: <span id="gender-result">   </span></p>
+    <p>eye color: <span id="eye-color-result">   </span></p>
+    <p>hair color: <span id="hair-color-result">   </span></p>
+    </p>
 
 
 {% endblock %}
 
-
-
+<!-- can use this instead of the h tags if needed -->
+<!-- <label for="dungeons_eye_colors"> Select your character's eye color: </label> -->
 <!-- your class is:
     your rase is: 
     your alignment is:
