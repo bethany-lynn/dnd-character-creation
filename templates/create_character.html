@@ -14,69 +14,54 @@
         <li>add form for experience</li>
     </ul>
 
-
-    <section id="class">
     <form>
+    <section id="class">
         <label for="dungeons_classes"> Select your character's class: </label>
         <select id="dungeons_classes" name="dungeons_classes">
             {% for dungeons_class in dungeons_classes %}
             <option value="{{ dungeons_class }}">{{ dungeons_class }}</option>
             {% endfor %}
-            <input type="submit"/>
         </select>
-    </form>
     </section>
 
     <section id="race">
-    <form>
         <h7> Select your character's race: </h7>
         <select id="dungeons_races" name="dungeons_races">
             {% for dungeons_race in dungeons_races %}
             <option value="{{ dungeons_race }}">{{ dungeons_race }}</option>
             {% endfor %}
-            <input type="submit"/>
         </select>
-    </form>
     </section>
 
     <section id="alignment">
-    <form>
         <h7> Select your character's alignment: </h7>
         <select id="dungeons_alignments" name="dungeons_alignments">
             {% for dungeons_alignment in dungeons_alignments %}
             <option value="{{ dungeons_alignment }}">{{ dungeons_alignment }}</option>
             {% endfor %}
-            <input type="submit"/>
         </select>
-    </form>
     </section>
 
     <section id="gender">
-    <form>
         <h7> Select your character's gender: </h7>
         <select id="dungeons_genders" name="dungeons_genders">
             {% for dungeons_gender in dungeons_genders %}
             <option value="{{ dungeons_gender }}">{{ dungeons_gender }}</option>
             {% endfor %}
-            <input type="submit"/>
         </select>
-    </form>
     </section>
 
     <section id="eye-color">
-    <form>
         <h7> Select your character's eye color: </h7>
         <select id="dungeons_eye_colors" name="dungeons_eye_colors">
             {% for dungeons_eye_color in dungeons_eye_colors %}
             <option value="{{ dungeons_eye_color }}">{{ dungeons_eye_color }}</option>
             {% endfor %}
-            <input type="submit"/>
         </select>
-    </form>
+
     </section>
 
     <section id="hair-color">
-    <form>
         <h7> Select your character's hair color: </h7>
         <select id="dungeons_hair_colors" name="dungeons_hair_colors">
             {% for dungeons_hair_color in dungeons_hair_colors %}
@@ -84,8 +69,9 @@
             {% endfor %}
             <input type="submit"/>
         </select>
-    </form>
     </section>
+    </form>
+
     <p>
     <p>class: <span id="class-result">   </span></p>
     <p>race: <span id="race-result">   </span></p>
@@ -97,11 +83,3 @@
 
 
 {% endblock %}
-
-<!-- can use this instead of the h tags if needed -->
-<!-- <label for="dungeons_eye_colors"> Select your character's eye color: </label> -->
-<!-- your class is:
-    your rase is: 
-    your alignment is:
-    etc
-    all in a form that fills out based on other form's selection-->
