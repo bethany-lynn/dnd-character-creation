@@ -13,9 +13,11 @@
 # alignment can be random or selected from a form
 
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
-from model import connect_to_db, db
+from model import *
 import crud
 from jinja2 import StrictUndefined
+import requests
+import json
 
 app = Flask(__name__)
 app.secret_key = "dev"
@@ -91,11 +93,42 @@ def create_page():
                             dungeons_genders=dungeons_genders, dungeons_eye_colors=dungeons_eye_colors,
                             dungeons_hair_colors=dungeons_hair_colors)
 
-@app.route('/user_profile')
-def profile_page():
-    """where a user can access previously saved sheets"""
-    return render_template('user_profile.html')
-    # have option to go to character creation page for new character
+# @app.route('/user_profile')
+# different function name than other route
+
+@app.route('/create_character', methods =["POST"])
+def create_character():
+    """where a user can access previously saved sheets after submitting"""
+
+
+    dun_class = request.json.get('class')
+    race = request.json.get('race')
+    alignment = request.json.get('alignment')
+    gender = request.json.get('gender')
+    eye_color = request.json.get('eyeColor')
+    hair_color = request.json.get('hairColor')
+
+
+    character = Character_sheet(
+        character_class = dun_class,
+        race = race,
+        alignment = alignment,
+        gender = gender,
+        eye_color = eye_color,
+        hair_color = hair_color)
+
+
+    
+    db.session.add(character)
+    db.session.commit()
+    
+    req = requests.get('https://www.dnd5eapi.co/api/classes/'+ dun_class)
+  
+    class_data = json.loads(req.text)
+    print(class_data['hit_die'])
+
+    return jsonify({'data': 'whatever'})
+    # if user selects class, use ^ to fill in character sheet
 
 if __name__ == "__main__":
     connect_to_db(app)
@@ -103,7 +136,16 @@ if __name__ == "__main__":
 
 
 
-# WEDNESDAY TO DO AFTER LUNCH
-# connect lists in this file to html code and correct routes
-# make sure when on the character creation page, there are forms to select from these lists
+# THURSDAY TO-DO LIST
+# figure out how players get all stats (random dice roll, dependant on class, etc)
+
+# finish layout of creation page
+#       add text boxes for background input
+#       consider how to create an account tab to log in and out from tab, and change routes
+#       through the tab, instead of a navbar
+
+# have all data input go to a certain column or row (organize info)
+
+# API - if class is wizard, add (____) to spells, wisdom, etc 
+
 # consider layout for a form with empty "inputs" where all stats and numbers will go

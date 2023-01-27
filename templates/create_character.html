@@ -3,83 +3,136 @@
 
 {% block body %}
 <h1>this is the creation page</h1>
-<h4></h4>
-    <div class="container-fluid">
+
+<div class="container">
+    <div class="row">
+            <!-- <form method="POST">
+                <input type="submit" value="hi">hi</input>
+            </form> -->
+            <form>
+                <section>
+                    <label for="name"> Select your character's name: </label>
+                    <input type="text" id="character-name" name="name">
+                </section>
+
+                <section id="class">
+                    <label for="dungeons_classes"> Select your character's class: </label>
+                    <select id="dungeons_classes" name="dungeons_classes">
+                        {% for dungeons_class in dungeons_classes %}
+                        <option value="{{ dungeons_class }}">{{ dungeons_class }}</option>
+                        {% endfor %}
+                    </select>
+                </section>
+                
+                
+                <section id="race">
+                    <h7> Select your character's race: </h7>
+                    <select id="dungeons_races" name="dungeons_races">
+                        {% for dungeons_race in dungeons_races %}
+                        <option value="{{ dungeons_race }}">{{ dungeons_race }}</option>
+                        {% endfor %}
+                    </select>
+                </section>
+                
+                
+                <section id="alignment">
+                    <h7> Select your character's alignment: </h7>
+                    <select id="dungeons_alignments" name="dungeons_alignments">
+                        {% for dungeons_alignment in dungeons_alignments %}
+                        <option value="{{ dungeons_alignment }}">{{ dungeons_alignment }}</option>
+                        {% endfor %}
+                    </select>
+                </section>
+                
+                <section id="gender">
+                    <h7> Select your character's gender: </h7>
+                    <select id="dungeons_genders" name="dungeons_genders">
+                        {% for dungeons_gender in dungeons_genders %}
+                        <option value="{{ dungeons_gender }}">{{ dungeons_gender }}</option>
+                        {% endfor %}
+                    </select>
+                </section>
+                
+                <section id="eye-color">
+                    <h7> Select your character's eye color: </h7>
+                    <select id="dungeons_eye_colors" name="dungeons_eye_colors">
+                        {% for dungeons_eye_color in dungeons_eye_colors %}
+                        <option value="{{ dungeons_eye_color }}">{{ dungeons_eye_color }}</option>
+                        {% endfor %}
+                    </select>
+                    
+                </section>
+                
+                <section id="hair-color">
+                    <h7> Select your character's hair color: </h7>
+                    <select id="dungeons_hair_colors" name="dungeons_hair_colors">
+                        {% for dungeons_hair_color in dungeons_hair_colors %}
+                        <option value="{{ dungeons_hair_color }}">{{ dungeons_hair_color }}</option>
+                        {% endfor %}
+                    </select>
+                </section>
+                <input type="submit"/>
+                
+            </form>
+        <div class="row">
+            <div class="col-3">
+                    <p>name: <span id="character-name">   </span></p>
+                    <p>class: <span id="class-result">   </span></p>
+                    <p>race: <span id="race-result">   </span></p>
+                    <p>alignment: <span id="alignment-result">   </span></p>
+                    <p>gender: <span id="gender-result">   </span></p>
+                    <p>eye color: <span id="eye-color-result">   </span></p>
+                    <p>hair color: <span id="hair-color-result">   </span></p>
+            </div>
+            <div class="col-3">
+                    <p>level: </p>
+                    <p>experience: </p>
+                    <p>ac: </p>
+                    <p>condition: </p>
+                    <p>language: </p>
+                    <p>current hit points: </p>
+                    <p>total hit points: </p>
+                    <p>proficiency bonus: </p>
+                    <p>initiative: </p>
+            </div>
+            <div class="col-3">
+                    <p>wisdom: </p>
+                    <p>charisma: </p>
+                    <p>intelligence: </p>
+                    <p>dexterity: </p>
+                    <p>constitution: </p>
+                    <p>strength: </p>
+            </div>
+            <div class="col-3">
+                    <p>walking speed: </p>
+                    <p>passive wisdom: </p>
+                    <p>passive perception: </p>
+                    <p>passive insight: </p>
+                    <p>inspiration: </p>
+                    <p>acrobatics: </p>
+                    <p>sleight of hand: </p>
+                    <p>stealth: </p>
+                    <p>religion: </p>
+                    <p>nature: </p>
+                    <p>history: </p>
+                    <p>arcana: </p>
+                    <p>invesigation: </p>
+                    <p>persuasion: </p>
+                    <p>performance: </p>
+                    <p>intimidation: </p>
+                    <p>deception: </p>
+                    <p>animal handling: </p>
+                    <p>insight: </p>
+                    <p>medicine: </p>
+                    <p>perception: </p>
+                    <p>survival: </p>
+                    <p>athletics: </p>
+            </div>
+
+            </div>
+        </div>
         
     </div>
-    <ul>
-        <li>add form to input backstory</li>
-        <li>add form to pick spells for slots if magic user</li>
-        <li>add form to input character name</li>
-        <li>add form for experience</li>
-    </ul>
-
-    <form>
-    <section id="class">
-        <label for="dungeons_classes"> Select your character's class: </label>
-        <select id="dungeons_classes" name="dungeons_classes">
-            {% for dungeons_class in dungeons_classes %}
-            <option value="{{ dungeons_class }}">{{ dungeons_class }}</option>
-            {% endfor %}
-        </select>
-    </section>
-
-    <section id="race">
-        <h7> Select your character's race: </h7>
-        <select id="dungeons_races" name="dungeons_races">
-            {% for dungeons_race in dungeons_races %}
-            <option value="{{ dungeons_race }}">{{ dungeons_race }}</option>
-            {% endfor %}
-        </select>
-    </section>
-
-    <section id="alignment">
-        <h7> Select your character's alignment: </h7>
-        <select id="dungeons_alignments" name="dungeons_alignments">
-            {% for dungeons_alignment in dungeons_alignments %}
-            <option value="{{ dungeons_alignment }}">{{ dungeons_alignment }}</option>
-            {% endfor %}
-        </select>
-    </section>
-
-    <section id="gender">
-        <h7> Select your character's gender: </h7>
-        <select id="dungeons_genders" name="dungeons_genders">
-            {% for dungeons_gender in dungeons_genders %}
-            <option value="{{ dungeons_gender }}">{{ dungeons_gender }}</option>
-            {% endfor %}
-        </select>
-    </section>
-
-    <section id="eye-color">
-        <h7> Select your character's eye color: </h7>
-        <select id="dungeons_eye_colors" name="dungeons_eye_colors">
-            {% for dungeons_eye_color in dungeons_eye_colors %}
-            <option value="{{ dungeons_eye_color }}">{{ dungeons_eye_color }}</option>
-            {% endfor %}
-        </select>
-
-    </section>
-
-    <section id="hair-color">
-        <h7> Select your character's hair color: </h7>
-        <select id="dungeons_hair_colors" name="dungeons_hair_colors">
-            {% for dungeons_hair_color in dungeons_hair_colors %}
-            <option value="{{ dungeons_hair_color }}">{{ dungeons_hair_color }}</option>
-            {% endfor %}
-            <input type="submit"/>
-        </select>
-    </section>
-    </form>
-
-    <p>
-    <p>class: <span id="class-result">   </span></p>
-    <p>race: <span id="race-result">   </span></p>
-    <p>alignment: <span id="alignment-result">   </span></p>
-    <p>gender: <span id="gender-result">   </span></p>
-    <p>eye color: <span id="eye-color-result">   </span></p>
-    <p>hair color: <span id="hair-color-result">   </span></p>
-    </p>
-
-
+</div>
 {% endblock %}
+create jinja loop to go over all characters
