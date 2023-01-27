@@ -100,35 +100,37 @@ def create_page():
 def create_character():
     """where a user can access previously saved sheets after submitting"""
 
-
-    dun_class = request.json.get('class')
-    race = request.json.get('race')
-    alignment = request.json.get('alignment')
-    gender = request.json.get('gender')
-    eye_color = request.json.get('eyeColor')
-    hair_color = request.json.get('hairColor')
+    char_name = request.form.get('char_name')
+    dun_class = request.form.get('dungeons_classes')
+    race = request.form.get('dungeons_races')
+    alignment = request.form.get('dungeons_alignments')
+    gender = request.form.get('dungeons_genders')
+    eye_color = request.form.get('dungeons_eye_colors')
+    hair_color = request.form.get('dungeons_hair_colors')
 
 
     character = Character_sheet(
+        character_name = char_name,
         character_class = dun_class,
         race = race,
         alignment = alignment,
         gender = gender,
         eye_color = eye_color,
-        hair_color = hair_color)
-
-
-    
+        hair_color = hair_color
+    )
     db.session.add(character)
     db.session.commit()
-    
-    req = requests.get('https://www.dnd5eapi.co/api/classes/'+ dun_class)
-  
-    class_data = json.loads(req.text)
-    print(class_data['hit_die'])
 
-    return jsonify({'data': 'whatever'})
-    # if user selects class, use ^ to fill in character sheet
+    req = requests.get('https://www.dnd5eapi.co/api/classes/'+ dun_class)
+    class_data = json.loads(req.text)
+
+    return render_template('character_profile.html', char_name=char_name, 
+                            dun_class=dun_class, race=race, alignment=alignment, 
+                            gender=gender, eye_color=eye_color, 
+                            hair_color=hair_color)
+
+    # return jsonify({'data': 'whatever'})
+    # this is where i get the stats for all char info from api
 
 if __name__ == "__main__":
     connect_to_db(app)
