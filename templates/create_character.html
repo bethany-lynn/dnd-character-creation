@@ -8,6 +8,19 @@
             <!-- <form method="POST">
                 <input type="submit" value="hi">hi</input>
             </form> -->
+            <div class="row">
+            <div class="col-3">
+                <section id="dice_roll">
+                    <h4>get your 4d6 highest 3 averages for your stats by rolling</h4>
+                    <button id="button1" class="roll_dice" name="wisdom">roll for wisdom</button>
+                    <button id="button2" class="roll_dice" name="charisma">roll for charisma</button>
+                    <button id="button3" class="roll_dice" name="intelligence">roll for intelligence</button>
+                    <button id="button4" class="roll_dice" name="dexterity">roll for dexterity</button>
+                    <button id="button5" class="roll_dice" name="constitution">roll for constitution</button>
+                    <button id="button6" class="roll_dice" name="strength">roll for strength</button>
+                    <div id="dice_result"></div>
+                </section>
+            </div>
             <form action="/create_character" method="POST">
                 <section id="char_name">
                     <label for="char_name"> Select your character's name: </label>
@@ -23,7 +36,7 @@
                     </select>
                 </section>
                 
-                
+
                 <section id="race">
                     <h7> Select your character's race: </h7>
                     <select id="dungeons_races" name="dungeons_races">

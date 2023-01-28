@@ -18,6 +18,7 @@ import crud
 from jinja2 import StrictUndefined
 import requests
 import json
+import random
 
 app = Flask(__name__)
 app.secret_key = "dev"
@@ -46,6 +47,7 @@ def register_user():
         db.session.add(user)
         db.session.commit()
         flash("Hail and well met, adventurer, your account has been created!")
+        return redirect("/create_character")
 
     return redirect("/")
 
@@ -107,7 +109,13 @@ def create_character():
     gender = request.form.get('dungeons_genders')
     eye_color = request.form.get('dungeons_eye_colors')
     hair_color = request.form.get('dungeons_hair_colors')
-
+    wisdom_roll = request.form.get('wisdom')
+    charisma_roll = request.form.get('charisma')
+    intelligence_roll = request.form.get('intelligence')
+    dexterity_roll = request.form.get('dexterity')
+    constitution_roll = request.form.get('constitution')
+    strength_roll = request.form.get('strength')
+    
 
     character = Character_sheet(
         character_name = char_name,
@@ -116,18 +124,33 @@ def create_character():
         alignment = alignment,
         gender = gender,
         eye_color = eye_color,
-        hair_color = hair_color
+        hair_color = hair_color,
+        wisdom = wisdom_roll,
+        charisma = charisma_roll,
+        intelligence = intelligence_roll,      
+        dexterity = dexterity_roll,
+        constitution = constitution_roll,
+        strength = strength_roll
     )
+
     db.session.add(character)
     db.session.commit()
 
-    req = requests.get('https://www.dnd5eapi.co/api/classes/'+ dun_class)
-    class_data = json.loads(req.text)
+    # req = requests.get('https://www.dnd5eapi.co/api/classes/'+ dun_class)
+    api_url = f'https://www.dnd5eapi.co/api/classes/{dun_class}'
+    response = requests.get(api_url)
+    class_stats = response.json()
+    print(class_stats)
+
+    # class_data = json.loads(req.text)
 
     return render_template('character_profile.html', char_name=char_name, 
                             dun_class=dun_class, race=race, alignment=alignment, 
                             gender=gender, eye_color=eye_color, 
-                            hair_color=hair_color)
+                            hair_color=hair_color, wisdom_roll=wisdom_roll,
+                            charisma_roll=charisma_roll, intelligence_roll=intelligence_roll,
+                            dexterity_roll=dexterity_roll, constitution_roll=constitution_roll, 
+                            strength_roll=strength_roll, class_stats=class_stats)
 
     # return jsonify({'data': 'whatever'})
     # this is where i get the stats for all char info from api
