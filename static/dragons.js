@@ -1,3 +1,12 @@
+let results = {
+    wisdom: 0,
+    charisma: 0,
+    intelligence: 0,
+    dexterity: 0,
+    constitution: 0,
+    strength: 0
+};
+
 function rollDie(numRolls, numToKeep, button) {
     let rolls = []
     for (let i = 0; i < numRolls; i++) {
@@ -15,10 +24,13 @@ function rollDie(numRolls, numToKeep, button) {
     let stat = button.getAttribute("data-stat");
     results[stat] = total;
 
+    results[stat] = total;
+    sessionStorage.setItem('results', JSON.stringify(results));
+
 }
 
 const buttons = document.querySelectorAll('.roll_dice');
-let results = {};
+// let storedResults = JSON.parse(sessionStorage.getItem('results'));
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
@@ -26,12 +38,19 @@ buttons.forEach(button => {
       const keep = 3;
       rollDie(rolls, keep, button);
     });
-  });
+});
 
-function saveResults() {
-    const jsonString = JSON.stringify(results);
-    console.log(jsonString)
-}
+
+
+const submitButton = document.querySelector("#submit_button");
+submitButton.addEventListener("click", () => {
+document.querySelector("#wisdom").innerHTML = results.wisdom;
+document.querySelector("#charisma").innerHTML = results.charisma;
+document.querySelector("#intelligence").innerHTML = results.intelligence;
+document.querySelector("#dexterity").innerHTML = results.dexterity;
+document.querySelector("#constitution").innerHTML = results.constitution;
+document.querySelector("#strength").innerHTML = results.strength;
+});
 
 
 

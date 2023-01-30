@@ -104,53 +104,66 @@ def create_character():
 
     char_name = request.form.get('char_name')
     dun_class = request.form.get('dungeons_classes')
-    race = request.form.get('dungeons_races')
+    dun_race = request.form.get('dungeons_races')
     alignment = request.form.get('dungeons_alignments')
     gender = request.form.get('dungeons_genders')
     eye_color = request.form.get('dungeons_eye_colors')
     hair_color = request.form.get('dungeons_hair_colors')
-    wisdom_roll = request.form.get('wisdom')
-    charisma_roll = request.form.get('charisma')
-    intelligence_roll = request.form.get('intelligence')
-    dexterity_roll = request.form.get('dexterity')
-    constitution_roll = request.form.get('constitution')
-    strength_roll = request.form.get('strength')
+    wisdom_stat = request.form.get('wisdom-stat')
+    charisma_stat = request.form.get('charisma-stat')
+    intelligence_stat = request.form.get('intelligence-stat')
+    dexterity_stat = request.form.get('dexterity-stat')
+    constitution_stat = request.form.get('constitution-stat')
+    strength_stat = request.form.get('strength-stat')
     
 
     character = Character_sheet(
         character_name = char_name,
         character_class = dun_class,
-        race = race,
+        race = dun_race,
         alignment = alignment,
         gender = gender,
         eye_color = eye_color,
         hair_color = hair_color,
-        wisdom = wisdom_roll,
-        charisma = charisma_roll,
-        intelligence = intelligence_roll,      
-        dexterity = dexterity_roll,
-        constitution = constitution_roll,
-        strength = strength_roll
+        wisdom = wisdom_stat,
+        charisma = charisma_stat,
+        intelligence = intelligence_stat,      
+        dexterity = dexterity_stat,
+        constitution = constitution_stat,
+        strength = strength_stat
     )
 
     db.session.add(character)
     db.session.commit()
 
-    # req = requests.get('https://www.dnd5eapi.co/api/classes/'+ dun_class)
     api_url = f'https://www.dnd5eapi.co/api/classes/{dun_class}'
     response = requests.get(api_url)
     class_stats = response.json()
-    print(class_stats)
+    # print('these are class stats')
+    # print(class_stats)
+    api_url = f'https://www.dnd5eapi.co/api/races/{dun_race}'
+    response = requests.get(api_url)
+    race = response.json()
+    # print('these are race stats')
+    # print(race)
+    if dun_class == 'barbarian':
+        print('barbarian')
+        # ADD API QUERY HERE!!!
+    else:
+        print('not a barbarian')
+
+
+
 
     # class_data = json.loads(req.text)
 
     return render_template('character_profile.html', char_name=char_name, 
-                            dun_class=dun_class, race=race, alignment=alignment, 
+                            dun_class=dun_class, dun_race=dun_race, alignment=alignment, 
                             gender=gender, eye_color=eye_color, 
-                            hair_color=hair_color, wisdom_roll=wisdom_roll,
-                            charisma_roll=charisma_roll, intelligence_roll=intelligence_roll,
-                            dexterity_roll=dexterity_roll, constitution_roll=constitution_roll, 
-                            strength_roll=strength_roll, class_stats=class_stats)
+                            hair_color=hair_color, wisdom_stat=wisdom_stat,
+                            charisma_stat=charisma_stat, intelligence_stat=intelligence_stat,
+                            dexterity_stat=dexterity_stat, constitution_stat=constitution_stat, 
+                            strength_stat=strength_stat, class_stats=class_stats)
 
     # return jsonify({'data': 'whatever'})
     # this is where i get the stats for all char info from api

@@ -22,6 +22,17 @@
                 </section>
             </div>
             <form action="/create_character" method="POST">
+
+                <section>
+                    <input type="number" id ="wisdom-stat" name="wisdom-stat">
+                    <input type="number" id="charisma-stat" name="charisma-stat">
+                    <input type="number" id="intelligence-stat" name="intelligence-stat">
+                    <input type="number" id="dexterity-stat" name="dexterity-stat">
+                    <input type="number" id="constitution-stat" name="constitution-stat">
+                    <input type="number" id="strength-stat" name="strength-stat">
+                </section>
+
+
                 <section id="char_name">
                     <label for="char_name"> Select your character's name: </label>
                     <input type="text" id="character-name" name="char_name">
@@ -37,7 +48,7 @@
                 </section>
                 
 
-                <section id="race">
+                <section id="dun_race">
                     <h7> Select your character's race: </h7>
                     <select id="dungeons_races" name="dungeons_races">
                         {% for dungeons_race in dungeons_races %}
@@ -87,4 +98,4 @@
             </form>
 
 {% endblock %}
-create jinja loop to go over all characters
+<!-- create jinja loop to go over all characters -->
