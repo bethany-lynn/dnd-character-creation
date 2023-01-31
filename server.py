@@ -102,6 +102,8 @@ def create_page():
 def create_character():
     """where a user can access previously saved sheets after submitting"""
 
+
+    """requesting from user input forms"""
     char_name = request.form.get('char_name')
     dun_class = request.form.get('dungeons_classes')
     dun_race = request.form.get('dungeons_races')
@@ -117,6 +119,15 @@ def create_character():
     strength_stat = request.form.get('strength-stat')
     
 
+    """static info from api requests"""
+    api_url = f'https://www.dnd5eapi.co/api/classes/{dun_class}'
+    response = requests.get(api_url)
+    class_stats = response.json()
+
+    hit_die = class_stats["hit_die"] 
+
+
+    """creating a character sheet object"""
     character = Character_sheet(
         character_name = char_name,
         character_class = dun_class,
@@ -130,44 +141,41 @@ def create_character():
         intelligence = intelligence_stat,      
         dexterity = dexterity_stat,
         constitution = constitution_stat,
-        strength = strength_stat
+        strength = strength_stat,
+        char_hit_die = hit_die
     )
 
+
+    """adding and saving character to database"""
     db.session.add(character)
     db.session.commit()
 
-    api_url = f'https://www.dnd5eapi.co/api/classes/{dun_class}'
-    response = requests.get(api_url)
-    class_stats = response.json()
+
     # print('these are class stats')
     # print(class_stats)
-    api_url = f'https://www.dnd5eapi.co/api/races/{dun_race}'
-    response = requests.get(api_url)
-    race = response.json()
-    # print('these are race stats')
-    # print(race)
-    if dun_class == 'barbarian':
-        print('barbarian')
-        # ADD API QUERY HERE!!!
-    else:
-        print('not a barbarian')
+    # api_url = f'https://www.dnd5eapi.co/api/races/{dun_race}'
+    # response = requests.get(api_url)
+    # race = response.json()
+    # # print('these are race stats')
+    # # print(race)
 
 
 
-
-    # class_data = json.loads(req.text)
-
-    return render_template('character_profile.html', char_name=char_name, 
+    return render_template('character_secondpage.html', char_name=char_name, 
                             dun_class=dun_class, dun_race=dun_race, alignment=alignment, 
                             gender=gender, eye_color=eye_color, 
                             hair_color=hair_color, wisdom_stat=wisdom_stat,
                             charisma_stat=charisma_stat, intelligence_stat=intelligence_stat,
                             dexterity_stat=dexterity_stat, constitution_stat=constitution_stat, 
-                            strength_stat=strength_stat, class_stats=class_stats)
+                            strength_stat=strength_stat, class_stats=class_stats,
+                            hit_die=hit_die)
 
     # return jsonify({'data': 'whatever'})
     # this is where i get the stats for all char info from api
 
+
+    # will need to render another finalized character sheet with all final stats
+    # after static api info is called and dynamic api info is made by user
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(host="0.0.0.0", debug=True)

@@ -1,34 +1,40 @@
 {% extends 'base.html' %}
-{% block title %}create character{% endblock %}
+{% block title %}character basic info{% endblock %}
 
 {% block body %}
 <h1>this is the creation page</h1>
-
-
-            <!-- <form method="POST">
-                <input type="submit" value="hi">hi</input>
-            </form> -->
-            <div class="row">
-            <div class="col-3">
+<h5>roll for stats</h5>
+        <div class="row">
+            <div class="col-6">
                 <section id="dice_roll">
-                    <h4>get your 4d6 highest 3 averages for your stats by rolling</h4>
                     <button id="button1" class="roll_dice" name="wisdom">roll for wisdom</button>
                     <button id="button2" class="roll_dice" name="charisma">roll for charisma</button>
                     <button id="button3" class="roll_dice" name="intelligence">roll for intelligence</button>
+                </div>        
+                <div class="col-6">
                     <button id="button4" class="roll_dice" name="dexterity">roll for dexterity</button>
                     <button id="button5" class="roll_dice" name="constitution">roll for constitution</button>
                     <button id="button6" class="roll_dice" name="strength">roll for strength</button>
-                    <div id="dice_result"></div>
+                </div>
+                    <!-- <div id="dice_result"></div> -->
                 </section>
-            </div>
+        </div>
             <form action="/create_character" method="POST">
 
                 <section>
+                    using your 6 results, choose which category gets which number:
+                    <p></p>
+                    wisdom: 
                     <input type="number" id ="wisdom-stat" name="wisdom-stat">
+                    charisma:
                     <input type="number" id="charisma-stat" name="charisma-stat">
+                    intelligence:
                     <input type="number" id="intelligence-stat" name="intelligence-stat">
+                    dexterity:
                     <input type="number" id="dexterity-stat" name="dexterity-stat">
+                    constitution:
                     <input type="number" id="constitution-stat" name="constitution-stat">
+                    strength:
                     <input type="number" id="strength-stat" name="strength-stat">
                 </section>
 
