@@ -124,8 +124,12 @@ def create_character():
     response = requests.get(api_url)
     class_stats = response.json()
 
-    hit_die = class_stats["hit_die"] 
+    api_url = f'https://www.dnd5eapi.co/api/races/{dun_race}'
+    response=requests.get(api_url)
+    race_stats = response.json()
 
+    hit_die = class_stats["hit_die"] 
+    walking_speed = race_stats["speed"]
 
     """creating a character sheet object"""
     character = Character_sheet(
@@ -142,10 +146,11 @@ def create_character():
         dexterity = dexterity_stat,
         constitution = constitution_stat,
         strength = strength_stat,
-        char_hit_die = hit_die
+        char_hit_die = hit_die,
+        char_walking_speed = walking_speed
     )
 
-
+    # initiative_stat = class_stats["initiative"] + race_stats["initiative"]
     """adding and saving character to database"""
     db.session.add(character)
     db.session.commit()
@@ -168,7 +173,8 @@ def create_character():
                             charisma_stat=charisma_stat, intelligence_stat=intelligence_stat,
                             dexterity_stat=dexterity_stat, constitution_stat=constitution_stat, 
                             strength_stat=strength_stat, class_stats=class_stats,
-                            hit_die=hit_die)
+                            hit_die=hit_die, race_stats=race_stats, 
+                            walking_speed=walking_speed)
 
     # return jsonify({'data': 'whatever'})
     # this is where i get the stats for all char info from api

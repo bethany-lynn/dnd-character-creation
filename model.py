@@ -69,7 +69,7 @@ class Character_sheet(db.Model):
     total_hit_points = db.Column(db.Integer)
     proficiency_bonus = db.Column(db.Integer)
 
-    walking_speed = db.Column(db.Integer)
+    char_walking_speed = db.Column(db.Integer)
     passive_wisdom = db.Column(db.Integer)
     passive_perception = db.Column(db.Integer)
     passive_insight = db.Column(db.Integer)
