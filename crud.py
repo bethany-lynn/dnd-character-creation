@@ -29,6 +29,27 @@ def get_user_by_id(user_id):
     """return a user by id"""
     return User.query.get(user_id)
 
+def get_language_by_race(dun_race):
+    if dun_race == "dragonborn":
+        return "common+draconic"
+    elif dun_race == "dwarf":
+        return "common+dwarvish"
+    elif dun_race == "elf":
+        return "common+elvish"
+    elif dun_race == "gnome":
+        return "common+gnomish"
+    elif dun_race == "half-elf":
+        return "common+elvish"
+        # can speak on extra language of choosing
+    elif dun_race == "halfling":
+        return "common+halfling"
+    elif dun_race == "half-orc":
+        return "common+orc"
+    elif dun_race == "human":
+        return "common"
+        # can speak one extra language of choosing
+    elif dun_race == "tiefling":
+        return "common+infernal"
 
 if __name__ == '__main__':
     from server import app

@@ -65,6 +65,7 @@ def login():
         return redirect('/')
     else:
         session['user_email'] = user.email
+        session['user_id'] = user.user_id
         flash(f'Welcome back, {user.email}!')
 
     return redirect("/user_profile")
@@ -95,8 +96,7 @@ def create_page():
                             dungeons_genders=dungeons_genders, dungeons_eye_colors=dungeons_eye_colors,
                             dungeons_hair_colors=dungeons_hair_colors)
 
-# @app.route('/user_profile')
-# different function name than other route
+
 
 @app.route('/create_character', methods =["POST"])
 def create_character():
@@ -117,9 +117,8 @@ def create_character():
     dexterity_stat = request.form.get('dexterity-stat')
     constitution_stat = request.form.get('constitution-stat')
     strength_stat = request.form.get('strength-stat')
-    
+    user_id = session['user_id']
 
-    """static info from api requests"""
     api_url = f'https://www.dnd5eapi.co/api/classes/{dun_class}'
     response = requests.get(api_url)
     class_stats = response.json()
@@ -128,11 +127,21 @@ def create_character():
     response=requests.get(api_url)
     race_stats = response.json()
 
+    """static info from api requests"""
     hit_die = class_stats["hit_die"] 
     walking_speed = race_stats["speed"]
+    char_language = crud.get_language_by_race(dun_race)
+
+    """static info not from api"""
+    level = 1
+    # query selector
+
+    lang_list = char_language.split("+")
+  
 
     """creating a character sheet object"""
     character = Character_sheet(
+        user_id = user_id,
         character_name = char_name,
         character_class = dun_class,
         race = dun_race,
@@ -147,41 +156,30 @@ def create_character():
         constitution = constitution_stat,
         strength = strength_stat,
         char_hit_die = hit_die,
-        char_walking_speed = walking_speed
+        char_walking_speed = walking_speed,
+        language = char_language,
+        char_level = level
     )
 
-    # initiative_stat = class_stats["initiative"] + race_stats["initiative"]
     """adding and saving character to database"""
     db.session.add(character)
     db.session.commit()
+    # new_character = Character_sheet.query.filter(Character_sheet.name == char_name).first()
+
+    # return render_template('character_secondpage.html', new_character=new_character)
+    return render_template('character_secondpage.html', character=character)
+
+    # return render_template('character_secondpage.html', race_stats=race_stats, class_stats=class_stats,
+    #                      char_name=char_name, dun_class=dun_class, dun_race=dun_race, 
+    #                      alignment=alignment, gender=gender, eye_color=eye_color, 
+    #                      hair_color=hair_color, wisdom_stat=wisdom_stat,
+    #                     charisma_stat=charisma_stat, intelligence_stat=intelligence_stat,
+    #                     dexterity_stat=dexterity_stat, constitution_stat=constitution_stat, 
+    #                     strength_stat=strength_stat, hit_die=hit_die, 
+    #                    walking_speed=walking_speed, char_language=lang_list, 
+    #                    level=level)
 
 
-    # print('these are class stats')
-    # print(class_stats)
-    # api_url = f'https://www.dnd5eapi.co/api/races/{dun_race}'
-    # response = requests.get(api_url)
-    # race = response.json()
-    # # print('these are race stats')
-    # # print(race)
-
-
-
-    return render_template('character_secondpage.html', char_name=char_name, 
-                            dun_class=dun_class, dun_race=dun_race, alignment=alignment, 
-                            gender=gender, eye_color=eye_color, 
-                            hair_color=hair_color, wisdom_stat=wisdom_stat,
-                            charisma_stat=charisma_stat, intelligence_stat=intelligence_stat,
-                            dexterity_stat=dexterity_stat, constitution_stat=constitution_stat, 
-                            strength_stat=strength_stat, class_stats=class_stats,
-                            hit_die=hit_die, race_stats=race_stats, 
-                            walking_speed=walking_speed)
-
-    # return jsonify({'data': 'whatever'})
-    # this is where i get the stats for all char info from api
-
-
-    # will need to render another finalized character sheet with all final stats
-    # after static api info is called and dynamic api info is made by user
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(host="0.0.0.0", debug=True)

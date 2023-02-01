@@ -6,41 +6,61 @@
 {% block body %}
 
 <div class="header">
-    <h1>{{ char_name }}'s character sheet</h1>
-    <p>good luck on your adventure, {{ char_name }}</p>
+    <h1>{{ character.character_name }}'s character sheet</h1>
+    <p>good luck on your adventure, {{ character.char_name }}</p>
 </div>
 
 <div class="container">
     <div class="row">
-                <div class="col-6">
+        <div class="col-4">
                     <!-- <p>Character Name: <span id="char-name">{{ char_name }}</span></p> -->
-                    <p>Class: <span id="class">{{ dun_class }}</span></p>
-                    <p>Race: <span id="race">{{ dun_race }}</span></p>
-                    <p>Alignment: <span id="alignment">{{ alignment }}</span></p>
-                    <p>Gender: <span id="gender">{{ gender }}</span></p>
-                    <p>Eye Color: <span id="eye-color">{{ eye_color }}</span></p>
-                    <p>Hair Color: <span id="hair-color">{{ hair_color }}</span></p>
-                    <p>wisdom: <span id="dice_roll">{{ wisdom_stat }}</span></p>
-                    <p>charisma: <span id="dice_roll">{{ charisma_stat }}</span></p>
-                    <p>intelligence: <span id="dice_roll">{{ intelligence_stat }}</span></p>
-                    <p>dexterity: <span id="dice_roll">{{ dexterity_stat }}</span></p>
-                    <p>constitution: <span id="dice_roll">{{ constitution_stat }}</span></p>
-                    <p>strength: <span id="dice_roll">{{ strength_stat }}</span></p>
-                </div>
+            <p>Class: <span id="class">{{ character.character_class }}</span></p>
+            <p>Race: <span id="race">{{ character.character_race }}</span></p>
+            <p>Alignment: <span id="alignment">{{ character.alignment }}</span></p>
+            <p>Gender: <span id="gender">{{ character.gender }}</span></p>
+            <p>Eye Color: <span id="eye-color">{{ character.eye_color }}</span></p>
+            <p>Hair Color: <span id="hair-color">{{ character.hair_color }}</span></p>
+            <p>wisdom: <span id="dice_roll">{{ character.wisdom }}</span></p>
+            <p>charisma: <span id="dice_roll">{{ character.charisma }}</span></p>
+            <p>intelligence: <span id="dice_roll">{{ character.intelligence }}</span></p>
+            <p>dexterity: <span id="dice_roll">{{ character.dexterity }}</span></p>
+            <p>constitution: <span id="dice_roll">{{ character.constitution }}</span></p>
+            <p>strength: <span id="dice_roll">{{ character.strength }}</span></p>
+        </div>
+            <div class="col-4">
+                <p>
+                    character level:
+                    <span id="character_level">{{ level }}</span>
+                </p>
+                <p>
+                    hit die:
+                    <span id="hit_dice">{{ character.char_hit_die }}</span>
+                </p> 
+                <p>
+                    walking speed:
+                    <span id="walking_speed">{{ character.char_walking_speed }}</span>
+                </p>
+                <p> 
+                    languages:
+                    <span id="languages">
+                    <ul>
+                        {% for language in char_language %}
+                            <li>{{language}}</li>
+                        {% endfor %}
+                    </ul>
+                    </span>
+                </p>
+                <p>
+                    inspiration:
+                </p>
+                <p>
+                    condition:
+                </p>
+                <p>
+                    initiative:
+                </p>
+            </div>
 
-                <div class="col-6">
-                    <p>
-                        hit die:
-                           <span id="hit_dice">{{ hit_die }}</span>
-                    </p> 
-                    <p>
-                        walking speed:
-                        <span id="walking_speed">{{ walking_speed }}</span>
-                    </p>
-                    <p> 
-
-                    </p>
-                </div>
     </div>
 </div>
 {% endblock %}
