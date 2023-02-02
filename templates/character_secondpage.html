@@ -8,13 +8,13 @@
     <div row>
 
 {% if character.character_class == "barbarian" %}
-    <form id="barbarian-boxes"> choose two {{ character.character_class}} skills:
+    <form id="barbarian-boxes" action="/character_skills"> choose two {{ character.character_class}} skills:
     <p></p>
         <input type="checkbox" id="animal-handling" value="animal-handling">
         <label for="animal-handling">animal-handling {{character.animal_handling}} </label>
         <p></p>
         <input type="checkbox" id="athletics" value="athletics">
-        <label for="atheltics">atheltics {{character.athletics}} </label>
+        <label for="atheltics">athletics {{character.athletics}} </label>
         <p></p>
         <input type="checkbox" id="nature" value="nature">
         <label for="nature">nature: {{character.nature}} </label>
@@ -33,13 +33,13 @@
 
 
 {% if character.character_class == "bard" %}
-    <form id="bard-boxes"> choose two {{ character.character_class}} skills:
+    <form id="bard-boxes" action="/character_skills"> choose two {{ character.character_class}} skills:
     <p></p>
         <input type="checkbox" id="animal-handling" value="animal-handling">
         <label for="animal-handling">animal-handling {{character.animal_handling}} </label>
         <p></p>
         <input type="checkbox" id="athletics" value="athletics">
-        <label for="atheltics">atheltics {{character.athletics}} </label>
+        <label for="atheltics">athletics {{character.athletics}} </label>
         <p></p>
         <input type="checkbox" id="arcana" value="arcana">
         <label for="arcana">arcana: {{character.arcana}} </label>
@@ -115,7 +115,7 @@
 {% endif %}
 
 {% if character.character_class == "druid" %}
-    <form id="druid-boxes"> choose two {{ character.character_class}} skills:
+    <form id="druid-boxes" action="/character_skills"> choose two {{ character.character_class}} skills:
     <p></p>
         <input type="checkbox" id="animal-handling" value="animal-handling">
         <label for="animal-handling">animal-handling {{character.animal_handling}} </label>
@@ -146,13 +146,13 @@
 {% endif %}
 
 {% if character.character_class == "fighter" %}
-    <form id="fighter-boxes"> choose two {{ character.character_class}} skills:
+    <form id="fighter-boxes" action="/character_skills"> choose two {{ character.character_class}} skills:
     <p></p>
         <input type="checkbox" id="animal-handling" value="animal-handling">
         <label for="animal-handling">animal-handling {{character.animal_handling}} </label>
         <p></p>
         <input type="checkbox" id="athletics" value="athletics">
-        <label for="atheltics">atheltics {{character.athletics}} </label>
+        <label for="athletics">athletics {{character.athletics}} </label>
         <p></p>
         <input type="checkbox" id="acrobatics" value="acrobatics">
         <label for="acrobatics">acrobatics: {{character.acrobatics}} </label>        
@@ -176,10 +176,10 @@
 {% endif %}
 
 {% if character.character_class == "monk" %}
-    <form id="monk-boxes"> choose two {{ character.character_class}} skills:
+    <form id="monk-boxes" action="/character_skills"> choose two {{ character.character_class}} skills:
     <p></p>
         <input type="checkbox" id="athletics" value="athletics">
-        <label for="atheltics">atheltics {{character.athletics}} </label>
+        <label for="athletics">athletics {{character.athletics}} </label>
         <p></p>
         <input type="checkbox" id="acrobatics" value="acrobatics">
         <label for="acrobatics">acrobatics: {{character.acrobatics}} </label>        
@@ -200,10 +200,10 @@
 {% endif %}
 
 {% if character.character_class == "paladin" %}
-    <form id="paladin-boxes"> choose two {{ character.character_class}} skills:
+    <form id="paladin-boxes" action="/character_skills"> choose two {{ character.character_class}} skills:
     <p></p>
         <input type="checkbox" id="athletics" value="athletics">
-        <label for="atheltics">atheltics {{character.athletics}} </label>
+        <label for="athletics">athletics {{character.athletics}} </label>
         <p></p>
         <input type="checkbox" id="insight" value="insight">
         <label for="insight">insight: {{character.insight}} </label>
@@ -225,13 +225,13 @@
 
 
 {% if character.character_class == "ranger" %}
-    <form id="ranger-boxes"> choose two {{ character.character_class}} skills:
+    <form id="ranger-boxes" action="/character_skills"> choose two {{ character.character_class}} skills:
     <p></p>        
         <input type="checkbox" id="animal-handling" value="animal-handling">
         <label for="animal-handling">animal-handling {{character.animal_handling}} </label>
         <p></p>
         <input type="checkbox" id="athletics" value="athletics">
-        <label for="atheltics">atheltics {{character.athletics}} </label>    
+        <label for="athletics">athletics {{character.athletics}} </label>    
         <p></p>
         <input type="checkbox" id="nature" value="nature">
         <label for="nature">nature: {{character.nature}} </label>
@@ -256,10 +256,10 @@
 
 
 {% if character.character_class == "rogue" %}
-    <form id="rogue-boxes"> choose two {{ character.character_class}} skills:
+    <form id="rogue-boxes" action="/character_skills"> choose two {{ character.character_class}} skills:
     <p></p>        
         <input type="checkbox" id="athletics" value="athletics">
-        <label for="atheltics">atheltics {{character.athletics}} </label>
+        <label for="athletics">athletics {{character.athletics}} </label>
         <p></p>
         <input type="checkbox" id="acrobatics" value="acrobatics">
         <label for="acrobatics">acrobatics: {{character.acrobatics}} </label>        
@@ -296,7 +296,7 @@
 
 
 {% if character.character_class == "sorcerer" %}
-    <form id="sorcerer-boxes"> choose two {{ character.character_class}} skills:
+    <form id="sorcerer-boxes" action="/character_skills"> choose two {{ character.character_class}} skills:
     <p></p>
         <input type="checkbox" id="arcana" value="arcana">
         <label for="arcana">arcana: {{character.arcana}} </label>
@@ -321,7 +321,7 @@
 
 
 {% if character.character_class == "warlock" %}
-    <form id="warlock-boxes"> choose two {{ character.character_class}} skills:
+    <form id="warlock-boxes" action="/character_skills"> choose two {{ character.character_class}} skills:
     <p></p>
         <input type="checkbox" id="arcana" value="arcana">
         <label for="arcana">arcana: {{character.arcana}} </label>     
@@ -348,7 +348,7 @@
 {% endif %}
 
 {% if character.character_class == "wizard" %}
-    <form id="wizard-boxes"> choose two {{ character.character_class}} skills:
+    <form id="wizard-boxes" action="/character_skills"> choose two {{ character.character_class}} skills:
     <p></p>
         <input type="checkbox" id="arcana" value="arcana">
         <label for="arcana">arcana: {{character.arcana}} </label>

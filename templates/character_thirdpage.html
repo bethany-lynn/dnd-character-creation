@@ -33,8 +33,10 @@
         <section>
             character level:
             <span id="character_level"></span>
+            <p></p>
             hit die:
             <span id="hit_dice">{{ character.char_hit_die }}</span>
+            <p></p>
             walking speed:
             <span id="walking_speed">{{ character.char_walking_speed }}</span>
         </section>
@@ -43,7 +45,7 @@
             languages:
             <span id="languages">
             <ul>
-                {% for language in char_language %}
+                {% for language in character.language.split("+") %}
                     <li>{{language}}</li>
                 {% endfor %}
             </ul>

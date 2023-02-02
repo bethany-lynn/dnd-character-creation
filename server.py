@@ -249,6 +249,15 @@ def create_character():
     db.session.add(character)
     db.session.commit()
 
+
+    db.session.refresh(character)
+    print()
+    print("this is character id")
+    print(character.character_id)
+    session['character_id'] = character.character_id
+    # may need to modify ^ ?
+
+    
     # if dun_class == "bard" or "cleric" or "druid" or "sorcerer" or "wizard" or "warlock" or :
     #     return redirect('spellslots.html')
     #     # if dun_class in []
@@ -259,7 +268,14 @@ def create_character():
 @app.route('/character_skills')
 def assign_skills():
 
+    character_id = session['character_id']
+    # unsure if this is correct ^ test and modify maybe
+    # this is correct
+    # yay! :) 
+
     character = crud.get_character_by_id(character_id)
+    print()
+    print('this is a character')
     print(character)
     return render_template('character_thirdpage.html', character=character)
 
@@ -277,3 +293,18 @@ def get_spellslots_from_class():
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(host="0.0.0.0", debug=True)
+
+
+
+# next tasks:
+# assign character level to sheet, start at 1
+# limit check boxes to two or three clicks depending on class
+# add event listener
+
+# tomorrow?
+# work on classes that get spell slots
+# if class ____ : add a form with spells to select from
+# add another form for cantrips?
+
+# update thirdpage to display info from secondpage form (selected skills)
+# update thirdpage to displau info from spell slot form
