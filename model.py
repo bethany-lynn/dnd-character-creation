@@ -37,53 +37,56 @@ class Character_sheet(db.Model):
     gender = db.Column(db.String(50))
     eye_color = db.Column(db.String(50))
     hair_color = db.Column(db.String(50))
-# done ^
     wisdom = db.Column(db.Integer)
     charisma = db.Column(db.Integer)
     intelligence = db.Column(db.Integer)
     dexterity = db.Column(db.Integer)
     constitution = db.Column(db.Integer)
     strength = db.Column(db.Integer)
-# done ^
     char_walking_speed = db.Column(db.Integer)
     language = db.Column(db.String(50))
     char_hit_die = db.Column(db.Integer)
-# done^
-    char_level = db.Column(db.Integer, default=1)
-    inspiration = db.Column(db.Boolean, default=False)
-    initiative = db.Column(db.Integer)
-    condition = db.Column(db.Integer)
-
-    experience = db.Column(db.Integer)
-    armor_class = db.Column(db.Integer)
     current_hit_points = db.Column(db.Integer)
     total_hit_points = db.Column(db.Integer)
-    proficiency_bonus = db.Column(db.Integer)
-
-    sleight_of_hand = db.Column(db.Integer, default=0)
-    stealth = db.Column(db.Integer, default=0)
-    religion = db.Column(db.Integer, default=0)
-    nature = db.Column(db.Integer, default=0)
-    history = db.Column(db.Integer, default=0)
-    arcana = db.Column(db.Integer, default=0)
-    investigation = db.Column(db.Integer, default=0)
-    persuasion = db.Column(db.Integer, default=0)
-    performance = db.Column(db.Integer, default=0)
-    intimidation = db.Column(db.Integer, default=0)
-    deception = db.Column(db.Integer, default=0)
-
-    passive_wisdom = db.Column(db.Integer)
-    passive_perception = db.Column(db.Integer)
-    passive_insight = db.Column(db.Integer)
-    acrobatics = db.Column(db.Integer)
-
+    char_level = db.Column(db.Integer, default=1)
     animal_handling = db.Column(db.Integer)
     insight = db.Column(db.Integer)
     medicine = db.Column(db.Integer)
     perception = db.Column(db.Integer)
     survival = db.Column(db.Integer)
+    persuasion = db.Column(db.Integer, default=0)
+    performance = db.Column(db.Integer, default=0)
+    intimidation = db.Column(db.Integer, default=0)
+    deception = db.Column(db.Integer, default=0)
+    religion = db.Column(db.Integer, default=0)
+    nature = db.Column(db.Integer, default=0)
+    history = db.Column(db.Integer, default=0)
+    arcana = db.Column(db.Integer, default=0)
+    investigation = db.Column(db.Integer, default=0)
     athletics = db.Column(db.Integer)
-    background = db.Column(db.Text)
+    acrobatics = db.Column(db.Integer)
+    sleight_of_hand = db.Column(db.Integer, default=0)
+    stealth = db.Column(db.Integer, default=0)
+   
+   
+   # done ^
+    inspiration = db.Column(db.Boolean, default=False)
+# currently saved in database per character, though
+    proficiency_bonus = db.Column(db.Integer)
+    # starts at 2, determined by level.
+
+    passive_wisdom = db.Column(db.Integer)
+    passive_perception = db.Column(db.Integer)
+    passive_insight = db.Column(db.Integer)
+    # wisdom modifier + 10 ^
+
+    experience = db.Column(db.Integer)
+    armor_class = db.Column(db.Integer)
+
+    # background = db.Column(db.Text)
+
+    initiative = db.Column(db.Integer)
+    condition = db.Column(db.Integer)
 
 
 

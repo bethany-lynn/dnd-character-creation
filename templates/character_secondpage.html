@@ -1,66 +1,379 @@
 {% extends 'base.html' %}
 {% block title %}
-    character choices
+    character skills
 {% endblock %}
 
 {% block body %}
-
-<div class="header">
-    <h1>{{ character.character_name }}'s character sheet</h1>
-    <p>good luck on your adventure, {{ character.char_name }}</p>
-</div>
-
 <div class="container">
-    <div class="row">
-        <div class="col-4">
-                    <!-- <p>Character Name: <span id="char-name">{{ char_name }}</span></p> -->
-            <p>Class: <span id="class">{{ character.character_class }}</span></p>
-            <p>Race: <span id="race">{{ character.character_race }}</span></p>
-            <p>Alignment: <span id="alignment">{{ character.alignment }}</span></p>
-            <p>Gender: <span id="gender">{{ character.gender }}</span></p>
-            <p>Eye Color: <span id="eye-color">{{ character.eye_color }}</span></p>
-            <p>Hair Color: <span id="hair-color">{{ character.hair_color }}</span></p>
-            <p>wisdom: <span id="dice_roll">{{ character.wisdom }}</span></p>
-            <p>charisma: <span id="dice_roll">{{ character.charisma }}</span></p>
-            <p>intelligence: <span id="dice_roll">{{ character.intelligence }}</span></p>
-            <p>dexterity: <span id="dice_roll">{{ character.dexterity }}</span></p>
-            <p>constitution: <span id="dice_roll">{{ character.constitution }}</span></p>
-            <p>strength: <span id="dice_roll">{{ character.strength }}</span></p>
-        </div>
-            <div class="col-4">
-                <p>
-                    character level:
-                    <span id="character_level">{{ level }}</span>
-                </p>
-                <p>
-                    hit die:
-                    <span id="hit_dice">{{ character.char_hit_die }}</span>
-                </p> 
-                <p>
-                    walking speed:
-                    <span id="walking_speed">{{ character.char_walking_speed }}</span>
-                </p>
-                <p> 
-                    languages:
-                    <span id="languages">
-                    <ul>
-                        {% for language in char_language %}
-                            <li>{{language}}</li>
-                        {% endfor %}
-                    </ul>
-                    </span>
-                </p>
-                <p>
-                    inspiration:
-                </p>
-                <p>
-                    condition:
-                </p>
-                <p>
-                    initiative:
-                </p>
-            </div>
+    <div row>
 
+{% if character.character_class == "barbarian" %}
+    <form id="barbarian-boxes"> choose two {{ character.character_class}} skills:
+    <p></p>
+        <input type="checkbox" id="animal-handling" value="animal-handling">
+        <label for="animal-handling">animal-handling {{character.animal_handling}} </label>
+        <p></p>
+        <input type="checkbox" id="athletics" value="athletics">
+        <label for="atheltics">atheltics {{character.athletics}} </label>
+        <p></p>
+        <input type="checkbox" id="nature" value="nature">
+        <label for="nature">nature: {{character.nature}} </label>
+        <p></p>
+        <input type="checkbox" id="intimidation" value="intimidation">
+        <label for="intimidation">intimidation: {{character.intimidation}} </label>
+        <p></p>
+        <input type="checkbox" id="perception" value="perception">
+        <label for="perception">perception: {{character.perception}} </label>
+        <p></p>
+        <input type="checkbox" id="survival" value="survival">
+        <label for="survival">survival: {{character.survival}} </label>
+    <input type="submit"/>
+    </form>
+{% endif %}
+
+
+{% if character.character_class == "bard" %}
+    <form id="bard-boxes"> choose two {{ character.character_class}} skills:
+    <p></p>
+        <input type="checkbox" id="animal-handling" value="animal-handling">
+        <label for="animal-handling">animal-handling {{character.animal_handling}} </label>
+        <p></p>
+        <input type="checkbox" id="athletics" value="athletics">
+        <label for="atheltics">atheltics {{character.athletics}} </label>
+        <p></p>
+        <input type="checkbox" id="arcana" value="arcana">
+        <label for="arcana">arcana: {{character.arcana}} </label>
+        <p></p>
+        <input type="checkbox" id="acrobatics" value="acrobatics">
+        <label for="acrobatics">acrobatics: {{character.acrobatics}} </label>        
+        <p></p>
+        <input type="checkbox" id="nature" value="nature">
+        <label for="nature">nature: {{character.nature}} </label>
+        <p></p>
+        <input type="checkbox" id="intimidation" value="intimidation">
+        <label for="intimidation">intimidation: {{character.intimidation}} </label>
+        <p></p>
+        <input type="checkbox" id="perception" value="perception">
+        <label for="perception">perception: {{character.perception}} </label>
+        <p></p>
+        <input type="checkbox" id="survival" value="survival">
+        <label for="survival">survival: {{character.survival}} </label>
+        <p></p>
+        <input type="checkbox" id="insight" value="insight">
+        <label for="insight">insight: {{character.insight}} </label>
+        <p></p>
+        <input type="checkbox" id="medicine" value="medicine">
+        <label for="medicine">medicine: {{character.medicine}} </label>
+        <p></p>
+        <input type="checkbox" id="persuasion" value="persuasion">
+        <label for="persuasion">persuasion: {{character.persuasion}} </label>
+        <p></p>
+        <input type="checkbox" id="religion" value="religion">
+        <label for="religion">religion: {{character.religion}} </label>
+        <p></p>
+        <input type="checkbox" id="performance" value="performance">
+        <label for="performance">performance: {{character.performance}} </label>
+        <p></p>
+        <input type="checkbox" id="deception" value="deception">
+        <label for="deception">deception: {{character.deception}} </label>
+        <p></p>
+        <input type="checkbox" id="history" value="history">
+        <label for="history">history: {{character.history}} </label>
+        <p></p>
+        <input type="checkbox" id="investigation" value="investigation">
+        <label for="investigation">investigation: {{character.investigation}} </label>
+        <p></p>
+        <input type="checkbox" id="sleight-of-hand" value="sleight-of-hand">
+        <label for="sleight-of-hand">sleight of hand: {{character.sleight_of_hand}} </label>
+        <p></p>
+        <input type="checkbox" id="stealth" value="stealth">
+        <label for="stealth">stealth: {{character.stealth}} </label>
+    <input type="submit"/>
+    </form>
+{% endif %}
+
+{% if character.character_class == "cleric" %}
+    <form id="cleric-boxes" action="/character_skills"> 
+        choose two {{ character.character_class}} skills:
+    <p></p>
+        <input type="checkbox" id="insight" value="insight">
+        <label for="insight">insight: {{character.insight}} </label>
+        <p></p>
+        <input type="checkbox" id="medicine" value="medicine">
+        <label for="medicine">medicine: {{character.medicine}} </label>
+        <p></p>
+        <input type="checkbox" id="persuasion" value="persuasion">
+        <label for="persuasion">persuasion: {{character.persuasion}} </label>
+        <p></p>
+        <input type="checkbox" id="religion" value="religion">
+        <label for="religion">religion: {{character.religion}} </label>
+        <p></p>
+        <input type="checkbox" id="history" value="history">
+        <label for="history">history: {{character.history}} </label>
+    <input type="submit"/>
+    </form>
+{% endif %}
+
+{% if character.character_class == "druid" %}
+    <form id="druid-boxes"> choose two {{ character.character_class}} skills:
+    <p></p>
+        <input type="checkbox" id="animal-handling" value="animal-handling">
+        <label for="animal-handling">animal-handling {{character.animal_handling}} </label>
+        <p></p>
+        <input type="checkbox" id="arcana" value="arcana">
+        <label for="arcana">arcana: {{character.arcana}} </label>       
+        <p></p>
+        <input type="checkbox" id="nature" value="nature">
+        <label for="nature">nature: {{character.nature}} </label>
+        <p></p>
+        <input type="checkbox" id="perception" value="perception">
+        <label for="perception">perception: {{character.perception}} </label>
+        <p></p>
+        <input type="checkbox" id="survival" value="survival">
+        <label for="survival">survival: {{character.survival}} </label>
+        <p></p>
+        <input type="checkbox" id="insight" value="insight">
+        <label for="insight">insight: {{character.insight}} </label>
+        <p></p>
+        <input type="checkbox" id="medicine" value="medicine">
+        <label for="medicine">medicine: {{character.medicine}} </label>
+        <p></p>
+        <input type="checkbox" id="religion" value="religion">
+        <label for="religion">religion: {{character.religion}} </label>
+        <p></p>
+    <input type="submit"/>
+    </form>    
+{% endif %}
+
+{% if character.character_class == "fighter" %}
+    <form id="fighter-boxes"> choose two {{ character.character_class}} skills:
+    <p></p>
+        <input type="checkbox" id="animal-handling" value="animal-handling">
+        <label for="animal-handling">animal-handling {{character.animal_handling}} </label>
+        <p></p>
+        <input type="checkbox" id="athletics" value="athletics">
+        <label for="atheltics">atheltics {{character.athletics}} </label>
+        <p></p>
+        <input type="checkbox" id="acrobatics" value="acrobatics">
+        <label for="acrobatics">acrobatics: {{character.acrobatics}} </label>        
+        <p></p>
+        <input type="checkbox" id="intimidation" value="intimidation">
+        <label for="intimidation">intimidation: {{character.intimidation}} </label>
+        <p></p>
+        <input type="checkbox" id="perception" value="perception">
+        <label for="perception">perception: {{character.perception}} </label>
+        <p></p>
+        <input type="checkbox" id="survival" value="survival">
+        <label for="survival">survival: {{character.survival}} </label>
+        <p></p>
+        <input type="checkbox" id="insight" value="insight">
+        <label for="insight">insight: {{character.insight}} </label>
+        <p></p>
+        <input type="checkbox" id="history" value="history">
+        <label for="history">history: {{character.history}} </label>
+    <input type="submit"/>
+    </form>
+{% endif %}
+
+{% if character.character_class == "monk" %}
+    <form id="monk-boxes"> choose two {{ character.character_class}} skills:
+    <p></p>
+        <input type="checkbox" id="athletics" value="athletics">
+        <label for="atheltics">atheltics {{character.athletics}} </label>
+        <p></p>
+        <input type="checkbox" id="acrobatics" value="acrobatics">
+        <label for="acrobatics">acrobatics: {{character.acrobatics}} </label>        
+        <p></p>
+        <input type="checkbox" id="insight" value="insight">
+        <label for="insight">insight: {{character.insight}} </label>
+        <p></p>
+        <input type="checkbox" id="religion" value="religion">
+        <label for="religion">religion: {{character.religion}} </label>
+        <p></p>
+        <input type="checkbox" id="history" value="history">
+        <label for="history">history: {{character.history}} </label>
+        <p></p>
+        <input type="checkbox" id="stealth" value="stealth">
+        <label for="stealth">stealth: {{character.stealth}} </label>
+    <input type="submit"/>
+    </form>
+{% endif %}
+
+{% if character.character_class == "paladin" %}
+    <form id="paladin-boxes"> choose two {{ character.character_class}} skills:
+    <p></p>
+        <input type="checkbox" id="athletics" value="athletics">
+        <label for="atheltics">atheltics {{character.athletics}} </label>
+        <p></p>
+        <input type="checkbox" id="insight" value="insight">
+        <label for="insight">insight: {{character.insight}} </label>
+        <p></p>
+        <input type="checkbox" id="intimidation" value="intimidation">
+        <label for="intimidation">intimidation: {{character.intimidation}} </label>
+        <p></p>
+        <input type="checkbox" id="medicine" value="medicine">
+        <label for="medicine">medicine: {{character.medicine}} </label>
+        <p></p>
+        <input type="checkbox" id="persuasion" value="persuasion">
+        <label for="persuasion">persuasion: {{character.persuasion}} </label>
+        <p></p>
+        <input type="checkbox" id="religion" value="religion">
+        <label for="religion">religion: {{character.religion}} </label>
+    <input type="submit"/>    
+    </form>
+{% endif %}
+
+
+{% if character.character_class == "ranger" %}
+    <form id="ranger-boxes"> choose two {{ character.character_class}} skills:
+    <p></p>        
+        <input type="checkbox" id="animal-handling" value="animal-handling">
+        <label for="animal-handling">animal-handling {{character.animal_handling}} </label>
+        <p></p>
+        <input type="checkbox" id="athletics" value="athletics">
+        <label for="atheltics">atheltics {{character.athletics}} </label>    
+        <p></p>
+        <input type="checkbox" id="nature" value="nature">
+        <label for="nature">nature: {{character.nature}} </label>
+        <p></p>
+        <input type="checkbox" id="perception" value="perception">
+        <label for="perception">perception: {{character.perception}} </label>
+        <p></p>
+        <input type="checkbox" id="survival" value="survival">
+        <label for="survival">survival: {{character.survival}} </label>
+        <p></p>
+        <input type="checkbox" id="insight" value="insight">
+        <label for="insight">insight: {{character.insight}} </label>
+        <p></p>
+        <input type="checkbox" id="investigation" value="investigation">
+        <label for="investigation">investigation: {{character.investigation}} </label>
+        <p></p>
+        <input type="checkbox" id="stealth" value="stealth">
+        <label for="stealth">stealth: {{character.stealth}} </label>
+    <input type="submit"/>
+    </form>
+{% endif %}
+
+
+{% if character.character_class == "rogue" %}
+    <form id="rogue-boxes"> choose two {{ character.character_class}} skills:
+    <p></p>        
+        <input type="checkbox" id="athletics" value="athletics">
+        <label for="atheltics">atheltics {{character.athletics}} </label>
+        <p></p>
+        <input type="checkbox" id="acrobatics" value="acrobatics">
+        <label for="acrobatics">acrobatics: {{character.acrobatics}} </label>        
+        <p></p>
+        <input type="checkbox" id="intimidation" value="intimidation">
+        <label for="intimidation">intimidation: {{character.intimidation}} </label>
+        <p></p>
+        <input type="checkbox" id="perception" value="perception">
+        <label for="perception">perception: {{character.perception}} </label>
+        <p></p>
+        <input type="checkbox" id="insight" value="insight">
+        <label for="insight">insight: {{character.insight}} </label>
+        <p></p>
+        <input type="checkbox" id="persuasion" value="persuasion">
+        <label for="persuasion">persuasion: {{character.persuasion}} </label>
+        <p></p>
+        <input type="checkbox" id="performance" value="performance">
+        <label for="performance">performance: {{character.performance}} </label>
+        <p></p>
+        <input type="checkbox" id="deception" value="deception">
+        <label for="deception">deception: {{character.deception}} </label>
+        <p></p>
+        <input type="checkbox" id="investigation" value="investigation">
+        <label for="investigation">investigation: {{character.investigation}} </label>
+        <p></p>
+        <input type="checkbox" id="sleight-of-hand" value="sleight-of-hand">
+        <label for="sleight-of-hand">sleight of hand: {{character.sleight_of_hand}} </label>
+        <p></p>
+        <input type="checkbox" id="stealth" value="stealth">
+        <label for="stealth">stealth: {{character.stealth}} </label>
+    <input type="submit"/>
+    </form>
+{% endif %}
+
+
+{% if character.character_class == "sorcerer" %}
+    <form id="sorcerer-boxes"> choose two {{ character.character_class}} skills:
+    <p></p>
+        <input type="checkbox" id="arcana" value="arcana">
+        <label for="arcana">arcana: {{character.arcana}} </label>
+        <p></p>
+        <input type="checkbox" id="intimidation" value="intimidation">
+        <label for="intimidation">intimidation: {{character.intimidation}} </label>
+        <p></p>
+        <input type="checkbox" id="insight" value="insight">
+        <label for="insight">insight: {{character.insight}} </label>
+        <p></p>
+        <input type="checkbox" id="persuasion" value="persuasion">
+        <label for="persuasion">persuasion: {{character.persuasion}} </label>
+        <p></p>
+        <input type="checkbox" id="religion" value="religion">
+        <label for="religion">religion: {{character.religion}} </label>
+        <p></p>
+        <input type="checkbox" id="deception" value="deception">
+        <label for="deception">deception: {{character.deception}} </label>
+    <input type="submit"/>
+    </form>
+{% endif %}
+
+
+{% if character.character_class == "warlock" %}
+    <form id="warlock-boxes"> choose two {{ character.character_class}} skills:
+    <p></p>
+        <input type="checkbox" id="arcana" value="arcana">
+        <label for="arcana">arcana: {{character.arcana}} </label>     
+        <p></p>
+        <input type="checkbox" id="nature" value="nature">
+        <label for="nature">nature: {{character.nature}} </label>
+        <p></p>
+        <input type="checkbox" id="intimidation" value="intimidation">
+        <label for="intimidation">intimidation: {{character.intimidation}} </label>
+        <p></p>
+        <input type="checkbox" id="religion" value="religion">
+        <label for="religion">religion: {{character.religion}} </label>
+        <p></p>
+        <input type="checkbox" id="deception" value="deception">
+        <label for="deception">deception: {{character.deception}} </label>
+        <p></p>
+        <input type="checkbox" id="history" value="history">
+        <label for="history">history: {{character.history}} </label>
+        <p></p>
+        <input type="checkbox" id="investigation" value="investigation">
+        <label for="investigation">investigation: {{character.investigation}} </label>
+    <input type="submit"/>
+    </form>
+{% endif %}
+
+{% if character.character_class == "wizard" %}
+    <form id="wizard-boxes"> choose two {{ character.character_class}} skills:
+    <p></p>
+        <input type="checkbox" id="arcana" value="arcana">
+        <label for="arcana">arcana: {{character.arcana}} </label>
+        <p></p>
+        <input type="checkbox" id="insight" value="insight">
+        <label for="insight">insight: {{character.insight}} </label>
+        <p></p>
+        <input type="checkbox" id="medicine" value="medicine">
+        <label for="medicine">medicine: {{character.medicine}} </label>
+        <p></p>
+        <input type="checkbox" id="religion" value="religion">
+        <label for="religion">religion: {{character.religion}} </label>
+        <p></p>
+        <input type="checkbox" id="history" value="history">
+        <label for="history">history: {{character.history}} </label>
+        <p></p>
+        <input type="checkbox" id="investigation" value="investigation">
+        <label for="investigation">investigation: {{character.investigation}} </label>
+    <input type="submit"/>
+    </form>
+{% endif %}
+
+
+    </div>
     </div>
 </div>
 {% endblock %}
+

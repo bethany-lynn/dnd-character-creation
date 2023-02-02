@@ -23,11 +23,16 @@ def get_users():
 def get_user_by_email(email):
     """return a user by email""" 
 
-    return  User.query.filter(User.email == email).first()
+    return User.query.filter(User.email == email).first()
 
 def get_user_by_id(user_id):
     """return a user by id"""
     return User.query.get(user_id)
+
+def get_character_by_id(character_id):
+    """return a character by id"""
+    
+    return Character_sheet.query.get(character_id)
 
 def get_language_by_race(dun_race):
     if dun_race == "dragonborn":

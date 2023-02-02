@@ -1,10 +1,62 @@
 {% extends 'base.html' %}
-{% block title %}character basic info{% endblock %}
+{% block title %}character sheet{% endblock %}
 
 {% block body %}
-    <p>
-    hit die:
-       <span id="hit_dice">{{ hit_die }}</span>
-    </p>
+
+<div class="header">
+    <figure class="text-center">
+        <blockquote class="blockquote">
+          <h1 class="display-6">{{ character.character_name }}'s character sheet</h1>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+          good luck on your adventure, <cite title="Source Title">{{ character.character_name }}</cite>
+        </figcaption>
+      </figure>
+</div>
+<div class="container">
+    <div class="row">
+        <p>Class: <span id="class">{{ character.character_class }}</span></p>
+        <p>Race: <span id="race">{{ character.race }}</span></p>
+        <p>Alignment: <span id="alignment">{{ character.alignment }}</span></p>
+        <p>Gender: <span id="gender">{{ character.gender }}</span></p>
+        <p>Eye Color: <span id="eye-color">{{ character.eye_color }}</span></p>
+        <p>Hair Color: <span id="hair-color">{{ character.hair_color }}</span></p>
+        <p>wisdom: <span id="dice_roll">{{ character.wisdom }}</span></p>
+        <p>charisma: <span id="dice_roll">{{ character.charisma }}</span></p>
+        <p>intelligence: <span id="dice_roll">{{ character.intelligence }}</span></p>
+        <p>dexterity: <span id="dice_roll">{{ character.dexterity }}</span></p>
+        <p>constitution: <span id="dice_roll">{{ character.constitution }}</span></p>
+        <p>strength: <span id="dice_roll">{{ character.strength }}</span></p>
+    </div>
+    <div class="row">
+        <div class="col-4">
+        <section>
+            character level:
+            <span id="character_level"></span>
+            hit die:
+            <span id="hit_dice">{{ character.char_hit_die }}</span>
+            walking speed:
+            <span id="walking_speed">{{ character.char_walking_speed }}</span>
+        </section>
+        </div>
+        <div class="col-4">
+            languages:
+            <span id="languages">
+            <ul>
+                {% for language in char_language %}
+                    <li>{{language}}</li>
+                {% endfor %}
+            </ul>
+            </span>
+        </div>
+        <div class="col-4">
+            current hit points:
+            <span id="hit_points">{{ character.current_hit_points }}</span>
+            <p></p>
+            total hit points:
+            <span id="total_hit_points">{{ character.total_hit_points }}</span>
+        </div>
+    </div>
+
 
 {% endblock %}

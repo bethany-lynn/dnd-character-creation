@@ -68,7 +68,17 @@ def login():
         session['user_id'] = user.user_id
         flash(f'Welcome back, {user.email}!')
 
-    return redirect("/user_profile")
+    return redirect("/create_character")
+    # change this to redirect to user_profile when that route is complete
+
+@app.route('/user_profile')
+def user_profile():
+    # flash message to welcome user back to the adventure
+    # route to create character in create_character route
+    # list all created characters with links to see their sheets in finalalized_character route
+    # log out button to route to homepage /
+    # navbar?
+    return redirect('/')
 
 @app.route('/create_character')
 def create_page():
@@ -102,7 +112,6 @@ def create_page():
 def create_character():
     """where a user can access previously saved sheets after submitting"""
 
-
     """requesting from user input forms"""
     char_name = request.form.get('char_name')
     dun_class = request.form.get('dungeons_classes')
@@ -117,7 +126,8 @@ def create_character():
     dexterity_stat = request.form.get('dexterity-stat')
     constitution_stat = request.form.get('constitution-stat')
     strength_stat = request.form.get('strength-stat')
-    user_id = session['user_id']
+    # user_id = session['user_id']
+    
 
     api_url = f'https://www.dnd5eapi.co/api/classes/{dun_class}'
     response = requests.get(api_url)
@@ -132,16 +142,71 @@ def create_character():
     walking_speed = race_stats["speed"]
     char_language = crud.get_language_by_race(dun_race)
 
-    """static info not from api"""
-    level = 1
-    # query selector
-
+    """assigning language to a variable by splitting"""
     lang_list = char_language.split("+")
-  
+
+    """conditionals to get character skills based off of their modifiers"""
+    if int(constitution_stat) > 11:
+        constitution_mod = (int(constitution_stat) - 10) // 2
+        hit_points = hit_die + random.choice(range(1, hit_die + 1)) + constitution_mod
+    else:
+        constitution_mod = 0
+        hit_points = hit_die + random.choice(range(1, hit_die + 1)) + constitution_mod
+
+    if int(wisdom_stat) > 11:
+        animal_hand = (int(wisdom_stat) - 10) //2
+        insight_stat = (int(wisdom_stat) - 10) //2
+        medicine_stat = (int(wisdom_stat) - 10) //2
+        perception_stat = (int(wisdom_stat) - 10) //2
+        survival_stat = (int(wisdom_stat) - 10) //2
+    else:
+        animal_hand = 0
+        insight_stat = 0
+        medicine_stat = 0
+        perception_stat = 0
+        survival_stat = 0
+
+    if int(charisma_stat) > 11:
+        persuasion_stat = (int(charisma_stat) - 10) //2
+        performance_stat = (int(charisma_stat) - 10) //2
+        intimidation_stat = (int(charisma_stat) - 10) //2
+        deception_stat = (int(charisma_stat) - 10) //2
+    else:
+        persuasion_stat = 0
+        performance_stat = 0
+        intimidation_stat = 0
+        deception_stat = 0
+
+    if int(intelligence_stat) > 11:
+        religion_stat = (int(intelligence_stat) - 10) //2
+        nature_stat = (int(intelligence_stat) - 10) //2
+        history_stat = (int(intelligence_stat) - 10) //2
+        arcana_stat = (int(intelligence_stat) - 10) //2
+        investigation_stat = (int(intelligence_stat) - 10) //2
+    else:
+        religion_stat = 0
+        nature_stat = 0
+        history_stat = 0
+        arcana_stat = 0
+        investigation_stat = 0
+
+    if int(dexterity_stat) > 11:
+        acrobatics_stat = (int(dexterity_stat) - 10) //2
+        sleight_of_hand_stat = (int(dexterity_stat) - 10) //2
+        stealth_stat = (int(dexterity_stat) - 10) //2
+    else:
+        acrobatics_stat = 0
+        sleight_of_hand_stat = 0
+        stealth_stat = 0
+
+    if int(strength_stat) > 11:
+        athletics_stat = (int(strength_stat) - 10) //2
+    else:
+        athletics_stat = 0
 
     """creating a character sheet object"""
     character = Character_sheet(
-        user_id = user_id,
+        # user_id = user_id,
         character_name = char_name,
         character_class = dun_class,
         race = dun_race,
@@ -158,44 +223,57 @@ def create_character():
         char_hit_die = hit_die,
         char_walking_speed = walking_speed,
         language = char_language,
-        char_level = level
+        current_hit_points = hit_points,
+        total_hit_points = hit_points,
+        animal_handling = animal_hand,
+        insight = insight_stat,
+        medicine = medicine_stat,
+        perception = perception_stat,
+        survival = survival_stat,
+        persuasion = persuasion_stat,
+        performance = performance_stat,
+        intimidation = intimidation_stat,
+        deception = deception_stat,
+        religion = religion_stat,
+        nature = nature_stat,
+        history = history_stat,
+        arcana = arcana_stat,
+        investigation = investigation_stat,
+        athletics = athletics_stat,
+        acrobatics = acrobatics_stat,
+        sleight_of_hand = sleight_of_hand_stat, 
+        stealth = stealth_stat
     )
 
     """adding and saving character to database"""
     db.session.add(character)
     db.session.commit()
-    # new_character = Character_sheet.query.filter(Character_sheet.name == char_name).first()
 
-    # return render_template('character_secondpage.html', new_character=new_character)
-    return render_template('character_secondpage.html', character=character)
+    # if dun_class == "bard" or "cleric" or "druid" or "sorcerer" or "wizard" or "warlock" or :
+    #     return redirect('spellslots.html')
+    #     # if dun_class in []
 
-    # return render_template('character_secondpage.html', race_stats=race_stats, class_stats=class_stats,
-    #                      char_name=char_name, dun_class=dun_class, dun_race=dun_race, 
-    #                      alignment=alignment, gender=gender, eye_color=eye_color, 
-    #                      hair_color=hair_color, wisdom_stat=wisdom_stat,
-    #                     charisma_stat=charisma_stat, intelligence_stat=intelligence_stat,
-    #                     dexterity_stat=dexterity_stat, constitution_stat=constitution_stat, 
-    #                     strength_stat=strength_stat, hit_die=hit_die, 
-    #                    walking_speed=walking_speed, char_language=lang_list, 
-    #                    level=level)
+    return render_template('character_secondpage.html', character=character, char_language=lang_list)
+
+
+@app.route('/character_skills')
+def assign_skills():
+
+    character = crud.get_character_by_id(character_id)
+    print(character)
+    return render_template('character_thirdpage.html', character=character)
+
+
+
+@app.route('/spellslots')
+def get_spellslots_from_class():
+
+    # user can select 4 cantrips
+    # user can pick 2 spells
+    # commit to character sheet table 
+    return render_template('character_secondpage.html')
 
 
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(host="0.0.0.0", debug=True)
-
-
-
-# THURSDAY TO-DO LIST
-# figure out how players get all stats (random dice roll, dependant on class, etc)
-
-# finish layout of creation page
-#       add text boxes for background input
-#       consider how to create an account tab to log in and out from tab, and change routes
-#       through the tab, instead of a navbar
-
-# have all data input go to a certain column or row (organize info)
-
-# API - if class is wizard, add (____) to spells, wisdom, etc 
-
-# consider layout for a form with empty "inputs" where all stats and numbers will go
