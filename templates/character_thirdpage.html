@@ -13,14 +13,20 @@
         </figcaption>
       </figure>
 </div>
+<p></p>
 <div class="container">
     <div class="row">
+    <div class="col-3">
         <p>Class: <span id="class">{{ character.character_class }}</span></p>
         <p>Race: <span id="race">{{ character.race }}</span></p>
         <p>Alignment: <span id="alignment">{{ character.alignment }}</span></p>
+    </div>
+    <div class="col-3">
         <p>Gender: <span id="gender">{{ character.gender }}</span></p>
         <p>Eye Color: <span id="eye-color">{{ character.eye_color }}</span></p>
         <p>Hair Color: <span id="hair-color">{{ character.hair_color }}</span></p>
+    </div>
+    <div class="col-6">
         <p>wisdom: <span id="dice_roll">{{ character.wisdom }}</span></p>
         <p>charisma: <span id="dice_roll">{{ character.charisma }}</span></p>
         <p>intelligence: <span id="dice_roll">{{ character.intelligence }}</span></p>
@@ -28,11 +34,13 @@
         <p>constitution: <span id="dice_roll">{{ character.constitution }}</span></p>
         <p>strength: <span id="dice_roll">{{ character.strength }}</span></p>
     </div>
+    </div>
+    <p></p>
     <div class="row">
         <div class="col-4">
         <section>
             character level:
-            <span id="character_level"></span>
+            <span id="character_level">{{ character.char_level }}</span>
             <p></p>
             hit die:
             <span id="hit_dice">{{ character.char_hit_die }}</span>
@@ -43,6 +51,7 @@
         </div>
         <div class="col-4">
             languages:
+            <p></p>
             <span id="languages">
             <ul>
                 {% for language in character.language.split("+") %}
@@ -57,6 +66,86 @@
             <p></p>
             total hit points:
             <span id="total_hit_points">{{ character.total_hit_points }}</span>
+        </div>
+    </div>
+    <p></p>
+    <div class="row">
+        <div class="col">
+            skills:
+            <span id="skills">
+                <p></p>
+                {% if "animal-handling" in skills %}
+                    <p>Animal handling: {{ character.animal_handling }}</p>
+                {% endif %}
+    
+                {% if "acrobatics" in skills %}
+                    <p>Acrobatics: {{ character.acrobatics }}</p>
+                {% endif %}
+    
+                {% if "arcana" in skills %}
+                    <p>Arcana: {{ character.arcana }}</p>
+                {% endif %}                
+    
+                {% if "athletics" in skills %}
+                    <p>Athletics: {{ character.athletics }}</p>
+                {% endif %}
+    
+                {% if "deception" in skills %}
+                    <p>Deception: {{ character.deception }}</p>
+                {% endif %}                
+  
+                {% if "history" in skills %}
+                    <p>History: {{ character.history }}</p>
+                {% endif %}
+
+                {% if "insight" in skills %}
+                    <p>Insight: {{ character.insight }}</p>
+                {% endif %}
+
+                {% if "intimidation" in skills %}
+                    <p>Intimidation: {{ character.intimidation }}</p>
+                {% endif %}
+
+                {% if "investigation" in skills %}
+                    <p>Investigation: {{ character.investigation }}</p>
+                {% endif %}
+
+                {% if "medicine" in skills %}
+                    <p>Medicine: {{ character.medicine }}</p>
+                {% endif %}
+
+                {% if "nature" in skills %}
+                    <p>Nature: {{ character.nature }}</p>
+                {% endif %}
+
+                {% if "perception" in skills %}
+                    <p>Perception: {{ character.perception }}</p>
+                {% endif %}
+                
+                {% if "performance" in skills %}
+                    <p>Performance: {{ character.performance }}</p>
+                {% endif %}
+
+                {% if "persuasion" in skills %}
+                    <p>Persuasion: {{ character.persuasion }}</p>
+                {% endif %}                
+                
+                {% if "religion" in skills %}
+                    <p>Religion: {{ character.religion }}</p>
+                {% endif %}
+
+                {% if "sleight-of-hand" in skills %}
+                    <p>Sleight of hand: {{ character.sleight_of_hand }}</p>
+                {% endif %}
+
+                {% if "stealth" in skills %}
+                    <p>Stealth: {{ character.stealth }}</p>
+                {% endif %}
+
+                {% if "survival" in skills %}
+                    <p>Survival: {{ character.survival }}</p>
+                {% endif %}
+            </span>
         </div>
     </div>
 

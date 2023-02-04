@@ -30,61 +30,62 @@ class Character_sheet(db.Model):
                              autoincrement=True,
                              primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users_table.user_id"))
+
     character_name = db.Column(db.String(50))
     character_class = db.Column(db.String(50))
     race = db.Column(db.String(50))
+
     alignment = db.Column(db.String(50))
     gender = db.Column(db.String(50))
     eye_color = db.Column(db.String(50))
     hair_color = db.Column(db.String(50))
+
     wisdom = db.Column(db.Integer)
     charisma = db.Column(db.Integer)
     intelligence = db.Column(db.Integer)
     dexterity = db.Column(db.Integer)
     constitution = db.Column(db.Integer)
     strength = db.Column(db.Integer)
+
     char_walking_speed = db.Column(db.Integer)
     language = db.Column(db.String(50))
     char_hit_die = db.Column(db.Integer)
+
     current_hit_points = db.Column(db.Integer)
     total_hit_points = db.Column(db.Integer)
     char_level = db.Column(db.Integer, default=1)
+
     animal_handling = db.Column(db.Integer)
-    insight = db.Column(db.Integer)
-    medicine = db.Column(db.Integer)
-    perception = db.Column(db.Integer)
-    survival = db.Column(db.Integer)
-    persuasion = db.Column(db.Integer, default=0)
-    performance = db.Column(db.Integer, default=0)
-    intimidation = db.Column(db.Integer, default=0)
-    deception = db.Column(db.Integer, default=0)
-    religion = db.Column(db.Integer, default=0)
-    nature = db.Column(db.Integer, default=0)
-    history = db.Column(db.Integer, default=0)
-    arcana = db.Column(db.Integer, default=0)
-    investigation = db.Column(db.Integer, default=0)
-    athletics = db.Column(db.Integer)
     acrobatics = db.Column(db.Integer)
+    arcana = db.Column(db.Integer, default=0)
+    athletics = db.Column(db.Integer)
+    deception = db.Column(db.Integer, default=0)
+    history = db.Column(db.Integer, default=0)
+    insight = db.Column(db.Integer)
+    intimidation = db.Column(db.Integer, default=0)
+    investigation = db.Column(db.Integer, default=0)
+    medicine = db.Column(db.Integer)
+    nature = db.Column(db.Integer, default=0)    
+    perception = db.Column(db.Integer)
+    performance = db.Column(db.Integer, default=0)
+    persuasion = db.Column(db.Integer, default=0)
+    religion = db.Column(db.Integer, default=0)
     sleight_of_hand = db.Column(db.Integer, default=0)
     stealth = db.Column(db.Integer, default=0)
-   
-   
-   # done ^
+    survival = db.Column(db.Integer)
     inspiration = db.Column(db.Boolean, default=False)
+   # done ^
+    
 # currently saved in database per character, though
     proficiency_bonus = db.Column(db.Integer)
     # starts at 2, determined by level.
-
     passive_wisdom = db.Column(db.Integer)
     passive_perception = db.Column(db.Integer)
     passive_insight = db.Column(db.Integer)
     # wisdom modifier + 10 ^
-
     experience = db.Column(db.Integer)
     armor_class = db.Column(db.Integer)
-
     # background = db.Column(db.Text)
-
     initiative = db.Column(db.Integer)
     condition = db.Column(db.Integer)
 
@@ -235,7 +236,7 @@ class Weapons(db.Model):
     def __repr__(self):
         return f'<>'
 
-def connect_to_db(flask_app, db_uri="postgresql:///creation", echo=True):
+def connect_to_db(flask_app, db_uri="postgresql:///creation", echo=False):
     """seting up a connection to a postgreSQL database using a SQLAlchemy library"""
     # flask_app -> application instance used to configure database connection
     # db_uri -> string that represents the database connection URL

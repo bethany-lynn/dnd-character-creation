@@ -34,6 +34,11 @@ def get_character_by_id(character_id):
     
     return Character_sheet.query.get(character_id)
 
+def get_character_by_level(char_level):
+    """return a character by their level"""
+
+    return Character_sheet.query.get(char_level)
+
 def get_language_by_race(dun_race):
     if dun_race == "dragonborn":
         return "common+draconic"

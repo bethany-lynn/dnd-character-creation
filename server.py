@@ -126,7 +126,7 @@ def create_character():
     dexterity_stat = request.form.get('dexterity-stat')
     constitution_stat = request.form.get('constitution-stat')
     strength_stat = request.form.get('strength-stat')
-    # user_id = session['user_id']
+
     
 
     api_url = f'https://www.dnd5eapi.co/api/classes/{dun_class}'
@@ -249,15 +249,12 @@ def create_character():
     db.session.add(character)
     db.session.commit()
 
-
+    """commiting a character to the session with their id and level"""
     db.session.refresh(character)
-    print()
-    print("this is character id")
-    print(character.character_id)
     session['character_id'] = character.character_id
+    session['char_level'] = character.char_level
     # may need to modify ^ ?
 
-    
     # if dun_class == "bard" or "cleric" or "druid" or "sorcerer" or "wizard" or "warlock" or :
     #     return redirect('spellslots.html')
     #     # if dun_class in []
@@ -265,21 +262,38 @@ def create_character():
     return render_template('character_secondpage.html', character=character, char_language=lang_list)
 
 
-@app.route('/character_skills')
+@app.route('/character_skills', methods =["POST"])
 def assign_skills():
+    """forms to pick skills for character, and access character from the session for new route"""
 
     character_id = session['character_id']
-    # unsure if this is correct ^ test and modify maybe
-    # this is correct
-    # yay! :) 
-
     character = crud.get_character_by_id(character_id)
-    print()
-    print('this is a character')
-    print(character)
+
+    skills = request.form.getlist('skill')
+
+    # for attribute in skill_list:
+    #     setattr(character, attribute, 1)
+
+    #     print('this is a char att')
+    #     print(attribute)
+
+    db.session.add(character)
+    db.session.commit()
+
+
+# will likely need an event listener to get the selected check boxes and return those
+# is there a way to assign selected skills to character.char_skills to be able
+# to add char_skills to html skills span
+
+    return render_template('character_thirdpage.html', character=character, skills=skills)
+
+@app.route('/character_skills')
+def show_level():
+    """access character level from stored session info"""
+    char_level = session['char_level']
+
+    character = crud.get_character_by_level(char_level)
     return render_template('character_thirdpage.html', character=character)
-
-
 
 @app.route('/spellslots')
 def get_spellslots_from_class():
@@ -297,7 +311,6 @@ if __name__ == "__main__":
 
 
 # next tasks:
-# assign character level to sheet, start at 1
 # limit check boxes to two or three clicks depending on class
 # add event listener
 
@@ -307,4 +320,8 @@ if __name__ == "__main__":
 # add another form for cantrips?
 
 # update thirdpage to display info from secondpage form (selected skills)
-# update thirdpage to displau info from spell slot form
+# update thirdpage to display info from spell slot form
+
+    # unsure if this is correct ^ test and modify maybe
+    # this is correct
+    # yay! :) 
