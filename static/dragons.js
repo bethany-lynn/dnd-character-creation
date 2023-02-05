@@ -21,12 +21,21 @@ function rollDie(numRolls, numToKeep, button) {
     newElement.innerHTML = total;
     button.insertAdjacentElement("afterend", newElement);
     button.setAttribute("disabled", true);
-    let stat = button.getAttribute("data-stat");
+    let stat = button.getAttribute("name");
     results[stat] = total;
 
-    results[stat] = total;
-    sessionStorage.setItem('results', JSON.stringify(results));
-
+    // results[stat] = total;
+    // sessionStorage.setItem('results', JSON.stringify(results));
+    fetch('http://localhost:5000/save_results', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(results)
+    })
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
 }
 
 const buttons = document.querySelectorAll('.roll_dice');

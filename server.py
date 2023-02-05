@@ -80,6 +80,15 @@ def user_profile():
     # navbar?
     return redirect('/')
 
+@app.route('/save_results', methods=["POST"])
+def save_results():
+    """connect to the database and store the results of dice roll buttons"""
+    results = request.get_json()
+    print("these are the button results")
+    print(results)
+
+    return "results saved"
+
 @app.route('/create_character')
 def create_page():
     """create a character after logging in or creating an account"""
