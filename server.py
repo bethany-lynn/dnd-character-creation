@@ -87,7 +87,22 @@ def save_results():
     print("these are the button results")
     print(results)
 
-    return "results saved"
+    stats = []
+    for stat, value in results.items():
+        stats.append(f"{stat}: {value}")
+    
+    for stat in results:
+        print(f"{stat}: {results[stat]}")
+
+
+    print('this is results stat with bracket')
+    print(results[stat])
+    print('this is stats plural')
+    print(stats)
+    print('this is stat singular outside of loops')
+    print(stat)
+    return(stat)
+ 
 
 @app.route('/create_character')
 def create_page():
