@@ -84,23 +84,28 @@ def user_profile():
 def save_results():
     """connect to the database and store the results of dice roll buttons"""
     results = request.get_json()
-    print("these are the button results")
-    print(results)
-
+    # print("these are the button results")
+    # print(results)
+    # print()
+    # {'wisdom': 8, 'charisma': 10, 'intelligence': 15, 'dexterity': 11, 'constitution': 12, 'strength': 11}
     stats = []
     for stat, value in results.items():
-        stats.append(f"{stat}: {value}")
-    
+        stats.append(f"{stat} is {value}")
+        # print('this is stats f string inside for loop 1')
+        # print(stats)
+        # print()
+        # this is stat inside for loop 1
+        # ['wisdom is 8', 'charisma is 10', 'intelligence is 15', 'dexterity is 11', 'constitution is 12']    
+        # this is stat inside for loop 1
+        # ['wisdom is 8', 'charisma is 10', 'intelligence is 15', 'dexterity is 11', 'constitution is 12', 'strength is 11']
     for stat in results:
-        print(f"{stat}: {results[stat]}")
-
-
-    print('this is results stat with bracket')
-    print(results[stat])
-    print('this is stats plural')
-    print(stats)
-    print('this is stat singular outside of loops')
-    print(stat)
+        print(f"this is stat and assigned num : {stat}: {results[stat]}")
+        # this is stat and assigned num : wisdom: 8
+        # this is stat and assigned num : charisma: 10
+        # this is stat and assigned num : intelligence: 15
+        # this is stat and assigned num : dexterity: 11
+        # this is stat and assigned num : constitution: 12
+        # this is stat and assigned num : strength: 11
     return(stat)
  
 
