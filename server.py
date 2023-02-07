@@ -334,7 +334,7 @@ def users_profile():
     # option to make a new character - route back to create character page
     # log out button
 
-    return render_template(character=character)
+    return render_template("user_profile.html", character=character)
 
 
 def get_spells():
