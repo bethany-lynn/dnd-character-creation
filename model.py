@@ -89,10 +89,6 @@ class Character_sheet(db.Model):
     initiative = db.Column(db.Integer)
     condition = db.Column(db.Integer)
 
-
-
-
-
     user = db.relationship("User", back_populates="character_sheet")
     inventory_table = db.relationship("Inventory", back_populates="character_sheet")
     spell_slots = db.relationship("Spell_slots", back_populates="character_sheet")
@@ -181,6 +177,7 @@ class Spells(db.Model):
     spell_id = db.Column(db.Integer,
                          autoincrement=True,
                          primary_key=True)
+    spell_name = db.Column(db.String(50))
     magic_type = db.Column(db.Integer)
     spell_level = db.Column(db.Integer)
     duration = db.Column(db.Integer)

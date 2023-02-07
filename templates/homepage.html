@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}dungeon account{% endblock %}
+{% block title %}dungeon welcome{% endblock %}
 <head>
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
@@ -10,7 +10,7 @@
 <h1 class="display-5">Welcome to the dungeon!</h1>
 </center>
 <p></p>
-<div class="container p-3 text-warning-emphasis bg-success-subtle border border-success-subtle rounded-3">
+<div class="container p-3 text-success-emphasis bg-success-subtle border border-success-subtle rounded-3">
   <div class="row">
     <div class="col">
     <h2 class="display-6 align">Log In</h2>
@@ -30,6 +30,14 @@
           </div>
         </div> 
         <p>
+        </p>
+        <div class="row g-3 align-items-center">
+          <div class="col-auto">
+            <label for="inputUsername5" class="form-label">username:</label>
+              <input type="username" class="form-control" name="username">
+          </div>
+        </div> 
+        <p>
           <input type="submit" value="let's roll">
         </p>
       </form>  
@@ -44,6 +52,14 @@
                   <input type="email" class="form-control" name="email">
               </div>
             </div>  
+          </p>
+          <p>
+          <div class="row g-3 align-items-center">
+            <div class="col-auto">
+              <label for="inputUsernmae5" class="form-label">username:</label>
+                <input type="username" class="form-control" name="username">
+            </div>
+          </div>  
           </p>
           <div class="row g-3 align-items-center">
             <div class="col-auto">

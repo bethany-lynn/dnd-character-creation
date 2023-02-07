@@ -38,16 +38,17 @@ def register_user():
 
     email = request.form.get("email")
     password = request.form.get("password")
-
+    username = request.form.get("username")
     user = crud.get_user_by_email(email)
+
     if user:
         flash("This email is already plundering dungeons and slaying dragons.")
     else:
-        user = crud.create_user(email, password)
+        user = crud.create_user(email, password, username)
         db.session.add(user)
         db.session.commit()
-        flash("Hail and well met, adventurer, your account has been created!")
-        return redirect("/create_character")
+        flash("Hail and well met, adventurer, your account has been created! Please log in to continue.")
+        return redirect("/")
 
     return redirect("/")
 
@@ -58,6 +59,8 @@ def login():
 
     email = request.form.get("email")
     password = request.form.get("password")
+    username = request.form.get("username")
+
     user = crud.get_user_by_email(email)
 
     if not user or user.password != password:
@@ -66,19 +69,14 @@ def login():
     else:
         session['user_email'] = user.email
         session['user_id'] = user.user_id
-        flash(f'Welcome back, {user.email}!')
+        session['username'] = user.username
+        flash(f'Welcome back, {username}!')
+        
+    return render_template("user_profile.html")
 
-    return redirect("/create_character")
+    
     # change this to redirect to user_profile when that route is complete
 
-@app.route('/user_profile')
-def user_profile():
-    # flash message to welcome user back to the adventure
-    # route to create character in create_character route
-    # list all created characters with links to see their sheets in finalalized_character route
-    # log out button to route to homepage /
-    # navbar?
-    return redirect('/')
 
 @app.route('/save_results', methods=["POST"])
 def save_results():
@@ -100,6 +98,9 @@ def save_results():
         # ['wisdom is 8', 'charisma is 10', 'intelligence is 15', 'dexterity is 11', 'constitution is 12', 'strength is 11']
     for stat in results:
         print(f"this is stat and assigned num : {stat}: {results[stat]}")
+
+
+
         # this is stat and assigned num : wisdom: 8
         # this is stat and assigned num : charisma: 10
         # this is stat and assigned num : intelligence: 15
@@ -235,7 +236,7 @@ def create_character():
 
     """creating a character sheet object"""
     character = Character_sheet(
-        # user_id = user_id,
+        user_id = session['user_id'],
         character_name = char_name,
         character_class = dun_class,
         race = dun_race,
@@ -308,6 +309,7 @@ def assign_skills():
 
     db.session.add(character)
     db.session.commit()
+    character = get_spells()
 
 
 # will likely need an event listener to get the selected check boxes and return those
@@ -316,21 +318,62 @@ def assign_skills():
 
     return render_template('character_thirdpage.html', character=character, skills=skills)
 
-@app.route('/character_skills')
-def show_level():
-    """access character level from stored session info"""
-    char_level = session['char_level']
 
-    character = crud.get_character_by_level(char_level)
-    return render_template('character_thirdpage.html', character=character)
 
-@app.route('/spellslots')
-def get_spellslots_from_class():
+@app.route('/user_profile')
+def users_profile():
+    """page to display a logged in user's characters"""
+    character_id = session['character_id']
+    character = crud.get_character_by_id(character_id)
 
-    # user can select 4 cantrips
-    # user can pick 2 spells
-    # commit to character sheet table 
-    return render_template('character_secondpage.html')
+    print()
+    print("this is a character id")
+    print(character)
+
+    # clickable links(?) to each saved character's "thirdpage" html route
+    # option to make a new character - route back to create character page
+    # log out button
+
+    return render_template(character=character)
+
+
+def get_spells():
+    """for to select from list of spells if class has magic"""
+
+    character_id = session['character_id']
+    character = crud.get_character_by_id(character_id)
+
+    api_url = f'http://www.dnd5eapi.co/api/spells'
+    response=requests.get(api_url)
+    spell_names = response.json()
+    print('this is spell names')
+    print(spell_names)
+
+    for result in spell_names['results']:
+        print(result['name'])
+        spells = Spells(
+            spell_name = result['name']
+            )
+        character.character_spells.append(spells)
+        db.session.add(spells)
+
+    db.session.commit()
+
+    print('this is character spells')
+    print(character.character_spells)
+    print('this is character')
+    print(character)
+
+    return character
+
+
+# def show_level():
+#     """access character level from stored session info"""
+#     char_level = session['char_level']
+
+#     character = crud.get_character_by_level(char_level)
+
+
 
 
 if __name__ == "__main__":

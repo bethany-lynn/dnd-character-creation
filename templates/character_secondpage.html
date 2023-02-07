@@ -88,6 +88,18 @@
         <p></p>
         <input type="checkbox" id="stealth" value="stealth" name="skill">
         <label for="stealth">stealth: {{character.stealth}} </label>
+
+        <div>           
+        <section id="spell-names">
+            <h7> Select one spell: </h7>
+                <select id="spell-names" name="spell-names">
+                    {% for spell in character.character_spells %}
+                        <option value="{{ spell.spell_name }}">{{ spell.spell_name }}</option>
+                    {% endfor %}
+                </select>
+        </section>
+        </div>
+
     <input type="submit"/>
     </form>
 {% endif %}
@@ -371,9 +383,7 @@
     </form>
 {% endif %}
 
-{% if character.character_class == "bard" %} 
-hi
-{% endif %}
+
 
 
     </div>

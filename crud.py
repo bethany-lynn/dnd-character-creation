@@ -25,6 +25,11 @@ def get_user_by_email(email):
 
     return User.query.filter(User.email == email).first()
 
+def get_user_by_username(username):
+    """return a user by username"""
+
+    return User.query.filter(User.username == username).first()
+
 def get_user_by_id(user_id):
     """return a user by id"""
     return User.query.get(user_id)
@@ -38,6 +43,7 @@ def get_character_by_level(char_level):
     """return a character by their level"""
 
     return Character_sheet.query.get(char_level)
+
 
 def get_language_by_race(dun_race):
     if dun_race == "dragonborn":
