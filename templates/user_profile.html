@@ -9,6 +9,17 @@
     <h1 class="display-5">Here is your profile!</h1>
 </center>
 
+<h1>{{ username }}'s characters </h1>
+
+  <h2>Your Characters:</h2>
+  <ul>
+  {% for character in characters %}
+    <li><a href="{{ url_for('character_thirdpage', character_id=character.id) }} "{{ character.character_name }}></a></li>
+  {% endfor %}
+  </ul>
+  
+
+
 
 
 {% endblock %}

@@ -96,7 +96,11 @@ class Character_sheet(db.Model):
     character_weapons = db.relationship("Char_weapons", back_populates="character_sheet")
 
     def __repr__(self):
-        return f'<>'
+        return f'<character: {self.character_name}>'
+    
+    # def __iter__(self):
+    #     yield 'character_name', self.character_name
+    #     yield 'user_id', self.user_id
 
 class Inventory(db.Model):
     """A character's starting bag"""
@@ -250,6 +254,8 @@ def connect_to_db(flask_app, db_uri="postgresql:///creation", echo=False):
     db.init_app(flask_app)
 
     print("Connected to the db!")
+
+
 
 
 if __name__ == "__main__":

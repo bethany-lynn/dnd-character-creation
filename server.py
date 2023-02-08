@@ -72,7 +72,7 @@ def login():
         session['username'] = user.username
         flash(f'Welcome back, {username}!')
         
-    return render_template("user_profile.html")
+    return redirect("/user_profile")
 
     
     # change this to redirect to user_profile when that route is complete
@@ -234,6 +234,8 @@ def create_character():
     else:
         athletics_stat = 0
 
+    characters = []
+
     """creating a character sheet object"""
     character = Character_sheet(
         user_id = session['user_id'],
@@ -275,6 +277,7 @@ def create_character():
         stealth = stealth_stat
     )
 
+    characters.append(character)
     """adding and saving character to database"""
     db.session.add(character)
     db.session.commit()
@@ -283,11 +286,10 @@ def create_character():
     db.session.refresh(character)
     session['character_id'] = character.character_id
     session['char_level'] = character.char_level
-    # may need to modify ^ ?
 
-    # if dun_class == "bard" or "cleric" or "druid" or "sorcerer" or "wizard" or "warlock" or :
-    #     return redirect('spellslots.html')
-    #     # if dun_class in []
+    # sqlalchemy query for list of spells from db
+    # pass into jinja template for loop
+    # add to render
 
     return render_template('character_secondpage.html', character=character, char_language=lang_list)
 
@@ -301,70 +303,45 @@ def assign_skills():
 
     skills = request.form.getlist('skill')
 
+    db.session.add(character)
+    db.session.commit()
+    character = get_spells()
+
+    return render_template('character_thirdpage.html', character=character, skills=skills)
+    # ^^^^^
     # for attribute in skill_list:
     #     setattr(character, attribute, 1)
 
     #     print('this is a char att')
     #     print(attribute)
 
-    db.session.add(character)
-    db.session.commit()
-    character = get_spells()
-
-
-# will likely need an event listener to get the selected check boxes and return those
-# is there a way to assign selected skills to character.char_skills to be able
-# to add char_skills to html skills span
-
-    return render_template('character_thirdpage.html', character=character, skills=skills)
-
-
 
 @app.route('/user_profile')
 def users_profile():
     """page to display a logged in user's characters"""
-    character_id = session['character_id']
-    character = crud.get_character_by_id(character_id)
+    username = session['username']
+    user_id = session['user_id']
+    # character_id = session['character_id']
 
-    print()
-    print("this is a character id")
-    print(character)
+    characters = crud.get_characters_by_user_id(user_id)
 
-    # clickable links(?) to each saved character's "thirdpage" html route
-    # option to make a new character - route back to create character page
-    # log out button
-
-    return render_template("user_profile.html", character=character)
+    return render_template("user_profile.html", characters=characters, username=username)
 
 
-def get_spells():
-    """for to select from list of spells if class has magic"""
+# def get_spells():
+#     """for to select from list of spells if class has magic"""
 
-    character_id = session['character_id']
-    character = crud.get_character_by_id(character_id)
+#     character_id = session['character_id']
+#     character = crud.get_character_by_id(character_id)
+#     print('this is character')
+#     print(character)
 
-    api_url = f'http://www.dnd5eapi.co/api/spells'
-    response=requests.get(api_url)
-    spell_names = response.json()
-    print('this is spell names')
-    print(spell_names)
+#     print('this is character spells')
+#     print(character.character_spells)
+#     print('this is character')
+#     print(character)
 
-    for result in spell_names['results']:
-        print(result['name'])
-        spells = Spells(
-            spell_name = result['name']
-            )
-        character.character_spells.append(spells)
-        db.session.add(spells)
-
-    db.session.commit()
-
-    print('this is character spells')
-    print(character.character_spells)
-    print('this is character')
-    print(character)
-
-    return character
+#     return character
 
 
 # def show_level():
