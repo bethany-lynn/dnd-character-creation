@@ -1,17 +1,3 @@
-# might need jsonify
-# going to use api to fetch information based off of a users selected class and race to fill in specific data 
-# for those respective form inputs 
-
-# will need to hard code some dnd info (classes, races, name, etc)
-
-# fetching api requests on the backend will be done in a python file, not in the frontend
-# will be using jinja to do so - use the balloonicorn party api lab for reference
-# if class == druid, weapons == _____, gp == _____, wisdom == _____, etc
-# if race == human, atheltics == _____, etc
-
-# backstory will be a text input field
-# alignment can be random or selected from a form
-
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
 from model import *
 import crud
@@ -74,17 +60,12 @@ def login():
         
     return redirect("/user_profile")
 
-    
-    # change this to redirect to user_profile when that route is complete
-
 
 @app.route('/save_results', methods=["POST"])
 def save_results():
     """connect to the database and store the results of dice roll buttons"""
     results = request.get_json()
-    # print("these are the button results")
-    # print(results)
-    # print()
+
     # {'wisdom': 8, 'charisma': 10, 'intelligence': 15, 'dexterity': 11, 'constitution': 12, 'strength': 11}
     stats = []
     for stat, value in results.items():
@@ -99,14 +80,6 @@ def save_results():
     for stat in results:
         print(f"this is stat and assigned num : {stat}: {results[stat]}")
 
-
-
-        # this is stat and assigned num : wisdom: 8
-        # this is stat and assigned num : charisma: 10
-        # this is stat and assigned num : intelligence: 15
-        # this is stat and assigned num : dexterity: 11
-        # this is stat and assigned num : constitution: 12
-        # this is stat and assigned num : strength: 11
     return(stat)
  
 
@@ -156,8 +129,6 @@ def create_character():
     dexterity_stat = request.form.get('dexterity-stat')
     constitution_stat = request.form.get('constitution-stat')
     strength_stat = request.form.get('strength-stat')
-
-    
 
     api_url = f'https://www.dnd5eapi.co/api/classes/{dun_class}'
     response = requests.get(api_url)
@@ -287,10 +258,6 @@ def create_character():
     session['character_id'] = character.character_id
     session['char_level'] = character.char_level
 
-    # sqlalchemy query for list of spells from db
-    # pass into jinja template for loop
-    # add to render
-
     return render_template('character_secondpage.html', character=character, char_language=lang_list)
 
 
@@ -305,16 +272,9 @@ def assign_skills():
 
     db.session.add(character)
     db.session.commit()
-    # character = get_spells()
+
 
     return render_template('character_thirdpage.html', character=character, skills=skills)
-    # ^^^^^
-    # for attribute in skill_list:
-    #     setattr(character, attribute, 1)
-
-    #     print('this is a char att')
-    #     print(attribute)
-
 
 @app.route('/user_profile')
 def users_profile():
@@ -327,6 +287,34 @@ def users_profile():
 
     return render_template("user_profile.html", characters=characters, username=username)
 
+def show_level():
+    """access character level from stored session info"""
+    char_level = session['char_level']
+
+    character = crud.get_character_by_level(char_level)
+    return(character)
+
+
+if __name__ == "__main__":
+    connect_to_db(app)
+    app.run(host="0.0.0.0", debug=True)
+
+
+
+# wednesday february 8 to-do:
+# make spell drop down menus
+# return stat rolls from db to character sheet 
+
+# start weapons table?
+#   use api, same way as spells
+#   check weapons table against api info to make sure i have all the right things
+
+    # ^^^^^
+    # for attribute in skill_list:
+    #     setattr(character, attribute, 1)
+
+    #     print('this is a char att')
+    #     print(attribute)
 
 # def get_spells():
 #     """for to select from list of spells if class has magic"""
@@ -341,36 +329,15 @@ def users_profile():
 #     print('this is character')
 #     print(character)
 
-#     return character
-
-
-# def show_level():
-#     """access character level from stored session info"""
-#     char_level = session['char_level']
-
-#     character = crud.get_character_by_level(char_level)
+#     return character    
 
 
 
 
-if __name__ == "__main__":
-    connect_to_db(app)
-    app.run(host="0.0.0.0", debug=True)
 
-
-
-# next tasks:
-# limit check boxes to two or three clicks depending on class
-# add event listener
-
-# tomorrow?
-# work on classes that get spell slots
-# if class ____ : add a form with spells to select from
-# add another form for cantrips?
-
-# update thirdpage to display info from secondpage form (selected skills)
-# update thirdpage to display info from spell slot form
-
-    # unsure if this is correct ^ test and modify maybe
-    # this is correct
-    # yay! :) 
+        # this is stat and assigned num : wisdom: 8
+        # this is stat and assigned num : charisma: 10
+        # this is stat and assigned num : intelligence: 15
+        # this is stat and assigned num : dexterity: 11
+        # this is stat and assigned num : constitution: 12
+        # this is stat and assigned num : strength: 11

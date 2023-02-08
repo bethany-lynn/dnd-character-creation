@@ -18,39 +18,32 @@ model.db.create_all()
 
 
 def get_spells_from_api():
-    # character_id = session['character_id']
-    # character = crud.get_character_by_id(character_id)
-
+    """getting spell information from the api"""
     api_url = f'http://www.dnd5eapi.co/api/spells'
     response=requests.get(api_url)
     spell_names = response.json()
 
-
     for result in spell_names['results']:
+        name_of_spell = result['name']
+
+        api_url = f"http://www.dnd5eapi.co/api/spells/{name_of_spell}"
+        response=requests.get(api_url)
+        spell_info = response.json()
+
         print(result['name'])
         spells = Spells(
-            spell_name = result['name']
+            spell_name = result['name'],
+            description = spell_info['desc'],
+            higher_level = spell_info['higher_level'],
+            spell_range = spell_info['range'],
+            components = spell_info['components'],
+            cast_time = spell_info['casting_time'],
+            spell_level = spell_info['level']
             )
-        # character.character_spells.append(spells)
-        # somehow make new char.spells instance
+
         db.session.add(spells)
 
     db.session.commit()
 
 get_spells_from_api()
 
-# Load creation data from JSON file
-# with open('data/creation.json') as f:
-#     creation_data = json.loads(f.read())
-
-# create sample user
-# add to db
-# give char sheet for user
-# add to db
-# should use magic
-# call api for all spells (api_info)
-#   returns huge object
-# populate spells table with info
-# check that its working - psql
-# start hooking spells to sheets
-# 

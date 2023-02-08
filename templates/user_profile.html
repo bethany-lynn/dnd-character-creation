@@ -11,19 +11,14 @@
 
 <h1>{{ username }}'s characters </h1>
 
-  <h2>Your Characters:</h2>
+  <h2>names: </h2>
   <ul>
     {% for character in characters %}
-    <li><a href="{{ url_for('character_thirdpage', character_id=character.id) }} "{{ character.character_name }}></a></li>
-  {% endfor %}
+      <li>{{ character.character_name }}</li>
+    {% endfor %}
   </ul>
   <div>
     <a href="{{ url_for('create_character') }}">create a new character</a>
-
   </div>
   
-
-
-
-
 {% endblock %}

@@ -111,33 +111,59 @@ animals = {"index":"animal-messenger","name":"Animal Messenger","desc":["By mean
 # keys = name, desc(description), higher_level, range, components, material, duration, casting_time, level, school, classes, subclasses, url
 
 
-# print("name: ")
-# print(animals["name"])
-# print("description: ")
-# print(animals["desc"])
-# print("higher level: ")
-# print(animals["higher_level"])
-# print("spell range: ")
-# print(animals["range"])
-# print("components: ")
-# print(animals["components"])
-# print("material: ")
-# print(animals["material"])
-# print("duration: ")
-# print(animals["duration"])
-# print("casting time: ")
-# print(animals["casting_time"])
-# print("level: ")
-# print(animals["level"])
-# print("school: ")
-# print(animals["school"])
-# print("classes: ")
-# print(animals["classes"])
-# print("subclasses: ")
-# print(animals["subclasses"])
+print("name: ")
+print(animals["name"])
+# this is a string
 
-for name in animals['school']:
-    print(name["name"])
+print("description: ")
+print(animals["desc"])
+# this is a list? in brackets
+
+print("higher level: ")
+print(animals["higher_level"])
+# again in brackets
+
+print("spell range: ")
+print(animals["range"])
+# this is a string
+
+print("components: ")
+print(animals["components"])
+# list in brackets
+
+print("material: ")
+print(animals["material"])
+# string
+
+print("duration: ")
+print(animals["duration"])
+# string
+
+print("casting time: ")
+print(animals["casting_time"])
+# string
+
+print("level: ")
+print(animals["level"])
+print(type(animals['level']))
+# integer
+
+
+print("school: ")
+print(animals["school"])
+# dictionary
+
+print("classes: ")
+print(animals["classes"])
+# list of dictionaries
+
+print("subclasses: ")
+print(animals["subclasses"])
+# list of dictionaries
+
+
+# for name in animals['school']:
+#     print(name["name"])
 
 # for result in spells['results']:
 #     print(result['name'])
