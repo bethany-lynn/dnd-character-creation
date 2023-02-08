@@ -182,15 +182,17 @@ class Spells(db.Model):
                          autoincrement=True,
                          primary_key=True)
     spell_name = db.Column(db.String(50))
-    magic_type = db.Column(db.Integer)
-    spell_level = db.Column(db.Integer)
-    duration = db.Column(db.Integer)
-    cast_time = db.Column(db.Integer)
-    school = db.Column(db.String(50))
+    description = db.Column(db.Text)
+    higher_level = db.Column(db.String(50))
     spell_range = db.Column(db.Integer)
-    damage_effect = db.Column(db.String(50))
-    attack_save = db.Column(db.Integer)
     components = db.Column(db.String(50))
+    material = db.Column(db.String(50))
+    duration = db.Column(db.Integer) 
+    cast_time = db.Column(db.Integer)       
+    spell_level = db.Column(db.Integer)
+    school = db.Column(db.String(50))
+    classes = db.Column(db.Integer)
+    subclasses = db.Column(db.String(50))
 
     character_spells = db.relationship("Char_spells", back_populates="spells")
 
@@ -254,9 +256,6 @@ def connect_to_db(flask_app, db_uri="postgresql:///creation", echo=False):
     db.init_app(flask_app)
 
     print("Connected to the db!")
-
-
-
 
 if __name__ == "__main__":
     from server import app

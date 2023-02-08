@@ -305,7 +305,7 @@ def assign_skills():
 
     db.session.add(character)
     db.session.commit()
-    character = get_spells()
+    # character = get_spells()
 
     return render_template('character_thirdpage.html', character=character, skills=skills)
     # ^^^^^

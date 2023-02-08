@@ -18,12 +18,13 @@ model.db.create_all()
 
 
 def get_spells_from_api():
+    # character_id = session['character_id']
+    # character = crud.get_character_by_id(character_id)
 
     api_url = f'http://www.dnd5eapi.co/api/spells'
     response=requests.get(api_url)
     spell_names = response.json()
-    print('this is spell names')
-    # print(spell_names)
+
 
     for result in spell_names['results']:
         print(result['name'])
@@ -35,7 +36,7 @@ def get_spells_from_api():
         db.session.add(spells)
 
     db.session.commit()
-    
+
 get_spells_from_api()
 
 # Load creation data from JSON file
