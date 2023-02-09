@@ -1,3 +1,4 @@
+// dice roll functions with disabling
 let results = {
     wisdom: 0,
     charisma: 0,
@@ -49,8 +50,6 @@ buttons.forEach(button => {
     });
 });
 
-
-
 const submitButton = document.querySelector("#submit_button");
 submitButton.addEventListener("click", () => {
 document.querySelector("#wisdom").innerHTML = results.wisdom;
@@ -61,7 +60,28 @@ document.querySelector("#constitution").innerHTML = results.constitution;
 document.querySelector("#strength").innerHTML = results.strength;
 });
 
+// event listener for skills check boxes
+// const skillForms = document.querySelectorAll('.skill-form');
+// console.log(skillForms)
 
 
-// may need to edit or remove lines:
-// 12, 15, 16, 31, 32, 33, etc
+// skillForms.forEach((skillForm) => {
+//     const skillCheckboxes = skillForm.querySelectorAll('input[type=checkbox]');
+//     let selectedCount = 0;
+//     console.log(skillCheckboxes);
+//     console.log("hi");
+
+//     skillCheckboxes.forEach((checkbox) => {
+//         checkbox.addEventListener('change', (event) => {
+//             if (selectedCount === 2) {
+//                 skillCheckboxes.forEach((cb) => {
+//                     if (!cb.checked) {
+//                         cb.setAttribute('disabled', true);
+//                     }
+//                 });
+//             } else {
+//                 selectedCount += 1;
+//             }
+//         });
+//     });
+// });

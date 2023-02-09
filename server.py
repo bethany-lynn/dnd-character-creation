@@ -258,7 +258,12 @@ def create_character():
     session['character_id'] = character.character_id
     session['char_level'] = character.char_level
 
-    return render_template('character_secondpage.html', character=character, char_language=lang_list)
+    spell_names = Spells.query.all()
+    # get list of spells
+    # pass into template 
+
+    return render_template('character_secondpage.html', character=character, char_language=lang_list,
+                           spell_names=spell_names)
 
 
 @app.route('/character_skills', methods =["POST"])
@@ -272,7 +277,6 @@ def assign_skills():
 
     db.session.add(character)
     db.session.commit()
-
 
     return render_template('character_thirdpage.html', character=character, skills=skills)
 
@@ -294,6 +298,17 @@ def show_level():
     character = crud.get_character_by_level(char_level)
     return(character)
 
+@app.route('/character_skills', methods=["POST"])
+def selected_spells():
+    """get a list of selected spells from the form"""
+
+    spell_names = request.form.getlist('spell_names')
+    # if len(spell_names) > 4:
+    #     return "You can only select 4 spells!"
+    # else:
+    return render_template('character_thirdpage.html', spell_names=spell_names)
+
+
 
 if __name__ == "__main__":
     connect_to_db(app)
@@ -302,42 +317,16 @@ if __name__ == "__main__":
 
 
 # wednesday february 8 to-do:
-# make spell drop down menus
+
 # return stat rolls from db to character sheet 
 
 # start weapons table?
 #   use api, same way as spells
 #   check weapons table against api info to make sure i have all the right things
 
-    # ^^^^^
-    # for attribute in skill_list:
-    #     setattr(character, attribute, 1)
-
-    #     print('this is a char att')
-    #     print(attribute)
-
-# def get_spells():
-#     """for to select from list of spells if class has magic"""
-
-#     character_id = session['character_id']
-#     character = crud.get_character_by_id(character_id)
-#     print('this is character')
-#     print(character)
-
-#     print('this is character spells')
-#     print(character.character_spells)
-#     print('this is character')
-#     print(character)
-
-#     return character    
-
-
-
-
-
-        # this is stat and assigned num : wisdom: 8
-        # this is stat and assigned num : charisma: 10
-        # this is stat and assigned num : intelligence: 15
-        # this is stat and assigned num : dexterity: 11
-        # this is stat and assigned num : constitution: 12
-        # this is stat and assigned num : strength: 11
+# this is stat and assigned num : wisdom: 8
+# this is stat and assigned num : charisma: 10
+# this is stat and assigned num : intelligence: 15
+# this is stat and assigned num : dexterity: 11
+# this is stat and assigned num : constitution: 12
+# this is stat and assigned num : strength: 11

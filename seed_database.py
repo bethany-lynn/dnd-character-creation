@@ -1,5 +1,6 @@
 """Script to seed database."""
 
+from flask import Flask, session
 import os
 import json
 from random import choice, randint
@@ -44,6 +45,7 @@ def get_spells_from_api():
         db.session.add(spells)
 
     db.session.commit()
+
 
 get_spells_from_api()
 
