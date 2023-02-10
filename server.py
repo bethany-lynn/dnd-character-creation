@@ -267,21 +267,27 @@ def assign_skills():
     skills = request.form.getlist('skill')
 
     """saving the selected spell from the form to the db"""
-    spell_name = request.form["spell_name"]
-    selected_spell = Spells.query.filter_by(spell_name=spell_name).first()
+    selected_spell = None
+    if "spell_name" in request.form:
+        spell_name = request.form["spell_name"]
+        selected_spell = Spells.query.filter_by(spell_name=spell_name).first()
+        db.session.add(selected_spell)
+        session['spell_name'] = selected_spell.spell_name
 
-    # description = 
-    # spell_desc = Spells.query.filter_by(description=description).first()
+    # """saving selected weapon from form to the db"""
+    # weapon_name = request.form["weapon_name"]
+    # selected_weapon = Weapons.query.filter_by(weapon_name=weapon_name).first()
 
-    db.session.add(selected_spell)
+    # db.session.add(selected_weapon)
     db.session.add(character)
     db.session.commit()
 
-    session['spell_name'] = selected_spell.spell_name
-    # ??? ^
-    # spell_name = session['spell_name']
+    
+    # session['weapon_name'] = selected_weapon.weapon_name
 
-    return render_template('character_thirdpage.html', character=character, skills=skills, selected_spell=selected_spell)
+
+    return render_template('character_thirdpage.html', character=character, 
+                           skills=skills, selected_spell=selected_spell)
 
 @app.route('/user_profile')
 def users_profile():

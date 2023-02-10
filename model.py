@@ -181,18 +181,18 @@ class Spells(db.Model):
     spell_id = db.Column(db.Integer,
                          autoincrement=True,
                          primary_key=True)
-    spell_name = db.Column(db.String(50))
+    spell_name = db.Column(db.String)
     description = db.Column(db.Text)
-    higher_level = db.Column(db.String(50))
-    spell_range = db.Column(db.Integer)
-    components = db.Column(db.String(50))
-    material = db.Column(db.String(50))
+    higher_level = db.Column(db.String)
+    spell_range = db.Column(db.String)
+    components = db.Column(db.String)
+    material = db.Column(db.String)
     duration = db.Column(db.Integer) 
-    cast_time = db.Column(db.Integer)       
-    spell_level = db.Column(db.Integer)
-    school = db.Column(db.String(50))
+    cast_time = db.Column(db.String)       
+    spell_level = db.Column(db.String)
+    school = db.Column(db.String)
     classes = db.Column(db.Integer)
-    subclasses = db.Column(db.String(50))
+    subclasses = db.Column(db.String)
 
     character_spells = db.relationship("Char_spells", back_populates="spells")
 
@@ -225,11 +225,9 @@ class Weapons(db.Model):
     weapon_id = db.Column(db.Integer,
                           autoincrement=True,
                           primary_key=True)
-    damage_type = db.Column(db.String(50))
     weapon_name = db.Column(db.String(50))
-    durarbility = db.Column(db.String(50))
+    damage_type = db.Column(db.String(50))
     weapon_range = db.Column(db.String(50))
-    attack_save = db.Column(db.String(50))
     cost = db.Column(db.Integer)
     weight = db.Column(db.Integer)
     properties = db.Column(db.Integer)

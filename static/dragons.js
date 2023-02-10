@@ -53,20 +53,7 @@ function rollDie(numRolls, numToKeep, button) {
         .catch(error => console.error(error));
 }
 
-
-
-
-// const submitButton = document.querySelector("#submit_button");
-// submitButton.addEventListener("click", () => {
-// document.querySelector("#wisdom").innerHTML = results.wisdom;
-// document.querySelector("#charisma").innerHTML = results.charisma;
-// document.querySelector("#intelligence").innerHTML = results.intelligence;
-// document.querySelector("#dexterity").innerHTML = results.dexterity;
-// document.querySelector("#constitution").innerHTML = results.constitution;
-// document.querySelector("#strength").innerHTML = results.strength;
-// });
-
-// event listener for skills check boxes
+// disabling check boxes after 2 clicks
 const skillForms = document.querySelectorAll('.skill-form');
 console.log(skillForms)
 
@@ -91,3 +78,30 @@ skillForms.forEach((skillForm) => {
         });
     });
 });
+
+
+// randomly selecting weapons and inventory
+// const equipment = {
+//     'results': [
+//       {'name': 'Option 1'},
+//       {'name': 'Option 2'},
+//       {'name': 'Option 3'},
+//       {'name': 'Option 4'},
+//       {'name': 'Option 5'},
+//       {'name': 'Option 6'},
+//       {'name': 'Option 7'}
+//     ]
+//   };
+
+//   function displayRandomOptions() {
+//     let options = equipment.results.map(function(result) {
+//       return result.name;
+//     });
+//     let selectedOptions = [];
+//     for (let i = 0; i < 5; i++) {
+//       let randomIndex = Math.floor(Math.random() * options.length);
+//       selectedOptions.push(options[randomIndex]);
+//       options.splice(randomIndex, 1);
+//     }
+//     document.getElementById("selectedOptions").innerHTML = selectedOptions.join(", ");
+//   }

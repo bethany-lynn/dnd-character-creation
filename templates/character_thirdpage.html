@@ -151,10 +151,10 @@
 <div>
 <a href="{{ url_for('users_profile') }}">save this character</a>
 <p>
+    {% if selected_spell != None %}
     <h2>Selected spells:</h2>
-    <p>{{ selected_spell.spell_name }}</p>
-    <p>{{ selected_spell.description }}</p>
-    
+    <p>{{ selected_spell.spell_name }}: {{ selected_spell.description }}</p>
+    {% endif %}
 </p>
 <p>
     <h2>Selected weapons:</h2>
