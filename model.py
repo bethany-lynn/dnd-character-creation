@@ -92,7 +92,7 @@ class Character_sheet(db.Model):
     user = db.relationship("User", back_populates="character_sheet")
     inventory_table = db.relationship("Inventory", back_populates="character_sheet")
     spell_slots = db.relationship("Spell_slots", back_populates="character_sheet")
-    spells = db.relationship("Spells", secondary="character_spells", back_populates="character_sheet")
+    character_spells = db.relationship("Char_spells", back_populates="character_sheet")
     character_weapons = db.relationship("Char_weapons", back_populates="character_sheet")
 
     def __repr__(self):
@@ -194,7 +194,7 @@ class Spells(db.Model):
     classes = db.Column(db.Integer)
     subclasses = db.Column(db.String(50))
 
-    characters = db.relationship("Character_sheet", secondary="character_spells", back_populates="spells")
+    character_spells = db.relationship("Char_spells", back_populates="spells")
 
     def __repr__(self):
         return f'<>'

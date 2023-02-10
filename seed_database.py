@@ -45,6 +45,7 @@ def get_spells_from_api():
         db.session.add(spells)
 
     db.session.commit()
-
+    print(spells.description)
+    
 get_spells_from_api()
 

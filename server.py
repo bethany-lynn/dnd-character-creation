@@ -64,20 +64,13 @@ def login():
 @app.route('/save_results', methods=["POST"])
 def save_results():
     """connect to the database and store the results of dice roll buttons"""
+    
     results = request.get_json()
-    print("these are results")
-    print(results)
-    # {'wisdom': 8, 'charisma': 10, 'intelligence': 15, 'dexterity': 11, 'constitution': 12, 'strength': 11}
+
     stats = []
     for stat, value in results.items():
         stats.append(f"{stat} is {value}")
-        # print('this is stats f string inside for loop 1')
-        # print(stats)
-        # print()
-        # this is stat inside for loop 1
-        # ['wisdom is 8', 'charisma is 10', 'intelligence is 15', 'dexterity is 11', 'constitution is 12']    
-        # this is stat inside for loop 1
-        # ['wisdom is 8', 'charisma is 10', 'intelligence is 15', 'dexterity is 11', 'constitution is 12', 'strength is 11']
+
     for stat in results:
         print(f"this is stat and assigned num : {stat}: {results[stat]}")
 
@@ -260,8 +253,6 @@ def create_character():
     session['char_level'] = character.char_level
 
     spell_names = Spells.query.all()
-    # get list of spells
-    # pass into template 
 
     return render_template('character_secondpage.html', character=character, char_language=lang_list,
                            spell_names=spell_names)
@@ -279,9 +270,16 @@ def assign_skills():
     spell_name = request.form["spell_name"]
     selected_spell = Spells.query.filter_by(spell_name=spell_name).first()
 
+    # description = 
+    # spell_desc = Spells.query.filter_by(description=description).first()
+
     db.session.add(selected_spell)
     db.session.add(character)
     db.session.commit()
+
+    session['spell_name'] = selected_spell.spell_name
+    # ??? ^
+    # spell_name = session['spell_name']
 
     return render_template('character_thirdpage.html', character=character, skills=skills, selected_spell=selected_spell)
 
@@ -334,11 +332,8 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
 
 
-
-# wednesday february 8 to-do:
-
+# TODO: 
 # return stat rolls from db to character sheet 
-
 # start weapons table?
 #   use api, same way as spells
 #   check weapons table against api info to make sure i have all the right things
@@ -349,3 +344,14 @@ if __name__ == "__main__":
 # this is stat and assigned num : dexterity: 11
 # this is stat and assigned num : constitution: 12
 # this is stat and assigned num : strength: 11
+
+# print('this is stats f string inside for loop 1')
+# print(stats)
+# print()
+# this is stat inside for loop 1
+# ['wisdom is 8', 'charisma is 10', 'intelligence is 15', 'dexterity is 11', 'constitution is 12']    
+# this is stat inside for loop 1
+# ['wisdom is 8', 'charisma is 10', 'intelligence is 15', 'dexterity is 11', 'constitution is 12', 'strength is 11']
+# print("these are results")
+# print(results)
+# {'wisdom': 8, 'charisma': 10, 'intelligence': 15, 'dexterity': 11, 'constitution': 12, 'strength': 11}
