@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% block title %}character profile{% endblock %}
+<head>
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+{% block body %}
+<center>
+    <h1 class="display-5"></h1>
+</center>
+<div class="header">
+    <figure class="text-center">
+        <blockquote class="blockquote">
+            <hi class="display-6">{{ character.character_name }}'s sheet</hi>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+            good luck on your adventure, <cite title="Source Title">{{ character.character_name }}</cite>
+        </figcaption>
+    </figure>
+</div>
+
+<p></p>
+<div class="container">
+    <div class="row">
+    <div class="col-3">
+        <p>Class: <span id="class">{{ character.character_class }}</span></p>
+        <p>Race: <span id="race">{{ character.race }}</span></p>
+        <p>Alignment: <span id="alignment">{{ character.alignment }}</span></p>
+    </div>
+    <div class="col-3">
+        <p>Gender: <span id="gender">{{ character.gender }}</span></p>
+        <p>Eye Color: <span id="eye-color">{{ character.eye_color }}</span></p>
+        <p>Hair Color: <span id="hair-color">{{ character.hair_color }}</span></p>
+    </div>
+    <div class="col-6">
+        <p>wisdom: <span id="dice_roll">{{ character.wisdom }}</span></p>
+        <p>charisma: <span id="dice_roll">{{ character.charisma }}</span></p>
+        <p>intelligence: <span id="dice_roll">{{ character.intelligence }}</span></p>
+        <p>dexterity: <span id="dice_roll">{{ character.dexterity }}</span></p>
+        <p>constitution: <span id="dice_roll">{{ character.constitution }}</span></p>
+        <p>strength: <span id="dice_roll">{{ character.strength }}</span></p>
+    </div>
+</div>
+
+<p></p>
+<div class="row"><div class="col-4">
+    <section>
+        character level:
+        <span id="character_level">{{ character.char_level }}</span>
+        <p></p>
+        hit die:
+        <span id="hit_dice">{{ character.char_hit_die }}</span>
+        <p></p>
+        walking speed:
+        <span id="walking_speed">{{ character.char_walking_speed }}</span>
+    </section>
+</div>
+<div class="col-4">
+    languages:
+    <p></p>
+    <span id="languages">
+    <ul>
+        {% for language in character.language.split("+") %}
+            <li>{{language}}</li>
+        {% endfor %}
+    </ul>
+    </span>
+</div>
+<div class="col-4">
+    current hit points:
+        <span id="hit_points">{{ character.current_hit_points }}</span>
+<p></p>
+    total hit points:
+        <span id="total_hit_points">{{ character.total_hit_points }}</span>
+</div></div>
+
+<p></p>
+<div class="row">
+    <div class="col-4">
+    <span id="skills"> skills:
+        <p>Animal handling: {{ character.animal_handling }}</p>
+        <p>Acrobatics: {{ character.acrobatics }}</p>
+        <p>Arcana: {{ character.arcana }}</p>
+        <p>Athletics: {{ character.athletics }}</p>
+        <p>Deception: {{ character.deception }}</p>
+        <p>History: {{ character.history }}</p>
+    </div>    
+    <div class="col-4">
+        <p>Insight: {{ character.insight }}</p>
+        <p>Intimidation: {{ character.intimidation }}</p>
+        <p>Investigation: {{ character.investigation }}</p>
+        <p>Medicine: {{ character.medicine }}</p>
+        <p>Nature: {{ character.nature }}</p>
+        <p>Perception: {{ character.perception }}</p>
+    </div>
+    <div class="col-4">
+        <p>Performance: {{ character.performance }}</p>
+        <p>Persuasion: {{ character.persuasion }}</p>
+        <p>Religion: {{ character.religion }}</p>
+        <p>Sleight of hand: {{ character.sleight_of_hand }}</p>
+        <p>Stealth: {{ character.stealth }}</p>
+        <p>Survival: {{ character.survival }}</p>
+    </span>
+    </div>
+</div>
+<p>
+    Selected spells:
+</p>
+<p>
+    Selected weapons:
+</p>
+<p>
+    inventory items:
+</p>
+{% endblock %}

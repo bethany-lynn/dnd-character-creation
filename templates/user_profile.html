@@ -14,7 +14,7 @@
   <h2>names: </h2>
   <ul>
     {% for character in characters %}
-      <li>{{ character.character_name }}</li>
+      <li><a href="{{ url_for('character_info', character_id=character.character_id) }}"">{{ character.character_name }}</a></li>
     {% endfor %}
   </ul>
   <div>

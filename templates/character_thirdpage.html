@@ -9,7 +9,7 @@
           <h1 class="display-6">{{ character.character_name }}'s character sheet</h1>
         </blockquote>
         <figcaption class="blockquote-footer">
-          good luck on your adventure, <cite title="Source Title">{{ character.character_name }}</cite>
+          make sure everything looks good for <cite title="Source Title">{{ character.character_name }}</cite>
         </figcaption>
       </figure>
 </div>
@@ -152,6 +152,9 @@
 <a href="{{ url_for('users_profile') }}">save this character</a>
 <p>
     <h2>Selected spells:</h2>
+    <p>{{ selected_spell.spell_name }}</p>
+    <p>{{ selected_spell.description }}</p>
+    
 </p>
 <p>
     <h2>Selected weapons:</h2>

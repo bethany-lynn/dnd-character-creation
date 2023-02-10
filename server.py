@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash, session, redirect, jsonify
+from flask import Flask, render_template, request, flash, session, redirect, abort, jsonify
 from model import *
 import crud
 from jinja2 import StrictUndefined
@@ -65,7 +65,8 @@ def login():
 def save_results():
     """connect to the database and store the results of dice roll buttons"""
     results = request.get_json()
-
+    print("these are results")
+    print(results)
     # {'wisdom': 8, 'charisma': 10, 'intelligence': 15, 'dexterity': 11, 'constitution': 12, 'strength': 11}
     stats = []
     for stat, value in results.items():
@@ -269,16 +270,20 @@ def create_character():
 @app.route('/character_skills', methods =["POST"])
 def assign_skills():
     """forms to pick skills for character, and access character from the session for new route"""
-
     character_id = session['character_id']
     character = crud.get_character_by_id(character_id)
 
     skills = request.form.getlist('skill')
 
+    """saving the selected spell from the form to the db"""
+    spell_name = request.form["spell_name"]
+    selected_spell = Spells.query.filter_by(spell_name=spell_name).first()
+
+    db.session.add(selected_spell)
     db.session.add(character)
     db.session.commit()
 
-    return render_template('character_thirdpage.html', character=character, skills=skills)
+    return render_template('character_thirdpage.html', character=character, skills=skills, selected_spell=selected_spell)
 
 @app.route('/user_profile')
 def users_profile():
@@ -308,6 +313,20 @@ def selected_spells():
     # else:
     return render_template('character_thirdpage.html', spell_names=spell_names)
 
+# @app.route("/character_secondpage", methods=["POST"])
+# def save_selected_spell():
+#     spell_name = request.form["spell_name"]
+#     selected_spell = Spells(spell_name=spell_name)
+
+#     db.session.add(selected_spell)
+#     db.session.commit()
+
+@app.route('/characters/<int:character_id>')
+def character_info(character_id):
+    character = crud.get_character_by_id(character_id)
+    if character is None:
+        abort(404)
+    return render_template('character_profile.html', character=character)
 
 
 if __name__ == "__main__":
