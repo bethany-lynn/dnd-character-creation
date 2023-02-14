@@ -7,19 +7,118 @@ equipment = {"count":237,"results":[{"index":"abacus","name":"Abacus","url":"/ap
 
 # print("equipment keys")
 # print (equipment.keys())
-# # keys: count, results
+# # # keys: count, results
 
 # # print("equipment results")
 # # print(equipment['results'])
 
 # print("equipment count")
 # print(equipment['count'])
-# 237
+# # 237
 
-print("these are the names of all equipment items")
-for item in equipment['results']:
-    print(item['name'])
+# print("these are the names of all equipment items")
+# for item in equipment['results']:
+#     print(item['name'])
 
-print("these are results keys")
-for item in equipment['results']:
-    print(item.keys())
+# print("these are results keys")
+# for item in equipment['results']:
+#     print(item.keys())
+#     # index, name, url
+
+blowgun = {
+ "desc": [],
+ "special": [],
+ "index": "blowgun",
+ "name": "Blowgun",
+ "equipment_category": {
+  "index": "weapon",
+  "name": "Weapon",
+  "url": "/api/equipment-categories/weapon"
+ },
+ "weapon_category": "Martial",
+ "weapon_range": "Ranged",
+ "category_range": "Martial Ranged",
+ "cost": {
+  "quantity": 10,
+  "unit": "gp"
+ },
+ "damage": {
+  "damage_dice": "1",
+  "damage_type": {
+   "index": "piercing",
+   "name": "Piercing",
+   "url": "/api/damage-types/piercing"
+  }
+ },
+ "range": {
+  "normal": 25,
+  "long": 100
+ },
+ "weight": 1,
+ "properties": [
+  {
+   "index": "ammunition",
+   "name": "Ammunition",
+   "url": "/api/weapon-properties/ammunition"
+  },
+  {
+   "index": "loading",
+   "name": "Loading",
+   "url": "/api/weapon-properties/loading"
+  }
+ ],
+ "url": "/api/equipment/blowgun",
+ "contents": []
+}
+
+abacus = {
+ "desc": [],
+ "special": [],
+ "index": "abacus",
+ "name": "Abacus",
+ "equipment_category": {
+  "index": "adventuring-gear",
+  "name": "Adventuring Gear",
+  "url": "/api/equipment-categories/adventuring-gear"
+ },
+ "gear_category": {
+  "index": "standard-gear",
+  "name": "Standard Gear",
+  "url": "/api/equipment-categories/standard-gear"
+ },
+ "cost": {
+  "quantity": 2,
+  "unit": "gp"
+ },
+ "weight": 2,
+ "url": "/api/equipment/abacus",
+ "contents": [],
+ "properties": []
+}
+
+sheild = {
+ "desc": [],
+ "special": [],
+ "index": "shield",
+ "name": "Shield",
+ "equipment_category": {
+  "index": "armor",
+  "name": "Armor",
+  "url": "/api/equipment-categories/armor"
+ },
+ "armor_category": "Shield",
+ "armor_class": {
+  "base": 2,
+  "dex_bonus": false
+ },
+ "str_minimum": 0,
+ "stealth_disadvantage": false,
+ "weight": 6,
+ "cost": {
+  "quantity": 10,
+  "unit": "gp"
+ },
+ "url": "/api/equipment/shield",
+ "contents": [],
+ "properties": []
+}
