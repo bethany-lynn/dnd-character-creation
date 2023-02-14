@@ -42,6 +42,9 @@ def get_spell_by_name(spell_name):
     """return a spell by name"""
     return Spells.query.get(spell_name)
 
+# def get_stat_by_char_id(character_id):
+#     """return rolled sheet stats by character id"""
+
 
 def get_language_by_race(dun_race):
     if dun_race == "dragonborn":
@@ -64,7 +67,6 @@ def get_language_by_race(dun_race):
         # can speak one extra language of choosing
     elif dun_race == "tiefling":
         return "common+infernal"
-
 
 if __name__ == '__main__':
     from server import app

@@ -26,7 +26,7 @@ def get_spells_from_api():
     spell_names = response.json()
 
     for result in spell_names['results']:
-        name_of_spell = result['name']
+        # name_of_spell = result['name']
         url_of_spell = result['url']
 
         api_url = f"http://www.dnd5eapi.co{url_of_spell}"
@@ -45,38 +45,38 @@ def get_spells_from_api():
 
         db.session.add(spells)
     db.session.commit()
-    # print("description")
-    # print(spells.description)
+
+    session['spell_id'] = spells.spell_id
 
 get_spells_from_api()
 
 
-# def get_weapons_from_api():
-#     """getting weapon information for Weapons class from api"""
+def get_weapons_from_api():
+    """getting weapon information for Weapons class from api"""
 
-#     api_url = f'http://www.dnd5eapi.co/api/equipment'
-#     response=requests.get(api_url)
-#     weapon_names = response.json()
+    api_url = f'http://www.dnd5eapi.co/api/equipment'
+    response=requests.get(api_url)
+    weapon_names = response.json()
 
 
-#     for result in weapon_names['results']:
-#         name_of_weapon = result['name']
-#         url_of_weapon = result['url']
+    for result in weapon_names['results']:
+        name_of_weapon = result['name']
+        url_of_weapon = result['url']
 
-#         api_url = f"http://www.dnd5eapi.co{url_of_weapon}"
-#         response=requests.get(api_url)
-#         weapon_info = response.json()
+        api_url = f"http://www.dnd5eapi.co{url_of_weapon}"
+        response=requests.get(api_url)
+        weapon_info = response.json()
 
-#         weapons = Weapons(
-#             weapon_name = result['name'],
-#             damage_type = weapon_info["damage"]["damage_type"]["name"],
-#             weapon_range =str(weapon_info['range']['normal']),
-#             cost = str(weapon_info['cost']['quantity']),
-#             weight = str(weapon_info['weight'])
-#         )
+        weapons = Weapons(
+            weapon_name = result['name'],
+            damage_type = weapon_info["damage"]["damage_type"]["name"],
+            weapon_range =str(weapon_info['range']['normal']),
+            cost = str(weapon_info['cost']['quantity']),
+            weight = str(weapon_info['weight'])
+        )
 
-#         db.session.add(weapons)
-#     db.session.commit()
-#     print("weapon_range")
+        db.session.add(weapons)
+    db.session.commit()
+    print("weapon_range")
 
-# get_weapons_from_api()    
+get_weapons_from_api()    

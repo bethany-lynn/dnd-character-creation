@@ -69,13 +69,19 @@ def save_results():
 
     stats = []
     for stat, value in results.items():
-        stats.append(f"{stat} is {value}")
+        stats.append({stat: value})
+        session[stat] = value
+        print(f"this is {stat} with value {value}")
 
-    for stat in results:
-        print(f"this is stat and assigned num : {stat}: {results[stat]}")
+    # for stat in results:
+    #     print(f"this is stat and assigned num : {stat}: {results[stat]}")
+
+
+        # session[stat] = results[stat]
+        # db.session.add(stat)
+        # db.session.commit()
 
     return(stat)
- 
 
 @app.route('/create_character')
 def create_page():
@@ -123,6 +129,7 @@ def create_character():
     dexterity_stat = request.form.get('dexterity-stat')
     constitution_stat = request.form.get('constitution-stat')
     strength_stat = request.form.get('strength-stat')
+
 
     api_url = f'https://www.dnd5eapi.co/api/classes/{dun_class}'
     response = requests.get(api_url)
@@ -282,9 +289,7 @@ def assign_skills():
     db.session.add(character)
     db.session.commit()
 
-    
     # session['weapon_name'] = selected_weapon.weapon_name
-
 
     return render_template('character_thirdpage.html', character=character, 
                            skills=skills, selected_spell=selected_spell)
@@ -294,6 +299,7 @@ def users_profile():
     """page to display a logged in user's characters"""
     username = session['username']
     user_id = session['user_id']
+
     # character_id = session['character_id']
 
     characters = crud.get_characters_by_user_id(user_id)
@@ -315,7 +321,8 @@ def selected_spells():
     # if len(spell_names) > 4:
     #     return "You can only select 4 spells!"
     # else:
-    return render_template('character_thirdpage.html', spell_names=spell_names)
+    return render_template('character_thirdpage.html', selected_spell=None, 
+                           spell_names=spell_names)
 
 # @app.route("/character_secondpage", methods=["POST"])
 # def save_selected_spell():
@@ -327,10 +334,15 @@ def selected_spells():
 
 @app.route('/characters/<int:character_id>')
 def character_info(character_id):
+    """displaying all character data from sessions"""
+
     character = crud.get_character_by_id(character_id)
+    # spell_id = session['spell_id']
+    spell_name = session['spell_name']
+
     if character is None:
         abort(404)
-    return render_template('character_profile.html', character=character)
+    return render_template('character_profile.html', character=character, spell_name=spell_name)
 
 
 if __name__ == "__main__":
