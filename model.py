@@ -74,9 +74,6 @@ class Character_sheet(db.Model):
     stealth = db.Column(db.Integer, default=0)
     survival = db.Column(db.Integer)
     inspiration = db.Column(db.Boolean, default=False)
-   # done ^
-    
-# currently saved in database per character, though
     proficiency_bonus = db.Column(db.Integer)
     # starts at 2, determined by level.
     passive_wisdom = db.Column(db.Integer)
@@ -94,6 +91,7 @@ class Character_sheet(db.Model):
     spell_slots = db.relationship("Spell_slots", back_populates="character_sheet")
     character_spells = db.relationship("Char_spells", back_populates="character_sheet")
     character_weapons = db.relationship("Char_weapons", back_populates="character_sheet")
+    character_armor = db.relationship("Char_Armor", back_populates="character_sheet")
 
     def __repr__(self):
         return f'<character: {self.character_name}>'
@@ -236,7 +234,45 @@ class Weapons(db.Model):
 
     def __repr__(self):
         return f'<>'
+    
+class Char_Armor(db.Model):
+    """Armor for a given character"""
 
+    __tablename__ = "character_armor"
+    
+    char_armor_id = db.Column(db.Integer,
+                               autoincrement=True,
+                               primary_key=True)
+    character_id = db.Column(db.Integer, db.ForeignKey("character_sheet.character_id"))
+    armor_id = db.Column(db.Integer, db.ForeignKey("armor_table.armor_id"))
+
+    character_sheet = db.relationship("Character_sheet", back_populates="character_armor")
+    armor_table = db.relationship("Armor", back_populates="character_armor")
+
+    
+    def __repr__(self):
+        return f'<>'
+
+class Armor(db.Model):
+    """Armor information"""
+
+    __tablename__ = "armor_table"
+
+    armor_id = db.Column(db.Integer,
+                          autoincrement=True,
+                          primary_key=True)
+    armor_name = db.Column(db.String(50))
+    str_minimum = db.Column(db.String(50))
+    stealth_disadvantage = db.Column(db.String(50))
+    cost = db.Column(db.Integer)
+    weight = db.Column(db.Integer)
+    properties = db.Column(db.Integer)
+
+    character_armor = db.relationship("Char_Armor", back_populates="armor_table")
+
+    def __repr__(self):
+        return f'<>'
+    
 def connect_to_db(flask_app, db_uri="postgresql:///creation", echo=False):
     """seting up a connection to a postgreSQL database using a SQLAlchemy library"""
     # flask_app -> application instance used to configure database connection

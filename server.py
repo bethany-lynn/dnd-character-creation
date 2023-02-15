@@ -278,15 +278,17 @@ def assign_skills():
     if "spell_name" in request.form:
         spell_name = request.form["spell_name"]
         selected_spell = Spells.query.filter_by(spell_name=spell_name).first()
-        db.session.add(selected_spell)
-        session['spell_name'] = selected_spell.spell_name
+        new_char_spell = Char_spells(character_sheet=character,spells=selected_spell)
 
+        db.session.add(new_char_spell)
+        # db.relationships ^ connecting the character to the selected spell
+        
     # """saving selected weapon from form to the db"""
     # weapon_name = request.form["weapon_name"]
     # selected_weapon = Weapons.query.filter_by(weapon_name=weapon_name).first()
 
     # db.session.add(selected_weapon)
-    db.session.add(character)
+    # db.session.add(character)
     db.session.commit()
 
     # session['weapon_name'] = selected_weapon.weapon_name

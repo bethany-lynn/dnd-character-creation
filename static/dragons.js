@@ -15,7 +15,9 @@ buttons.forEach(button => {
     button.addEventListener('click', () => {
       const rolls = 4;
       const keep = 3;
-      rollDie(rolls, keep, button);
+      const diceResult = rollDie(rolls, keep, button);  
+      const selector = `#${button.name}-stat`; 
+      document.querySelector(selector).value=diceResult   
     });
 });
 
@@ -39,18 +41,8 @@ function rollDie(numRolls, numToKeep, button) {
     let stat = button.getAttribute("name");
     results[stat] = total;
 
+    return total;   
 
-// saving results with ajax?
-    fetch('http://localhost:5000/save_results', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(results)
-    })
-        .then(response => response.text())
-        .then(data => console.log(data))
-        .catch(error => console.error(error));
 }
 
 // disabling check boxes after 2 clicks
@@ -105,3 +97,16 @@ skillForms.forEach((skillForm) => {
 //     }
 //     document.getElementById("selectedOptions").innerHTML = selectedOptions.join(", ");
 //   }
+
+
+
+// fetch('http://localhost:5000/save_results', {
+//     method: 'POST',
+//     headers: {
+//         'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(results)
+// })
+//     .then(response => response.text())
+//     .then(data => console.log(data))
+//     .catch(error => console.error(error));

@@ -102,9 +102,11 @@
     </span>
     </div>
 </div>
+{% for spell in character.character_spells %} 
 <p>
-    Selected spells: {{ spell_name }}
+    Selected spells: {{ spell.spells.spell_name }} : {{ spell.spells.description }}
 </p>
+{% endfor %}
 <p>
     Selected weapons:
 </p>

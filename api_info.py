@@ -297,48 +297,56 @@ longsword = {"desc":[],
 # weight - yes - int
 # properties - yes - str
 
-# print("longsword name:") 
-# print(longsword['name'])
-# # # string
+print("longsword name:") 
+print(longsword['name'])
+# # string
 
-# print("longsword damage: ")
-# print(longsword['damage'])
-# # # dict
+print("longsword damage: ")
+print(longsword['damage'])
+# # dict
 
-# for damage in longsword['damage']:
-#     print(damage)
+for damage in longsword['damage']:
+    print("this is for loop damage")
+    print(damage)
 
-# def get_damage_type_name(equipment):
-#     return equipment["damage"]["damage_type"]["name"]
+def get_damage_type_name(damage):
+    return damage["damage"]["damage_type"]["name"]
+print("get damage type name: ")
+print(get_damage_type_name(longsword))
+# # slashing
 
-# print(get_damage_type_name(longsword))
-# # # slashing
+print("this is the damage type type: ")
+print (type(longsword["damage"]["damage_type"]["name"]))
+# slashing again, both work
 
-# print (type(longsword["damage"]["damage_type"]["name"]))
-# # slashing again, both work
+print("this is the longsword range and range type: ")
+print(longsword['range']['normal'])
+print (type(longsword['range']['normal']))
+# 5 - integer
 
-# print(longsword['range']['normal'])
-# print (type(longsword['range']['normal']))
-# # 5 - integer
+print("this is longsword category range: ")
+print(longsword['category_range']) 
+# - dont need currently
 
-# print(longsword['category_range']) 
-# # - dont need currently
+print("this is longsword cost amount and type: ")
+print(longsword['cost']['quantity'])
+# # amount of gp
+print(type(longsword['cost']['quantity']))
+# # int
 
-# print(longsword['cost']['quantity'])
-# # # amount of gp
-# print(type(longsword['cost']['quantity']))
-# # # int
+print("this is longsword unit of cost and type: ")
+print(longsword['cost']['unit'])
+# # gp
+print(type(longsword['cost']['unit']))
+# # str
 
-# print(longsword['cost']['unit'])
-# # # gp
-# print(type(longsword['cost']['unit']))
-# # # str
+print("this is longsword weight and type: ")
+print(longsword['weight'])
+print(type(longsword['weight']))
+# 3 - int
 
-# print(longsword['weight'])
-# print(type(longsword['weight']))
-# # 3 - int
-
-# for prop in longsword["properties"]:
-#     print(prop["name"])
-#     print(type(prop['name']))
+print("this is longsword propertires: ")
+for prop in longsword["properties"]:
+    print(prop["name"])
+    print(type(prop['name']))
 # versatile - str
