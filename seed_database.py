@@ -73,13 +73,13 @@ def get_weapons_from_api():
 
         weapon_range = ""
         if "range" in weapon_info:
-            weapon_range = str(weapon_info['range']['normal'])
+            weapon_range = weapon_info['range']['normal']
         
-        cost = ""
-        if "cost" in weapon_info:
-            cost = weapon_info['cost']['quantity']
+        cost = None
+        if "cost" in weapon_info and weapon_info["cost"]["quantity"]:
+            cost = int(weapon_info["cost"]["quantity"])
 
-        weight = ""
+        weight = None
         if "weight" in weapon_info:
             weight = weapon_info['weight']
 
@@ -93,7 +93,7 @@ def get_weapons_from_api():
 
         db.session.add(weapons)
     db.session.commit()
-    print("weapon_range")
+    print(weapon_range)
 
 get_weapons_from_api()    
 
