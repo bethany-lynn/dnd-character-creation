@@ -27,7 +27,6 @@
     <p></p>
     <input type="checkbox" id="survival" value="survival" name="skill">
     <label for="survival">survival: {{character.survival}} </label>
-
 <div>           
 <section id="weapon-names">
     <h7> Select one weapon: </h7>
@@ -140,6 +139,26 @@
     </select>          
 </section>
 </div>
+</div>
+<section id="item-names">
+    <h7> Select one piece of equipment: </h7>
+    <select name="item_name">
+        {% for item in item_names %}
+            <option value="{{ item.item_name }}">{{ item.item_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+<div>           
+<section id="armor-names">
+    <h7> Select one piece of armor: </h7>
+    <select name="armor_name">
+        {% for armor in armor_names %}
+            <option value="{{ armor.armor_name }}">{{ armor.armor_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
 <input type="submit"/>
 </form>
 {% endif %}
@@ -177,6 +196,26 @@
     <select name="weapon_name">
         {% for weapon in weapon_names %}
             <option value="{{ weapon.weapon_name }}">{{ weapon.weapon_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+</div>
+<section id="item-names">
+    <h7> Select one piece of equipment: </h7>
+    <select name="item_name">
+        {% for item in item_names %}
+            <option value="{{ item.item_name }}">{{ item.item_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+<div>           
+<section id="armor-names">
+    <h7> Select one piece of armor: </h7>
+    <select name="armor_name">
+        {% for armor in armor_names %}
+            <option value="{{ armor.armor_name }}">{{ armor.armor_name }}</option>
         {% endfor %}
     </select>          
 </section>
@@ -232,6 +271,26 @@
     </select>          
 </section>
 </div>
+</div>
+<section id="item-names">
+    <h7> Select one piece of equipment: </h7>
+    <select name="item_name">
+        {% for item in item_names %}
+            <option value="{{ item.item_name }}">{{ item.item_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+<div>           
+<section id="armor-names">
+    <h7> Select one piece of armor: </h7>
+    <select name="armor_name">
+        {% for armor in armor_names %}
+            <option value="{{ armor.armor_name }}">{{ armor.armor_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
 <input type="submit"/>
 </form>    
 {% endif %}
@@ -262,7 +321,6 @@
     <p></p>
     <input type="checkbox" id="history" value="history" name="skill">
     <label for="history">history: {{character.history}} </label>
-<input type="submit"/>
 <div>           
 <section id="weapon-names">
     <h7> Select one weapon: </h7>
@@ -273,6 +331,27 @@
     </select>          
 </section>
 </div>
+</div>
+<section id="item-names">
+    <h7> Select one piece of equipment: </h7>
+    <select name="item_name">
+        {% for item in item_names %}
+            <option value="{{ item.item_name }}">{{ item.item_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+<div>           
+<section id="armor-names">
+    <h7> Select one piece of armor: </h7>
+    <select name="armor_name">
+        {% for armor in armor_names %}
+            <option value="{{ armor.armor_name }}">{{ armor.armor_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+<input type="submit"/>
 </form>
 {% endif %}
 
@@ -296,7 +375,6 @@
     <p></p>
     <input type="checkbox" id="stealth" value="stealth" name="skill">
     <label for="stealth">stealth: {{character.stealth}} </label>
-<input type="submit"/>
 <div>           
 <section id="weapon-names">
     <h7> Select one weapon: </h7>
@@ -307,6 +385,27 @@
     </select>          
 </section>
 </div>
+</div>
+<section id="item-names">
+    <h7> Select one piece of equipment: </h7>
+    <select name="item_name">
+        {% for item in item_names %}
+            <option value="{{ item.item_name }}">{{ item.item_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+<div>           
+<section id="armor-names">
+    <h7> Select one piece of armor: </h7>
+    <select name="armor_name">
+        {% for armor in armor_names %}
+            <option value="{{ armor.armor_name }}">{{ armor.armor_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+<input type="submit"/>
 </form>
 {% endif %}
 
@@ -331,16 +430,15 @@
     <input type="checkbox" id="religion" value="religion" name="skill">
     <label for="religion">religion: {{character.religion}} </label>
 <div>           
-    <section id="spell-names">
-        <h7> Select one spell: </h7>
-        <select name="spell_name">
-            {% for spell in spell_names %}
-                <option value="{{ spell.spell_name }}">{{ spell.spell_name }}</option>
-            {% endfor %}
-        </select>          
-    </section>
+<section id="spell-names">
+    <h7> Select one spell: </h7>
+    <select name="spell_name">
+        {% for spell in spell_names %}
+            <option value="{{ spell.spell_name }}">{{ spell.spell_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
 </div>
-<input type="submit"/>
 <div>           
 <section id="weapon-names">
     <h7> Select one weapon: </h7>
@@ -350,7 +448,28 @@
         {% endfor %}
     </select>          
 </section>
+</div>
+</div>
+<section id="item-names">
+    <h7> Select one piece of equipment: </h7>
+    <select name="item_name">
+        {% for item in item_names %}
+            <option value="{{ item.item_name }}">{{ item.item_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+<div>           
+<section id="armor-names">
+    <h7> Select one piece of armor: </h7>
+    <select name="armor_name">
+        {% for armor in armor_names %}
+            <option value="{{ armor.armor_name }}">{{ armor.armor_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
 </div>    
+<input type="submit"/>
 </form>
 {% endif %}
 
@@ -381,7 +500,6 @@
     <p></p>
     <input type="checkbox" id="stealth" value="stealth" name="skill">
     <label for="stealth">stealth: {{character.stealth}} </label>
-<input type="submit"/>
 <div>           
 <section id="weapon-names">
     <h7> Select one weapon: </h7>
@@ -392,6 +510,27 @@
     </select>          
 </section>
 </div>
+</div>
+<section id="item-names">
+    <h7> Select one piece of equipment: </h7>
+    <select name="item_name">
+        {% for item in item_names %}
+            <option value="{{ item.item_name }}">{{ item.item_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+<div>           
+<section id="armor-names">
+    <h7> Select one piece of armor: </h7>
+    <select name="armor_name">
+        {% for armor in armor_names %}
+            <option value="{{ armor.armor_name }}">{{ armor.armor_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+<input type="submit"/>
 </form>
 {% endif %}
 
@@ -431,7 +570,6 @@
     <p></p>
     <input type="checkbox" id="stealth" value="stealth" name="skill">
     <label for="stealth">stealth: {{character.stealth}} </label>
-<input type="submit"/>
 <div>           
 <section id="weapon-names">
     <h7> Select one weapon: </h7>
@@ -442,6 +580,27 @@
     </select>          
 </section>
 </div>
+</div>
+<section id="item-names">
+    <h7> Select one piece of equipment: </h7>
+    <select name="item_name">
+        {% for item in item_names %}
+            <option value="{{ item.item_name }}">{{ item.item_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+<div>           
+<section id="armor-names">
+    <h7> Select one piece of armor: </h7>
+    <select name="armor_name">
+        {% for armor in armor_names %}
+            <option value="{{ armor.armor_name }}">{{ armor.armor_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+<input type="submit"/>
 </form>
 {% endif %}
 
@@ -467,14 +626,14 @@
     <input type="checkbox" id="deception" value="deception" name="skill">
     <label for="deception">deception: {{character.deception}} </label>
 <div>           
-    <section id="spell-names">
-        <h7> Select one spell: </h7>
-        <select name="spell_name">
-            {% for spell in spell_names %}
-                <option value="{{ spell.spell_name }}">{{ spell.spell_name }}</option>
-            {% endfor %}
-        </select>          
-    </section>
+<section id="spell-names">
+    <h7> Select one spell: </h7>
+    <select name="spell_name">
+        {% for spell in spell_names %}
+            <option value="{{ spell.spell_name }}">{{ spell.spell_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
 </div>
 <div>           
 <section id="weapon-names">
@@ -482,6 +641,26 @@
     <select name="weapon_name">
         {% for weapon in weapon_names %}
             <option value="{{ weapon.weapon_name }}">{{ weapon.weapon_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+</div>
+<section id="item-names">
+    <h7> Select one piece of equipment: </h7>
+    <select name="item_name">
+        {% for item in item_names %}
+            <option value="{{ item.item_name }}">{{ item.item_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+<div>           
+<section id="armor-names">
+    <h7> Select one piece of armor: </h7>
+    <select name="armor_name">
+        {% for armor in armor_names %}
+            <option value="{{ armor.armor_name }}">{{ armor.armor_name }}</option>
         {% endfor %}
     </select>          
 </section>
@@ -534,6 +713,26 @@
     </select>          
 </section>
 </div>
+</div>
+<section id="item-names">
+    <h7> Select one piece of equipment: </h7>
+    <select name="item_name">
+        {% for item in item_names %}
+            <option value="{{ item.item_name }}">{{ item.item_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+<div>           
+<section id="armor-names">
+    <h7> Select one piece of armor: </h7>
+    <select name="armor_name">
+        {% for armor in armor_names %}
+            <option value="{{ armor.armor_name }}">{{ armor.armor_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
 <input type="submit"/>
 </form>
 {% endif %}
@@ -559,14 +758,14 @@
     <input type="checkbox" id="investigation" value="investigation" name="skill">
     <label for="investigation">investigation: {{character.investigation}} </label>
 <div>           
-    <section id="spell-names" multiple>
-        <h7> Select one spell: </h7>
-        <select name="spell_name">
-            {% for spell in spell_names %}
-                <option value="{{ spell.spell_name }}">{{ spell.spell_name }}</option>
-            {% endfor %}
-        </select>          
-    </section>
+<section id="spell-names" multiple>
+    <h7> Select one spell: </h7>
+    <select name="spell_name">
+        {% for spell in spell_names %}
+            <option value="{{ spell.spell_name }}">{{ spell.spell_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
 </div>
 <div>           
 <section id="weapon-names">
@@ -574,6 +773,26 @@
     <select name="weapon_name">
         {% for weapon in weapon_names %}
             <option value="{{ weapon.weapon_name }}">{{ weapon.weapon_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+</div>
+<section id="item-names">
+    <h7> Select one piece of equipment: </h7>
+    <select name="item_name">
+        {% for item in item_names %}
+            <option value="{{ item.item_name }}">{{ item.item_name }}</option>
+        {% endfor %}
+    </select>          
+</section>
+</div>
+<div>           
+<section id="armor-names">
+    <h7> Select one piece of armor: </h7>
+    <select name="armor_name">
+        {% for armor in armor_names %}
+            <option value="{{ armor.armor_name }}">{{ armor.armor_name }}</option>
         {% endfor %}
     </select>          
 </section>

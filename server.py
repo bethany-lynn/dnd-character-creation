@@ -310,8 +310,6 @@ def assign_skills():
                            selected_item=selected_item, selected_armor=selected_armor)
 
 
-
-
 @app.route('/user_profile')
 def users_profile():
     """page to display a logged in user's characters"""
@@ -330,20 +328,21 @@ def show_level():
     return(character)
 
 @app.route('/character_skills', methods=["POST"])
-def selected_spells():
-    """get a list of selected spells from the form"""
+def selected_traits():
+    """get a list of selected traits from the form"""
 
     spell_names = request.form.getlist('spell_names')
-    # if len(spell_names) > 4:
-    #     return "You can only select 4 spells!"
-    # else:
     weapon_names = request.form.getlist('weapon_names')
     item_names = request.form.getlist('item_names')
     armor_names = request.form.getlist('armor_names')
+
     return render_template('character_thirdpage.html', selected_spell=None, 
                            spell_names=spell_names, weapon_names=weapon_names,
                            item_names=item_names, armor_names=armor_names)
 
+    # if len(spell_names) > 4:
+    #     return "You can only select 4 spells!"
+    # else:
 
 @app.route('/characters/<int:character_id>')
 def character_info(character_id):

@@ -104,13 +104,27 @@
 </div>
 {% for spell in character.character_spells %} 
 <p>
-    Selected spells: {{ spell.spells.spell_name }} : {{ spell.spells.description }}
+    spell: {{ spell.spells.spell_name }} : {{ spell.spells.spell_level }}
 </p>
 {% endfor %}
+
+{% for weapon in character.character_weapons %} 
 <p>
-    Selected weapons:
+    weapon: {{ weapon.weapons_table.weapon_name }}
 </p>
+{% endfor %}
+
+{% for item in character.inventory_table %} 
 <p>
-    inventory items:
+    gear: {{ item.inventory_items.item_name }} : {{ item.inventory_items.item_type }}
 </p>
+{% endfor %}
+
+{% for armor in character.character_armor %} 
+<p>
+    armor: {{ armor.armor_table.armor_name }} : {{ armor.armor_table.str_minimum }}
+</p>
+{% endfor %}
+
 {% endblock %}
+

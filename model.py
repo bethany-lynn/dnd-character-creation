@@ -95,10 +95,6 @@ class Character_sheet(db.Model):
 
     def __repr__(self):
         return f'<character: {self.character_name}>'
-    
-    # def __iter__(self):
-    #     yield 'character_name', self.character_name
-    #     yield 'user_id', self.user_id
 
 class Inventory(db.Model):
     """A character's starting bag"""
@@ -212,7 +208,7 @@ class Char_weapons(db.Model):
 
     
     def __repr__(self):
-        return f'<>'
+        return f'<{self.char_weapon_id}>'
 
 class Weapons(db.Model):
     """Weapon information"""
@@ -232,7 +228,7 @@ class Weapons(db.Model):
     character_weapons = db.relationship("Char_weapons", back_populates="weapons_table")
 
     def __repr__(self):
-        return f'<>'
+        return f'<{self.weapon_name}>'
     
 class Char_Armor(db.Model):
     """Armor for a given character"""
@@ -294,11 +290,3 @@ if __name__ == "__main__":
     from server import app
 
     connect_to_db(app)
-
-
-#------------------------------------------------------------------------------------#
-# things to do TUESDAY JAN 23:
-
-
-# add all templates to folder
-# figure out one query string with AJAX
