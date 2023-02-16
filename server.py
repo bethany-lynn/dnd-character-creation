@@ -73,14 +73,6 @@ def save_results():
         session[stat] = value
         print(f"this is {stat} with value {value}")
 
-    # for stat in results:
-    #     print(f"this is stat and assigned num : {stat}: {results[stat]}")
-
-
-        # session[stat] = results[stat]
-        # db.session.add(stat)
-        # db.session.commit()
-
     return(stat)
 
 @app.route('/create_character')
@@ -260,9 +252,13 @@ def create_character():
     session['char_level'] = character.char_level
 
     spell_names = Spells.query.all()
+    weapon_names = Weapons.query.all()
+    item_names = Inventory_items.query.all()
+    armor_names = Armor.query.all() 
 
     return render_template('character_secondpage.html', character=character, char_language=lang_list,
-                           spell_names=spell_names)
+                           spell_names=spell_names, weapon_names=weapon_names,
+                           item_names=item_names, armor_names=armor_names)
 
 
 @app.route('/character_skills', methods =["POST"])
@@ -281,28 +277,46 @@ def assign_skills():
         new_char_spell = Char_spells(character_sheet=character,spells=selected_spell)
 
         db.session.add(new_char_spell)
-        # db.relationships ^ connecting the character to the selected spell
-        
-    # """saving selected weapon from form to the db"""
-    # weapon_name = request.form["weapon_name"]
-    # selected_weapon = Weapons.query.filter_by(weapon_name=weapon_name).first()
 
-    # db.session.add(selected_weapon)
-    # db.session.add(character)
+    selected_weapon = None
+    if "weapon_name" in request.form:
+        weapon_name = request.form["weapon_name"]
+        selected_weapon = Weapons.query.filter_by(weapon_name=weapon_name).first()
+        new_char_weapon = Char_weapons(character_sheet=character,weapons_table=selected_weapon)
+
+        db.session.add(new_char_weapon)
+
+    selected_item = None
+    if "item_name" in request.form:
+        item_name = request.form["item_name"]
+        selected_item = Inventory_items.query.filter_by(item_name=item_name).first()
+        new_char_item = Inventory(character_sheet=character,inventory_items=selected_item)
+
+        db.session.add(new_char_item)
+
+    selected_armor = None
+    if "armor_name" in request.form:
+        armor_name = request.form["armor_name"]
+        selected_armor = Armor.query.filter_by(armor_name=armor_name).first()
+        new_char_armor = Char_Armor(character_sheet=character,armor_table=selected_armor)
+
+        db.session.add(new_char_armor)
+
     db.session.commit()
 
-    # session['weapon_name'] = selected_weapon.weapon_name
 
     return render_template('character_thirdpage.html', character=character, 
-                           skills=skills, selected_spell=selected_spell)
+                           skills=skills, selected_spell=selected_spell, selected_weapon=selected_weapon,
+                           selected_item=selected_item, selected_armor=selected_armor)
+
+
+
 
 @app.route('/user_profile')
 def users_profile():
     """page to display a logged in user's characters"""
     username = session['username']
     user_id = session['user_id']
-
-    # character_id = session['character_id']
 
     characters = crud.get_characters_by_user_id(user_id)
 
@@ -323,23 +337,19 @@ def selected_spells():
     # if len(spell_names) > 4:
     #     return "You can only select 4 spells!"
     # else:
+    weapon_names = request.form.getlist('weapon_names')
+    item_names = request.form.getlist('item_names')
+    armor_names = request.form.getlist('armor_names')
     return render_template('character_thirdpage.html', selected_spell=None, 
-                           spell_names=spell_names)
+                           spell_names=spell_names, weapon_names=weapon_names,
+                           item_names=item_names, armor_names=armor_names)
 
-# @app.route("/character_secondpage", methods=["POST"])
-# def save_selected_spell():
-#     spell_name = request.form["spell_name"]
-#     selected_spell = Spells(spell_name=spell_name)
-
-#     db.session.add(selected_spell)
-#     db.session.commit()
 
 @app.route('/characters/<int:character_id>')
 def character_info(character_id):
     """displaying all character data from sessions"""
 
     character = crud.get_character_by_id(character_id)
-    # spell_id = session['spell_id']
     spell_name = session['spell_name']
 
     if character is None:
@@ -350,28 +360,3 @@ def character_info(character_id):
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(host="0.0.0.0", debug=True)
-
-
-# TODO: 
-# return stat rolls from db to character sheet 
-# start weapons table?
-#   use api, same way as spells
-#   check weapons table against api info to make sure i have all the right things
-
-# this is stat and assigned num : wisdom: 8
-# this is stat and assigned num : charisma: 10
-# this is stat and assigned num : intelligence: 15
-# this is stat and assigned num : dexterity: 11
-# this is stat and assigned num : constitution: 12
-# this is stat and assigned num : strength: 11
-
-# print('this is stats f string inside for loop 1')
-# print(stats)
-# print()
-# this is stat inside for loop 1
-# ['wisdom is 8', 'charisma is 10', 'intelligence is 15', 'dexterity is 11', 'constitution is 12']    
-# this is stat inside for loop 1
-# ['wisdom is 8', 'charisma is 10', 'intelligence is 15', 'dexterity is 11', 'constitution is 12', 'strength is 11']
-# print("these are results")
-# print(results)
-# {'wisdom': 8, 'charisma': 10, 'intelligence': 15, 'dexterity': 11, 'constitution': 12, 'strength': 11}

@@ -43,7 +43,6 @@ def get_spells_from_api():
             cast_time = spell_info['casting_time'],
             spell_level = str(spell_info['level'])
             )
-        # session['spell_id'] = spells.spell_id
 
         db.session.add(spells)
     db.session.commit()
@@ -57,10 +56,8 @@ def get_weapons_from_api():
     api_url = f'http://www.dnd5eapi.co/api/equipment-categories/weapon'
     response=requests.get(api_url)
     weapon_names = response.json()
-
-
+    
     for weapon in weapon_names['equipment']:
-        name_of_weapon = weapon['name']
         url_of_weapon = weapon['url']
 
         api_url = f"http://www.dnd5eapi.co{url_of_weapon}"
@@ -84,7 +81,7 @@ def get_weapons_from_api():
             weight = weapon_info['weight']
 
         weapons = Weapons(
-            weapon_name = name_of_weapon,
+            weapon_name = weapon['name'],
             damage_type = damage_type,
             weapon_range = weapon_range,
             cost = cost,
@@ -93,76 +90,97 @@ def get_weapons_from_api():
 
         db.session.add(weapons)
     db.session.commit()
-    print(weapon_range)
+    print(weapon['name'])
 
 get_weapons_from_api()    
 
 
-# def get_inventory_gear_from_api():
-#     """getting all gear for inventory class from api"""
+def get_inventory_gear_from_api():
+    """getting all gear for inventory class from api"""
 
-#     api_url = f'http://www.dnd5eapi.co/api/equipment-categories/adventuring-gear'
-#     response=requests.get(api_url)
-#     gear_names = response.json()
+    api_url = f'http://www.dnd5eapi.co/api/equipment-categories/adventuring-gear'
+    response=requests.get(api_url)
+    item_names = response.json()
 
-#     for gear in gear_names['equipment']:
-#         name_of_gear = gear['name']
-#         url_of_gear = gear['url']
+    for item in item_names['equipment']:
+        url_of_gear = item['url']
 
-#         api_url = f'http://www.dnd5eapi.co{url_of_gear}'
-#         response=requests.get(api_url)
-#         gear_info = response.json()
+        api_url = f'http://www.dnd5eapi.co{url_of_gear}'
+        response=requests.get(api_url)
+        gear_info = response.json()
 
-#         inventory = Inventory_items(
-#             item_name = name_of_gear,
-#             item_type = ,
-#             item_weight = ,
-#             item_description = ,
-#             tracking_cost =
-#         )
+        cost = None
+        if "cost" in gear_info and gear_info["cost"]["quantity"]:
+            cost = int(gear_info["cost"]["quantity"])
 
-#         db.session.add(inventory)
-#     db.session.commit()
+        weight = None
+        if "weight" in gear_info:
+            weight = gear_info['weight']
 
-# get_inventory_gear_from_api()
+        equipment_category = ""
+        if "equipment_category" in gear_info:
+            equipment_category = gear_info['equipment_category']['name']
 
+        inventory = Inventory_items(
+            item_name = item['name'],
+            item_type = equipment_category,
+            item_weight = weight,
+            tracking_cost = cost
+        )
 
-# def get_armor_from_api():
-#     """getting armor information for Armor class from api"""
+        db.session.add(inventory)
+    db.session.commit()
 
-#     api_url = f'http://www.dnd5eapi.co/api/equipment-categories/armor'
-#     response=requests.get(api_url)
-#     armor_names = response.json()
-
-#     for armor in armor_names['equipment']:
-#         name_of_armor = armor['name']
-#         url_of_armor = armor['url']
-
-#         api_url = f'http://www.dnd5eapi.co{url_of_armor}'
-#         response=requests.get(api_url)
-#         armor_info = response.json()
-
-#         armor = Armor(
-#             armor_name = name_of_armor,
-#             str_minimum =
-#             stealth_disadvantage = 
-#             cost = 
-#             weight = 
-#             properties =
-#         )
-
-#         db.session.add(armor)
-#     db.session.commit()
-
-# get_armor_from_api()
+get_inventory_gear_from_api()
 
 
+def get_armor_from_api():
+    """getting armor information for Armor class from api"""
 
+    api_url = f'http://www.dnd5eapi.co/api/equipment-categories/armor'
+    response=requests.get(api_url)
+    armor_names = response.json()
 
-# get name of equipment items with equipment_category url
-# weapons = api/equipment-categories/weapon
-#  ^ gives nested dictionaries of all weapons
-# inventory items = api/equipment-categories/adventuring-gear
-#  ^ gives nested dictionaries of all gear
-# armor = api/equipment-categoreis/armor
-#  ^ gives nested dictionaries of all armor
+    for armor in armor_names['equipment']:
+        url_of_armor = armor['url']
+
+        api_url = f'http://www.dnd5eapi.co{url_of_armor}'
+        response=requests.get(api_url)
+        armor_info = response.json()
+
+        str_minimum = ""
+        if "str_minimum" in armor_info:
+            str_minimum = armor_info["str_minimum"]
+
+        stealth_disadvantage = ""
+        if "stealth_disadvantage" in armor_info:
+            stealth_disadvantage = armor_info['stealth_disadvantage']
+        
+        cost = None
+        if "cost" in armor_info and armor_info["cost"]["quantity"]:
+            cost = int(armor_info["cost"]["quantity"])
+
+        weight = None
+        if "weight" in armor_info:
+            weight = armor_info['weight']
+
+        if "properties" in armor_info:
+            properties = armor_info['properties']
+            if not properties:
+                properties = None
+        else:
+            properties = None
+
+        armor = Armor(
+            armor_name = armor['name'],
+            str_minimum = str_minimum,
+            stealth_disadvantage = stealth_disadvantage,
+            cost = cost,
+            weight = weight, 
+            properties = properties
+        )
+
+        db.session.add(armor)
+    db.session.commit()
+    
+get_armor_from_api()

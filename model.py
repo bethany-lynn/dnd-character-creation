@@ -128,7 +128,6 @@ class Inventory_items(db.Model):
     item_name = db.Column(db.String(50))
     item_type = db.Column(db.String(50))
     item_weight = db.Column(db.Integer)    
-    item_description = db.Column(db.String(50))
     tracking_cost = db.Column(db.Integer)
 
     inventory_table = db.relationship("Inventory", back_populates="inventory_items")
