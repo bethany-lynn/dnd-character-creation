@@ -21,7 +21,6 @@ def homepage():
 def register_user():
     """create a new user"""
 
-
     email = request.form.get("email")
     password = request.form.get("password")
     username = request.form.get("username")
@@ -30,6 +29,7 @@ def register_user():
     if user:
         flash("This email is already plundering dungeons and slaying dragons.")
     else:
+        
         user = crud.create_user(email, password, username)
         db.session.add(user)
         db.session.commit()

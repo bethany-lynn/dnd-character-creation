@@ -75,56 +75,192 @@
 
 <p></p>
 <div class="row">
-    <div class="col-4">
+  <div class="col-4">
     <span id="skills"> skills:
-        <p>Animal handling: {{ character.animal_handling }}</p>
-        <p>Acrobatics: {{ character.acrobatics }}</p>
-        <p>Arcana: {{ character.arcana }}</p>
-        <p>Athletics: {{ character.athletics }}</p>
-        <p>Deception: {{ character.deception }}</p>
-        <p>History: {{ character.history }}</p>
-    </div>    
+      <p>Animal handling: {{ character.animal_handling }}</p>
+      <p>Acrobatics: {{ character.acrobatics }}</p>
+      <p>Arcana: {{ character.arcana }}</p>
+      <p>Athletics: {{ character.athletics }}</p>
+      <p>Deception: {{ character.deception }}</p>
+      <p>History: {{ character.history }}</p>
+  </div>    
     <div class="col-4">
-        <p>Insight: {{ character.insight }}</p>
-        <p>Intimidation: {{ character.intimidation }}</p>
-        <p>Investigation: {{ character.investigation }}</p>
-        <p>Medicine: {{ character.medicine }}</p>
-        <p>Nature: {{ character.nature }}</p>
-        <p>Perception: {{ character.perception }}</p>
+      <p>Insight: {{ character.insight }}</p>
+      <p>Intimidation: {{ character.intimidation }}</p>
+      <p>Investigation: {{ character.investigation }}</p>
+      <p>Medicine: {{ character.medicine }}</p>
+      <p>Nature: {{ character.nature }}</p>
+      <p>Perception: {{ character.perception }}</p>
     </div>
     <div class="col-4">
-        <p>Performance: {{ character.performance }}</p>
-        <p>Persuasion: {{ character.persuasion }}</p>
-        <p>Religion: {{ character.religion }}</p>
-        <p>Sleight of hand: {{ character.sleight_of_hand }}</p>
-        <p>Stealth: {{ character.stealth }}</p>
-        <p>Survival: {{ character.survival }}</p>
+      <p>Performance: {{ character.performance }}</p>
+      <p>Persuasion: {{ character.persuasion }}</p>
+      <p>Religion: {{ character.religion }}</p>
+      <p>Sleight of hand: {{ character.sleight_of_hand }}</p>
+      <p>Stealth: {{ character.stealth }}</p>
+      <p>Survival: {{ character.survival }}</p>
     </span>
     </div>
 </div>
-{% for spell in character.character_spells %} 
-<p>
-    spell: {{ spell.spells.spell_name }} : {{ spell.spells.spell_level }}
-</p>
-{% endfor %}
 
-{% for weapon in character.character_weapons %} 
-<p>
-    weapon: {{ weapon.weapons_table.weapon_name }}
-</p>
-{% endfor %}
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+        {% for spell in character.character_spells %} 
+          {{ spell.spells.spell_name }}
+        {% endfor %}
+      </button>
+    </h2>
+  <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+    <div class="accordion-body">
+      <strong>        
+        {% for spell in character.character_spells %} 
+          spell level: {{ spell.spells.spell_level }}
+        {% endfor %}
+      </strong>
+    <p></p>
+      <strong>        
+        {% for spell in character.character_spells %} 
+          level: {{ spell.spells.spell_level }}
+        {% endfor %}
+      </strong>
+    <p></p>
+      <strong>        
+        {% for spell in character.character_spells %} 
+          range: {{ spell.spells.spell_range }}
+        {% endfor %}
+      </strong>
+    <p></p>
+      <strong>        
+        {% for spell in character.character_spells %} 
+          casting time: {{ spell.spells.cast_time }}
+        {% endfor %}
+      </strong> 
+    <p></p>
+      <strong>        
+        {% for spell in character.character_spells %} 
+          components: {{ spell.spells.components }}
+        {% endfor %}
+      </strong>
+    <p></p>
+      <strong>        
+        {% for spell in character.character_spells %} 
+          higher level: {{ spell.spells.higher_level }}
+        {% endfor %}
+      </strong>
+    </div>
+</div>
 
-{% for item in character.inventory_table %} 
-<p>
-    gear: {{ item.inventory_items.item_name }} : {{ item.inventory_items.item_type }}
-</p>
-{% endfor %}
+<p></p>
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+        {% for weapon in character.character_weapons %} 
+          {{ weapon.weapons_table.weapon_name }}
+        {% endfor %}
+      </button>
+    </h2>
+  <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+    <div class="accordion-body">
+      <strong>        
+        {% for weapon in character.character_weapons %} 
+          damage type: {{ weapon.weapons_table.damage_type }}
+        {% endfor %}
+      </strong>
+    <p></p>
+      <strong>        
+        {% for weapon in character.character_weapons %} 
+          weapon range: {{ weapon.weapons_table.weapon_range }}
+        {% endfor %}
+      </strong>
+    <p></p>
+      <strong>        
+        {% for weapon in character.character_weapons %} 
+          cost: {{ weapon.weapons_table.cost }}
+        {% endfor %}
+      </strong>
+    <p></p>
+      <strong>        
+        {% for weapon in character.character_weapons %} 
+          weight: {{ weapon.weapons_table.weight }}
+        {% endfor %}
+      </strong> 
+  </div>
+</div>
 
-{% for armor in character.character_armor %} 
-<p>
-    armor: {{ armor.armor_table.armor_name }} : {{ armor.armor_table.str_minimum }}
-</p>
-{% endfor %}
+<p></p>
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+        {% for item in character.inventory_table %} 
+          {{ item.inventory_items.item_name }}
+        {% endfor %}
+      </button>
+    </h2>
+  <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+    <div class="accordion-body">
+      <strong>        
+        {% for item in character.inventory_table %} 
+          type: {{ item.inventory_items.item_type }}
+        {% endfor %}
+      </strong>
+    <p></p>
+      <strong>        
+        {% for item in character.inventory_table %} 
+          cost: {{ item.inventory_items.tracking_cost }} 
+        {% endfor %}
+      </strong>
+    <p></p>
+      <strong>        
+        {% for item in character.inventory_table %} 
+          weight: {{ item.inventory_items.item_weight }}
+        {% endfor %}
+      </strong>
+  </div>
+</div>
+
+<p></p>
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+        {% for armor in character.character_armor %} 
+          {{ armor.armor_table.armor_name }}
+        {% endfor %}
+      </button>
+    </h2>
+  <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+    <div class="accordion-body">
+      <strong>        
+        {% for armor in character.character_armor %} 
+          strength minimum: {{ armor.armor_table.str_minimum }}
+        {% endfor %}
+      </strong>
+    <p></p>
+      <strong>        
+        {% for armor in character.character_armor %} 
+          stealth disadvantage: {{ armor.armor_table.stealth_disadvantage }}
+        {% endfor %}
+      </strong>
+    <p></p>
+      <strong>        
+        {% for armor in character.character_armor %} 
+          cost: {{ armor.armor_table.cost }}
+        {% endfor %}
+      </strong>
+    <p></p>
+      <strong>        
+        {% for armor in character.character_armor %} 
+          weight: {{ armor.armor_table.weight }}
+        {% endfor %}
+      </strong>
+  </div>
+</div>
 
 {% endblock %}
 

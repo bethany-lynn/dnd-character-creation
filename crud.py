@@ -7,7 +7,6 @@ from model import db, User, Character_sheet, Inventory, Spell_slots, Char_spells
 def create_user(email, password, username):
     """Create and return a new user."""
     user = User(email=email, password=password, username=username)
-
     return user
 
 def get_user_by_email(email):
