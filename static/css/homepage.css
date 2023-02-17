@@ -1,12 +1,25 @@
-
 .text-warning-emphasis {
     color: rgb(186, 165, 213);
 }
 
 .container{
-  background-color: darkcyan;
+  background-color: rgb(8, 87, 87);
 }
 
 .display-5{
     color:rgb(104, 128, 91)
+}
+
+.display-6{
+  color: burlywood
+}
+
+.col-auto{
+  color: burlywood
+}
+
+body {
+  background-image: url('static/img/gradient_greenblue.jpg');
+  background-size: cover;
+  background-position: center top;
 }

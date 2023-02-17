@@ -8,71 +8,74 @@
 <link rel="stylesheet" type="text/css" href="static/css/homepage.css">
 
 <center>
-<h1 class="display-5">Welcome to the dungeon!</h1>
+<h1 class="display-5">Character Creation Lab</h1>
 </center>
 <p></p>
+<center></center>
 <div class="container p-3 text-success-emphasis border border-success-subtle rounded-3">
   <div class="row">
     <div class="col">
-    <h2 class="display-6 align">Log In</h2>
-      <form action="/login" method="POST">
-        <p>
+      <h2 class="display-6 align">Log In</h2>
+        <form action="/login" method="POST">
           <div class="row g-3 align-items-center">
             <div class="col-auto">
-              <label for="inputEmail5" class="form-label">email:</label>
-                <input type="email" class="form-control" name="email">
-            </div>
-          </div>  
-        </p>
-        <div class="row g-3 align-items-center">
-          <div class="col-auto">
-            <label for="inputPassword5" class="form-label">password:</label>
-              <input type="password" class="form-control" name="password">
-          </div>
-        </div> 
-        <p>
-        </p>
-        <div class="row g-3 align-items-center">
-          <div class="col-auto">
-            <label for="inputUsername5" class="form-label">username:</label>
-              <input type="username" class="form-control" name="username">
-          </div>
-        </div> 
-        <p>
-          <input type="submit" value="let's roll">
-        </p>
-      </form>  
-    </div>
-    <div class="col">  
-    <h2 class="display-6">Create an Account</h2>
-      <form action="/users" method="POST">
-          <p>
-            <div class="row g-3 align-items-center">
-              <div class="col-auto">
+              <center>
                 <label for="inputEmail5" class="form-label">email:</label>
                   <input type="email" class="form-control" name="email">
-              </div>
-            </div>  
-          </p>
-          <p>
-          <div class="row g-3 align-items-center">
-            <div class="col-auto">
-              <label for="inputUsernmae5" class="form-label">username:</label>
-                <input type="username" class="form-control" name="username">
+                </center>
             </div>
           </div>  
-          </p>
-          <div class="row g-3 align-items-center">
-            <div class="col-auto">
+        <div class="row g-3 align-items-center">
+          <div class="col-auto">
+            <center>
               <label for="inputPassword5" class="form-label">password:</label>
                 <input type="password" class="form-control" name="password">
-            </div>
-          </div> 
-          <p>
-            <input type="submit" value="create">
-          </p>
+            </center>    
+          </div>
+        </div> 
+        <div class="row g-3 align-items-center">
+          <div class="col-auto">
+            <center>
+              <label for="inputUsername5" class="form-label">username:</label>
+                <input type="username" class="form-control" name="username">
+            </center>    
+          </div>
+        </div> 
+          <input type="submit" value="let's roll">
+      </form>  
+    </div>
+  </div>
+<div class="row">
+  <div class="col">  
+    <h2 class="display-6">Create an Account</h2>
+      <form action="/users" method="POST">
+        <div class="row g-3 align-items-center">
+          <div class="col-auto">
+            <center>
+              <label for="inputEmail5" class="form-label">email:</label>
+                <input type="email" class="form-control" name="email">
+            </center>  
+          </div>
+        </div>  
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <center>
+            <label for="inputUsernmae5" class="form-label">username:</label>
+              <input type="username" class="form-control" name="username">
+          </center>  
+        </div>
+      </div>  
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <center>
+            <label for="inputPassword5" class="form-label">password:</label>
+              <input type="password" class="form-control" name="password">
+          </center>  
+        </div>
+      </div> 
+          <input type="submit" value="create">
       </form>
-  </div>
-  </div>
+    </div>
+</div>
 </div>
 {% endblock %}
