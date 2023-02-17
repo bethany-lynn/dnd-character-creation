@@ -1,0 +1,11 @@
+body {
+    background-image: url("your-image-url.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+
+.text-warning-emphasis {
+    color: rgb(186, 165, 213);
+}
+

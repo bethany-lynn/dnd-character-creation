@@ -14,7 +14,7 @@ class User(db.Model):
                         primary_key=True)
     username = db.Column(db.String(50), unique=True)
     email = db.Column(db.String(40), unique=True)
-    password = db.Column(db.String(40))
+    password = db.Column(db.String(200))
 
     character_sheet = db.relationship("Character_sheet", back_populates="user")
 
