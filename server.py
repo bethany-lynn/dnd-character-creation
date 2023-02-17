@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, flash, session, redirect, abort, jsonify
 from model import *
+from werkzeug.security import (generate_password_hash, check_password_hash)
+import argon2
 import crud
 from jinja2 import StrictUndefined
 import requests
@@ -9,7 +11,6 @@ import random
 app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
-
 
 @app.route('/')
 def homepage():
@@ -22,14 +23,13 @@ def register_user():
     """create a new user"""
 
     email = request.form.get("email")
-    password = request.form.get("password")
+    password = generate_password_hash(request.form.get("password"), method="pbkdf2:sha256", salt_length=8)
     username = request.form.get("username")
     user = crud.get_user_by_email(email)
 
     if user:
         flash("This email is already plundering dungeons and slaying dragons.")
     else:
-        
         user = crud.create_user(email, password, username)
         db.session.add(user)
         db.session.commit()
@@ -42,23 +42,49 @@ def register_user():
 @app.route('/login', methods=['POST'])
 def login():
     """existing accounts can login"""
+    user = crud.get_user_by_email(request.form.get("email"))
 
-    email = request.form.get("email")
-    password = request.form.get("password")
-    username = request.form.get("username")
+    if user:
+        password = request.form.get("password")
+        username = request.form.get("username")
 
-    user = crud.get_user_by_email(email)
+        if check_password_hash(user.password, password):
+            session['user_email'] = user.email
+            session['user_id'] = user.user_id
+            session['username'] = user.username
+            flash(f'Welcome back, {username}!')
 
-    if not user or user.password != password:
-        flash("Your email or password is incorrect, adventurer!")
-        return redirect('/')
-    else:
-        session['user_email'] = user.email
-        session['user_id'] = user.user_id
-        session['username'] = user.username
-        flash(f'Welcome back, {username}!')
+            return redirect("/user_profile")
         
-    return redirect("/user_profile")
+        else:
+            flash("Your password is incorrect.")
+            return redirect("/")
+    
+    else:
+        flash("This email is not registered.")
+        return redirect("/")
+
+
+    # email = request.form.get("email")
+    # password = request.form.get("password")
+    # username = request.form.get("username")
+
+    # user = crud.get_user_by_email(email)
+
+    # if not user or user.password != password:
+    #     flash("Your email or password is incorrect, adventurer!")
+    #     return redirect('/')
+    #     # add elif if email isnt registered
+    # else:
+    #     session['user_email'] = user.email
+    #     session['user_id'] = user.user_id
+    #     session['username'] = user.username
+    #     flash(f'Welcome back, {username}!')
+
+        
+        
+    # return redirect("/user_profile")
+
 
 
 @app.route('/save_results', methods=["POST"])
