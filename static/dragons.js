@@ -42,7 +42,6 @@ function rollDie(numRolls, numToKeep, button) {
     results[stat] = total;
 
     return total;   
-
 }
 
 // disabling check boxes after 2 clicks
@@ -70,43 +69,3 @@ skillForms.forEach((skillForm) => {
         });
     });
 });
-
-
-// randomly selecting weapons and inventory
-// const equipment = {
-//     'results': [
-//       {'name': 'Option 1'},
-//       {'name': 'Option 2'},
-//       {'name': 'Option 3'},
-//       {'name': 'Option 4'},
-//       {'name': 'Option 5'},
-//       {'name': 'Option 6'},
-//       {'name': 'Option 7'}
-//     ]
-//   };
-
-//   function displayRandomOptions() {
-//     let options = equipment.results.map(function(result) {
-//       return result.name;
-//     });
-//     let selectedOptions = [];
-//     for (let i = 0; i < 5; i++) {
-//       let randomIndex = Math.floor(Math.random() * options.length);
-//       selectedOptions.push(options[randomIndex]);
-//       options.splice(randomIndex, 1);
-//     }
-//     document.getElementById("selectedOptions").innerHTML = selectedOptions.join(", ");
-//   }
-
-
-
-// fetch('http://localhost:5000/save_results', {
-//     method: 'POST',
-//     headers: {
-//         'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(results)
-// })
-//     .then(response => response.text())
-//     .then(data => console.log(data))
-//     .catch(error => console.error(error));
