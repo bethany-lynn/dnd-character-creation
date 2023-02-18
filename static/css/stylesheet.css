@@ -1,6 +1,8 @@
 body {
-    background-image: url("static/img/gradient_greenblue.jpg");
+    background-image: url("/static/img/gradient_greenblue.jpg");
     background-repeat: no-repeat;
     background-size: cover;
   }
+  
+
   

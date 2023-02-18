@@ -3,23 +3,18 @@
 }
 
 .container{
-  background-color: rgb(8, 87, 87);
+  background-color: rgba(48, 69, 59, 0.557);
 }
 
 .display-5{
-    color:rgb(104, 128, 91)
+    color:rgb(68, 70, 67)
 }
 
 .display-6{
-  color: burlywood
+  color: rgb(51, 46, 41)
 }
 
 .col-auto{
   color: burlywood
 }
 
-body {
-  background-image: url('static/img/gradient_greenblue.jpg');
-  background-size: cover;
-  background-position: center top;
-}
