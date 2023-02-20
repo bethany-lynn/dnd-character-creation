@@ -4,11 +4,18 @@
 {% endblock %}
 
 {% block body %}
+<br>
+<br>
+<center>
+    choose two {{ character.character_class}} skills:
+</center>
+<br>
+<br>
 <div class="container">
-    <div row>
+  <div row>
 
 {% if character.character_class == "barbarian" %}
-<form class="skill-form" id="barbarian-boxes" action="/character_skills" method="POST"> choose two {{ character.character_class}} skills:
+<form class="skill-form" id="barbarian-boxes" action="/character_skills" method="POST">
     <p></p>
     <input type="checkbox" id="animal-handling" value="animal-handling" name="skill">
     <label for="animal-handling">animal-handling {{character.animal_handling}} </label>
@@ -57,6 +64,7 @@
 </section>
 </div>
 <input type="submit"/>
+<br>
 </form>
 
 
@@ -64,7 +72,7 @@
 
 
 {% if character.character_class == "bard" %}
-<form class="skill-form" id="bard-boxes" action="/character_skills" method="POST"> choose two {{ character.character_class}} skills:
+<form class="skill-form" id="bard-boxes" action="/character_skills" method="POST">
     <p></p>
     <input type="checkbox" id="animal-handling" value="animal-handling" name="skill">
     <label for="animal-handling">animal-handling {{character.animal_handling}} </label>
@@ -160,11 +168,12 @@
 </section>
 </div>
 <input type="submit"/>
+<br>
 </form>
 {% endif %}
 
 {% if character.character_class == "cleric" %}
-<form class="skill-form" id="cleric-boxes" action="/character_skills" method="POST"> choose two {{ character.character_class}} skills:
+<form class="skill-form" id="cleric-boxes" action="/character_skills" method="POST">
     <p></p>
     <input type="checkbox" id="insight" value="insight" name="skill">
     <label for="insight">insight: {{character.insight}} </label>
@@ -221,11 +230,12 @@
 </section>
 </div>
 <input type="submit"/>
+<br>
 </form>
 {% endif %}
 
 {% if character.character_class == "druid" %}
-<form class="skill-form" id="druid-boxes" action="/character_skills" method="POST"> choose two {{ character.character_class}} skills:
+<form class="skill-form" id="druid-boxes" action="/character_skills" method="POST">
     <p></p>
     <input type="checkbox" id="animal-handling" value="animal-handling" name="skill">
     <label for="animal-handling">animal-handling {{character.animal_handling}} </label>
@@ -292,11 +302,12 @@
 </section>
 </div>
 <input type="submit"/>
+<br>
 </form>    
 {% endif %}
 
 {% if character.character_class == "fighter" %}
-<form class="skill-form" id="fighter-boxes" action="/character_skills" method="POST"> choose two {{ character.character_class}} skills:
+<form class="skill-form" id="fighter-boxes" action="/character_skills" method="POST">
 <p></p>
     <input type="checkbox" id="animal-handling" value="animal-handling" name="skill">
     <label for="animal-handling">animal-handling {{character.animal_handling}} </label>
@@ -352,11 +363,12 @@
 </section>
 </div>
 <input type="submit"/>
+<br>
 </form>
 {% endif %}
 
 {% if character.character_class == "monk" %}
-<form class="skill-form" id="monk-boxes" action="/character_skills" method="POST"> choose two {{ character.character_class}} skills:
+<form class="skill-form" id="monk-boxes" action="/character_skills" method="POST">
 <p></p>
     <input type="checkbox" id="athletics" value="athletics" name="skill">
     <label for="athletics">athletics {{character.athletics}} </label>
@@ -406,11 +418,12 @@
 </section>
 </div>
 <input type="submit"/>
+<br>
 </form>
 {% endif %}
 
 {% if character.character_class == "paladin" %}
-<form class="skill-form" id="paladin-boxes" action="/character_skills" method="POST"> choose two {{ character.character_class}} skills:
+<form class="skill-form" id="paladin-boxes" action="/character_skills" method="POST">
 <p></p>
     <input type="checkbox" id="athletics" value="athletics" name="skill">
     <label for="athletics">athletics {{character.athletics}} </label>
@@ -470,12 +483,13 @@
 </section>
 </div>    
 <input type="submit"/>
+<br>
 </form>
 {% endif %}
 
 
 {% if character.character_class == "ranger" %}
-<form class="skill-form" id="ranger-boxes" action="/character_skills" method="POST"> choose two {{ character.character_class}} skills:
+<form class="skill-form" id="ranger-boxes" action="/character_skills" method="POST">
 <p></p>        
     <input type="checkbox" id="animal-handling" value="animal-handling" name="skill">
     <label for="animal-handling">animal-handling {{character.animal_handling}} </label>
@@ -531,12 +545,13 @@
 </section>
 </div>
 <input type="submit"/>
+<br>
 </form>
 {% endif %}
 
 
 {% if character.character_class == "rogue" %}
-<form class="skill-form" id="rogue-boxes" action="/character_skills" method="POST"> choose two {{ character.character_class}} skills:
+<form class="skill-form" id="rogue-boxes" action="/character_skills" method="POST">
 <p></p>        
     <input type="checkbox" id="athletics" value="athletics" name="skill">
     <label for="athletics">athletics {{character.athletics}} </label>
@@ -601,12 +616,13 @@
 </section>
 </div>
 <input type="submit"/>
+<br>
 </form>
 {% endif %}
 
 
 {% if character.character_class == "sorcerer" %}
-<form class="skill-form" id="sorcerer-boxes" action="/character_skills" method="POST"> choose two {{ character.character_class}} skills:
+<form class="skill-form" id="sorcerer-boxes" action="/character_skills" method="POST">
 <p></p>
     <input type="checkbox" id="arcana" value="arcana" name="skill">
     <label for="arcana">arcana: {{character.arcana}} </label>
@@ -666,12 +682,13 @@
 </section>
 </div>
 <input type="submit"/>
+<br>
 </form>
 {% endif %}
 
 
 {% if character.character_class == "warlock" %}
-<form class="skill-form" id="warlock-boxes" action="/character_skills" method="POST"> choose two {{ character.character_class}} skills:
+<form class="skill-form" id="warlock-boxes" action="/character_skills" method="POST">
 <p></p>
     <input type="checkbox" id="arcana" value="arcana" name="skill">
     <label for="arcana">arcana: {{character.arcana}} </label>     
@@ -734,11 +751,12 @@
 </section>
 </div>
 <input type="submit"/>
+<br>
 </form>
 {% endif %}
 
 {% if character.character_class == "wizard" %}
-<form class="skill-form" id="wizard-boxes" action="/character_skills" method="POST"> choose two {{ character.character_class}} skills:
+<form class="skill-form" id="wizard-boxes" action="/character_skills" method="POST">
 <p></p>
     <input type="checkbox" id="arcana" value="arcana" name="skill">
     <label for="arcana">arcana: {{character.arcana}} </label>
@@ -798,6 +816,7 @@
 </section>
 </div>
 <input type="submit"/>
+<br>
 </form>
 {% endif %}
 </div>

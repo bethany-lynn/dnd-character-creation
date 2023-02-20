@@ -65,28 +65,6 @@ def login():
         return redirect("/")
 
 
-    # email = request.form.get("email")
-    # password = request.form.get("password")
-    # username = request.form.get("username")
-
-    # user = crud.get_user_by_email(email)
-
-    # if not user or user.password != password:
-    #     flash("Your email or password is incorrect, adventurer!")
-    #     return redirect('/')
-    #     # add elif if email isnt registered
-    # else:
-    #     session['user_email'] = user.email
-    #     session['user_id'] = user.user_id
-    #     session['username'] = user.username
-    #     flash(f'Welcome back, {username}!')
-
-        
-        
-    # return redirect("/user_profile")
-
-
-
 @app.route('/save_results', methods=["POST"])
 def save_results():
     """connect to the database and store the results of dice roll buttons"""
