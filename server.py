@@ -375,11 +375,14 @@ def character_info(character_id):
     """displaying all character data from sessions"""
 
     character = crud.get_character_by_id(character_id)
-    spell_name = session['spell_name']
+    # spell_name = session['spell_name']
+
+    # print("this is spell name")
+    # print(spell_name)
 
     if character is None:
         abort(404)
-    return render_template('character_profile.html', character=character, spell_name=spell_name)
+    return render_template('character_profile.html', character=character)
 
 
 if __name__ == "__main__":
