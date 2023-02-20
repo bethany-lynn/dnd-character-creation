@@ -13,22 +13,22 @@
 <br>
 
 <div class="container p-3 rounded-3">
-  <form action="/create_character" method="POST">
-    <h5>Roll for: </h5>
-    <div class="row">
-    <section id="dice_roll">
-        <div class="col-6">
-        <button id="button1" class="roll_dice" name="wisdom">wisdom</button><br>
-        <button id="button2" class="roll_dice" name="charisma">charisma</button><br>
-        <button id="button3" class="roll_dice" name="intelligence">intelligence</button><br>
-        </div>        
-        <div class="col-6">
-        <button id="button4" class="roll_dice" name="dexterity">dexterity</button><br>
-        <button id="button5" class="roll_dice" name="constitution">constitution</button><br>
-        <button id="button6" class="roll_dice" name="strength">strength</button>
-        </div>
-    </section>
+<h5>Roll for: </h5>
+<div class="row">
+  <section id="dice_roll">
+    <div class="col-6">
+      <button id="button1" class="roll_dice" name="wisdom">wisdom</button><br>
+      <button id="button2" class="roll_dice" name="charisma">charisma</button><br>
+      <button id="button3" class="roll_dice" name="intelligence">intelligence</button><br>
+    </div>        
+    <div class="col-6">
+      <button id="button4" class="roll_dice" name="dexterity">dexterity</button><br>
+      <button id="button5" class="roll_dice" name="constitution">constitution</button><br>
+      <button id="button6" class="roll_dice" name="strength">strength</button>
     </div>
+  </section>
+</div>
+  <form action="/create_character" method="POST">
   <div>
     <section>
      <p></p>
@@ -107,4 +107,10 @@
     <input type="submit"/>
     </form>
 </div>    
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" 
+crossorigin="anonymous"></script>
+<script src="/static/dragons.js"></script>
+
 {% endblock %}
