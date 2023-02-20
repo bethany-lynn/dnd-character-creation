@@ -1,24 +1,25 @@
 {% extends 'base.html' %}
 {% block title %}dungeon account{% endblock %}
-<head>
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
-</head>
+
 {% block body %}
+<link rel="stylesheet" type="text/css" href="/static/css/user_profile.css">
 
+<br>
+<br>
 <center>
-    <h1 class="display-5">Here is your profile!</h1>
+    <h1 class="display-5">Welcome back, {{ username }}!</h1>
 </center>
-
-<h1>{{ username }}'s characters </h1>
-
-  <h2>names: </h2>
+<br>
+<br>
+<div class="container p-3 rounded-3">
+  <h2 class="characters"  style="text-align: center;">Current characters: </h2>
   <ul>
     {% for character in characters %}
       <li><a href="{{ url_for('character_info', character_id=character.character_id) }}"">{{ character.character_name }}</a></li>
     {% endfor %}
   </ul>
-  <div>
-    <a href="{{ url_for('create_character') }}">create a new character</a>
+  <div class="newlink"  style="text-align: center;">
+    <a href="{{ url_for('create_character') }}">CREATE NEW CHARACTER</a>
   </div>
-  
+</div>
 {% endblock %}

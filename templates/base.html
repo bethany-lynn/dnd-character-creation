@@ -1,11 +1,7 @@
 <!doctype html>
 <html>
-{% block head %}
 
 <head>
-
-
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
@@ -13,17 +9,10 @@
   <title>
     {% block title %}{% endblock %}
   </title>
-
-  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
-
-  <link rel="stylesheet" type="text/css" href="static/css/stylesheet.css">
-
+  <link rel="stylesheet" type="text/css" href="/static/css/stylesheet.css">
+  {% block head %}
+  {% endblock %}
 </head>
-
-{% endblock %}
-
 
 {% block body %}
 <body>

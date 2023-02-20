@@ -1,53 +1,58 @@
 {% extends 'base.html' %}
-{% block title %}character basic info{% endblock %}
+{% block title %}Character Build Part 1{% endblock %}
 
 {% block body %}
+<link rel="stylesheet" type="text/css" href="/static/css/create.css">
+<br>
+<br>
 
-    <figure class="text center">
-        <h1 class="display-6">please select some character traits</h1>
-    </figure>
+<center>
+    <h1 class="display-6">Begin creating your character!</h1>
+</center>
+<br>
+<br>
 
-
-<h5>roll for stats</h5>
+<div class="container p-3 rounded-3">
+<h5>Roll for: </h5>
 <div class="row">
     <section id="dice_roll">
         <div class="col-6">
-            <button id="button1" class="roll_dice" name="wisdom">roll for wisdom</button>
-            <button id="button2" class="roll_dice" name="charisma">roll for charisma</button>
-            <button id="button3" class="roll_dice" name="intelligence">roll for intelligence</button>
+            <button id="button1" class="roll_dice" name="wisdom">wisdom</button>
+            <button id="button2" class="roll_dice" name="charisma">charisma</button>
+            <button id="button3" class="roll_dice" name="intelligence">intelligence</button>
         </div>        
         <div class="col-6">
-            <button id="button4" class="roll_dice" name="dexterity">roll for dexterity</button>
-            <button id="button5" class="roll_dice" name="constitution">roll for constitution</button>
-            <button id="button6" class="roll_dice" name="strength">roll for strength</button>
+            <button id="button4" class="roll_dice" name="dexterity">dexterity</button>
+            <button id="button5" class="roll_dice" name="constitution">constitution</button>
+            <button id="button6" class="roll_dice" name="strength">strength</button>
         </div>
     </section>
 </div>
-    <form action="/create_character" method="POST">
-    <div>
+  <form action="/create_character" method="POST">
+  <div>
     <section>
-        <p></p>
-        wisdom: 
-        <input type="number" id ="wisdom-stat" name="wisdom-stat" readonly="readonly">
-        charisma:
-        <input type="number" id="charisma-stat" name="charisma-stat">
-        intelligence:
-        <input type="number" id="intelligence-stat" name="intelligence-stat">
-        dexterity:
-        <input type="number" id="dexterity-stat" name="dexterity-stat">
-        constitution:
-        <input type="number" id="constitution-stat" name="constitution-stat">
-        strength:
-        <input type="number" id="strength-stat" name="strength-stat">
+     <p></p>
+     wisdom: 
+     <input type="number" id ="wisdom-stat" name="wisdom-stat" readonly="readonly">
+     charisma:
+     <input type="number" id="charisma-stat" name="charisma-stat">
+     intelligence:
+     <input type="number" id="intelligence-stat" name="intelligence-stat">
+     dexterity:
+     <input type="number" id="dexterity-stat" name="dexterity-stat">
+     constitution:
+     <input type="number" id="constitution-stat" name="constitution-stat">
+     strength:
+     <input type="number" id="strength-stat" name="strength-stat">
     </section>
-    </div>
+  </div> Select your character's: 
     <section id="char_name">
-        <label for="char_name"> Select your character's name: </label>
+        <label for="char_name"> Name: </label>
         <input type="text" id="character-name" name="char_name" required>
     </section>
     <div>
     <section id="class">
-        <label for="dungeons_classes"> Select your character's class: </label>
+        <label for="dungeons_classes"> Class: </label>
             <select id="dungeons_classes" name="dungeons_classes">
                 {% for dungeons_class in dungeons_classes %}
                     <option value="{{ dungeons_class }}">{{ dungeons_class }}</option>
@@ -57,7 +62,7 @@
     </div>
     <div>
     <section id="dun_race">
-        <label for="dungeons_races"> Select your character's race: </label>
+        <label for="dungeons_races"> Race: </label>
             <select id="dungeons_races" name="dungeons_races">
                 {% for dungeons_race in dungeons_races %}
                     <option value="{{ dungeons_race }}">{{ dungeons_race }}</option>
@@ -67,7 +72,7 @@
     </div>
     <div>           
     <section id="alignment">
-        <h7> Select your character's alignment: </h7>
+        <h7> Alignment: </h7>
             <select id="dungeons_alignments" name="dungeons_alignments">
                 {% for dungeons_alignment in dungeons_alignments %}
                     <option value="{{ dungeons_alignment }}">{{ dungeons_alignment }}</option>
@@ -77,7 +82,7 @@
     </div>
     <div>            
     <section id="gender">
-        <h7> Select your character's gender: </h7>
+        <h7> Gender: </h7>
             <select id="dungeons_genders" name="dungeons_genders">
                 {% for dungeons_gender in dungeons_genders %}
                     <option value="{{ dungeons_gender }}">{{ dungeons_gender }}</option>
@@ -87,7 +92,7 @@
     </div>
     <div>            
     <section id="eye-color">
-        <h7> Select your character's eye color: </h7>
+        <h7> Eye color: </h7>
             <select id="dungeons_eye_colors" name="dungeons_eye_colors">
                 {% for dungeons_eye_color in dungeons_eye_colors %}
                     <option value="{{ dungeons_eye_color }}">{{ dungeons_eye_color }}</option>
@@ -97,7 +102,7 @@
     </div>
     <div>           
     <section id="hair-color">
-        <h7> Select your character's hair color: </h7>
+        <h7> Hair color: </h7>
             <select id="dungeons_hair_colors" name="dungeons_hair_colors">
                 {% for dungeons_hair_color in dungeons_hair_colors %}
                     <option value="{{ dungeons_hair_color }}">{{ dungeons_hair_color }}</option>
@@ -107,4 +112,5 @@
     </div>        
     <input type="submit"/>
     </form>
+</div>    
 {% endblock %}

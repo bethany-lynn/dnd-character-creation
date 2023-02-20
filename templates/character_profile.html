@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}character profile{% endblock %}
-<head>
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
-</head>
+{% block head %} 
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+
+{% endblock %} 
 {% block body %}
 <center>
     <h1 class="display-5"></h1>

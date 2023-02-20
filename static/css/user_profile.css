@@ -1,11 +1,4 @@
-body {
-    background-color:#041B15;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0;
-  }
-  
-  .container{
+.container{
     background-color: #50723C;
     width: 80%;
     height: 80%;
@@ -13,3 +6,11 @@ body {
     flex-direction: column;
     justify-content: center;
   }
+
+.display-5{
+    color: #D6F7A3;
+}
+
+.characters{
+    color:#603140;
+}
