@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block body %}
-<link rel="stylesheet" type="text/css" href="/static/css/user_profile.css">
+<link rel="stylesheet" type="text/css" href="/static/css/stylesheet.css">
 
 <br>
 <br>
@@ -17,13 +17,15 @@
 <br>
 <div class="container p-3 rounded-3">
   <h2 class="characters"  style="text-align: center;">Current characters: </h2>
-  <ul>
+  <ul class="namelist">
     {% for character in characters %}
       <li><a href="{{ url_for('character_info', character_id=character.character_id) }}"">{{ character.character_name }}</a></li>
     {% endfor %}
   </ul>
-  <div class="newlink"  style="text-align: center;">
-    <a href="{{ url_for('create_character') }}">CREATE NEW CHARACTER</a>
+  <div class="characterlink">
+    <div class="newlink"  style="text-align: center;">
+      <a href="{{ url_for('create_character') }}">CREATE NEW CHARACTER</a>
+    </div>
   </div>
 </div>
 {% endblock %}

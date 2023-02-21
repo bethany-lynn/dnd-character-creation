@@ -1,3 +1,43 @@
+.container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.col-6 h2.burgundy{
+  color: #603140 !important;
+}
+
+.h2{
+  font-size:x-small;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+/* user profile */
+
+.display-5{
+  color: #8B9556;
+  font-family: 'Julius Sans One', sans-serif;
+  font-size:medium;
+}
+
+.characters, .characterlink{
+  color:#6D545D;
+  font-family: 'Julius Sans One', sans-serif;
+  font-weight: 600;
+  font-size: large;
+}
+
+.namelist{
+  color:#8B9556;
+  font-family: 'Comic Neue', cursive;
+}
+
+
+/* create */
+
 h1{
   font-family: 'Julius Sans One', sans-serif;
   color: #8B9556
@@ -86,3 +126,16 @@ input[type=username] {
   border-radius:5px;  
   width: 100%;
 }
+
+input[type=submit] {
+  padding:8px;
+  border:1;
+  border-color: #eafdd0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  border-radius:50px;  
+  width: 50%;
+  font-family:  'Advent Pro', sans-serif;
+  font-weight: 500;
+  background-color: #83933B;
+}
+
