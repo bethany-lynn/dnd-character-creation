@@ -1,35 +1,39 @@
 <!doctype html>
 <html>
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
 
-<head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+    <title>
+      {% block title %}{% endblock %}
+    </title>
 
-  <title>
-    {% block title %}{% endblock %}
-  </title>
-  <link rel="stylesheet" type="text/css" href="/static/css/stylesheet.css">
-  {% block head %}
+    <link rel="stylesheet" type="text/css" href="/static/css/stylesheet.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+    
+    {% block head %}
   {% endblock %}
-</head>
 
-{% block body %}
-<body>
-  <p>
+  </head>
+
+  <body>
+    
+    {% block body %}{% endblock %}
     {% for msg in get_flashed_messages() %}
-      class="flash-msg">
-    {{ msg }}
+    <p class="flash-msg">
+    {{ msg }}</p> 
     {% endfor %}
-  </p>
+  <br>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" 
+    crossorigin="anonymous"></script>
+    <script src="/static/dragons.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
-  integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" 
-  crossorigin="anonymous"></script>
-  <script src="/static/dragons.js"></script>
-  
-</body>
-{% endblock %}
+  </body>
 
 </html>
 

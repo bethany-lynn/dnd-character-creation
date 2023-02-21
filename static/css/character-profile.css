@@ -1,0 +1,36 @@
+
+
+.accordion-button{
+    font-size: small;
+    font-style: normal;
+    font-family: fantasy;
+    color:rgb(43, 65, 51);
+}
+
+.accordion-body{
+    color:rgb(2, 55, 27);
+    font-family: Arial;
+    font-size: smaller;
+}
+
+.col-4{
+    font-size: small;
+    font-family: Arial;
+    color:rgb(6, 32, 6);
+}
+
+.character-info{
+    font-size: medium;
+    font-family: Arial;
+    color: red;
+}
+
+.dice{
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.text-center{
+    color:azure;
+    /* background-image: url(/static/img/leaves.png); */
+}

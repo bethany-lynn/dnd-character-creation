@@ -1,15 +1,88 @@
+h1{
+  font-family: 'Julius Sans One', sans-serif;
+  color: #8B9556
+}
+h5{
+  font-family:'Julius Sans One', sans-serif;
+  font-weight: 600;
+}
+
 body {
-    background-color:#041B15;
+    background-color: #041B15;
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
   }
   
-  .container{
-    background-color: #50723C;
-    width: 80%;
-    height: 80%;
+.container{
+  background-color: #c6dcba;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Julius-font{
+  font-family: 'Julius Sans One', sans-serif;
+  font-size: small;
+  font-weight: 500;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.stat-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-  }
+    align-items: center;
+    font-family: 'Julius Sans One', sans-serif;
+    font-size:small;
+    font-style: oblique;
+    font-weight: 600;
+}
+
+.stat-container input[type="number"] {
+  width: 50px;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+input[type=text] {
+  padding:10px;
+  border:0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  border-radius:10px;  
+  width: 35%;
+}
+
+input[type=email] {
+  padding:10px;
+  border:0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  border-radius:5px;  
+  width: 100%;
+}
+
+input[type=password] {
+  padding:10px;
+  border:0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  border-radius:5px;  
+  width: 100%;
+}
+
+input[type=username] {
+  padding:10px;
+  border:0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  border-radius:5px;  
+  width: 100%;
+}

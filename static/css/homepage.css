@@ -1,5 +1,4 @@
 .container{
-  background-color: #50723C;
   width: 100%;
   height: 100%;
   display: flex;
@@ -9,5 +8,9 @@
 
 .col-6 h2.burgundy{
   color: #603140 !important;
+}
+
+.h2{
+  font-size:x-small;
 }
 

@@ -11,7 +11,7 @@
 </center>
 <br>
 <br>
-<div class="container">
+<div class="container p-3 rounded-3">
   <div row>
 
 {% if character.character_class == "barbarian" %}
@@ -67,9 +67,7 @@
 <br>
 </form>
 
-
 {% endif %}
-
 
 {% if character.character_class == "bard" %}
 <form class="skill-form" id="bard-boxes" action="/character_skills" method="POST">
