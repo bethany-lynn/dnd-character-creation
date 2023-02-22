@@ -5,6 +5,7 @@ body {
   background-size: cover;
   margin: 0;
   font-family: 'Julius Sans One', sans-serif;
+  overflow: auto;
 }
 
 html {
@@ -241,6 +242,9 @@ input[type=username] {
   justify-content: space-around;
 }
 
+.classbubble{
+  background-image: url("/static/img/greenwatercolor.jpg");
+}
 .facial-features{
   display: flex;
   flex-direction: row;
