@@ -29,8 +29,8 @@
     <input type="checkbox" id="survival" value="survival" name="skill">
     <label for="survival">survival: {{character.survival}} </label>
     <br>
-
-    <div class="itemdrop">           
+  <div class="dropdown">
+    <div>           
       <section id="weapon-names">
       <h7> Select one weapon: <br/></h7>
         <select name="weapon_name">
@@ -41,7 +41,7 @@
       </section>
     </div>
         <br>    
-    <div class="itemdrop">
+    <div>
       <section id="item-names">
       <h7> Select one piece of equipment: <br/></h7>
         <select name="item_name">
@@ -52,7 +52,7 @@
       </section>
     </div>
         <br>
-    <div class="itemdrop">           
+    <div>           
       <section id="armor-names">
       <h7> Select one piece of armor: <br/></h7>
         <select name="armor_name">
@@ -62,6 +62,7 @@
         </select>          
       </section>
     </div>
+  </div>
         <br>
     <input type="submit" class="skillsubmit"/>
   </form> <br>
@@ -127,6 +128,8 @@
     <input type="checkbox" id="stealth" value="stealth" name="skill">
     <label for="stealth">stealth: {{character.stealth}} </label>
     <br>
+
+  <div class="dropdown">  
     <div>           
     <section id="spell-names">
     <h7> Select one spell:  <br/></h7>
@@ -170,6 +173,7 @@
         </select>          
       </section>
     </div>
+  </div>
         <br>
     <input type="submit" class="skillsubmit"/>
   </form><br>
@@ -196,6 +200,7 @@
       <input type="checkbox" id="history" value="history" name="skill">
       <label for="history">history: {{character.history}} </label>
 
+  <div class="dropdown">    
     <div>           
       <section id="spell-names">
       <h7> Select one spell:  <br/></h7>
@@ -239,6 +244,7 @@
         </select>          
       </section>
     </div>
+  </div>
         <br>
     <input type="submit" class="skillsubmit"/>
   </form><br>
@@ -271,6 +277,8 @@
       
       <input type="checkbox" id="religion" value="religion" name="skill">
       <label for="religion">religion: {{character.religion}} </label>
+
+  <div class="dropdown">      
     <div>           
       <section id="spell-names">
       <h7> Select one spell:  <br/></h7>
@@ -314,6 +322,7 @@
         </select>          
       </section>
     </div>
+  </div>
         <br>
     <input type="submit" class="skillsubmit"/>
   </form><br>
@@ -349,6 +358,8 @@
     <input type="checkbox" id="history" value="history" name="skill">
     <label for="history">history: {{character.history}} </label>
     <br>
+
+  <div class="dropdown">  
     <div>           
       <section id="weapon-names">
       <h7> Select one weapon:  <br/></h7>
@@ -381,6 +392,7 @@
         </select>          
       </section>
     </div>
+  </div>
         <br>
     <input type="submit" class="skillsubmit"/>
   </form><br>
@@ -409,6 +421,8 @@
     <input type="checkbox" id="stealth" value="stealth" name="skill">
     <label for="stealth">stealth: {{character.stealth}} </label>
     <br>
+    
+  <div class="dropdown">  
     <div>           
       <section id="weapon-names">
       <h7> Select one weapon:  <br/></h7>
@@ -441,6 +455,7 @@
         </select>          
       </section>
     </div>
+  </div>
         <br>
     <input type="submit" class="skillsubmit"/>
   </form><br>
@@ -469,6 +484,8 @@
     <input type="checkbox" id="religion" value="religion" name="skill">
     <label for="religion">religion: {{character.religion}} </label>
     <br>
+
+  <div class="dropdown">  
     <div>           
       <section id="spell-names">
       <h7> Select one spell:  <br/></h7>
@@ -511,7 +528,8 @@
           {% endfor %}
         </select>          
       </section>
-    </div>    
+    </div>
+  </div>    
         <br>
     <input type="submit" class="skillsubmit"/>
   </form><br>
@@ -547,6 +565,8 @@
     <input type="checkbox" id="stealth" value="stealth" name="skill">
     <label for="stealth">stealth: {{character.stealth}} </label>
     <br>
+
+  <div class="dropdown">  
     <div>           
       <section id="weapon-names">
       <h7> Select one weapon:  <br/></h7>
@@ -579,6 +599,7 @@
         </select>          
       </section>
     </div>
+  </div>
         <br>
     <input type="submit" class="skillsubmit"/>
   </form><br>
@@ -623,6 +644,8 @@
     <input type="checkbox" id="stealth" value="stealth" name="skill">
     <label for="stealth">stealth: {{character.stealth}} </label>
     <br>
+    
+  <div class="dropdown">    
     <div>           
       <section id="weapon-names">
       <h7> Select one weapon:  <br/></h7>
@@ -655,7 +678,8 @@
         </select>          
       </section>
     </div>
-        <br>
+  </div>
+    <br/>
     <input type="submit" class="skillsubmit"/>
   </form><br>
 </div>  
@@ -684,6 +708,8 @@
     <input type="checkbox" id="deception" value="deception" name="skill">
     <label for="deception">deception: {{character.deception}} </label>
     <br>
+
+  <div class="dropdown">  
     <div>           
       <section id="spell-names">
       <h7> Select one spell:  <br/></h7>
@@ -719,7 +745,7 @@
         <br>
     <div>           
       <section id="armor-names">
-      <h7> Select one piece of armor:  <br/></h7>
+      <h7> Select one piece of armor: <br/></h7>
         <select name="armor_name">
           {% for armor in armor_names %}
             <option value="{{ armor.armor_name }}">{{ armor.armor_name }}</option>
@@ -727,6 +753,7 @@
         </select>          
       </section>
     </div>
+  </div>
         <br>
     <input type="submit" class="skillsubmit"/>
   </form><br>
@@ -758,9 +785,11 @@
     <input type="checkbox" id="investigation" value="investigation" name="skill">
     <label for="investigation">investigation: {{character.investigation}} </label>
     <br>
+
+  <div class="dropdown"> 
     <div>           
       <section id="spell-names">
-      <h7> Select one spell:  <br/></h7>
+      <h7> Select one spell: <br/></h7>
         <select name="spell_name">
           {% for spell in spell_names %}
             <option value="{{ spell.spell_name }}">{{ spell.spell_name }}</option>
@@ -771,7 +800,7 @@
         <br>
     <div>           
       <section id="weapon-names">
-      <h7> Select one weapon:  <br/></h7>
+      <h7> Select one weapon: <br/></h7>
         <select name="weapon_name">
           {% for weapon in weapon_names %}
             <option value="{{ weapon.weapon_name }}">{{ weapon.weapon_name }}</option>
@@ -782,7 +811,7 @@
         <br>
     <div>
       <section id="item-names">
-      <h7> Select one piece of equipment:  <br/></h7>
+      <h7> Select one piece of equipment: <br/></h7>
         <select name="item_name">
           {% for item in item_names %}
             <option value="{{ item.item_name }}">{{ item.item_name }}</option>
@@ -793,7 +822,7 @@
         <br>
     <div>           
       <section id="armor-names">
-      <h7> Select one piece of armor:  <br/></h7>
+      <h7> Select one piece of armor: <br/></h7>
         <select name="armor_name">
           {% for armor in armor_names %}
             <option value="{{ armor.armor_name }}">{{ armor.armor_name }}</option>
@@ -801,7 +830,9 @@
         </select>          
       </section>
     </div>
-        <br>
+  </div>  
+    
+    <br>
     <input type="submit" class="skillsubmit"/>
   </form><br>
 </div>
@@ -830,10 +861,11 @@
     
     <input type="checkbox" id="investigation" value="investigation" name="skill">
     <label for="investigation">investigation: {{character.investigation}} </label>
-
+    
+  <div class="dropdown">
     <div>           
       <section id="spell-names" multiple>
-      <h7> Select one spell:  <br/></h7>
+      <h7> Select one spell: <br/></h7>
         <select name="spell_name">
           {% for spell in spell_names %}
             <option value="{{ spell.spell_name }}">{{ spell.spell_name }}</option>
@@ -844,7 +876,7 @@
 
     <div>           
       <section id="weapon-names">
-      <h7> Select one weapon:  <br/></h7>
+      <h7> Select one weapon: <br/></h7>
         <select name="weapon_name">
           {% for weapon in weapon_names %}
             <option value="{{ weapon.weapon_name }}">{{ weapon.weapon_name }}</option>
@@ -855,7 +887,7 @@
 
     <div>
       <section id="item-names">
-      <h7> Select one piece of equipment:  <br/></h7>
+      <h7> Select one piece of equipment:<br/></h7>
         <select name="item_name">
           {% for item in item_names %}
             <option value="{{ item.item_name }}">{{ item.item_name }}</option>
@@ -866,7 +898,7 @@
 
     <div>           
       <section id="armor-names">
-      <h7> Select one piece of armor:  <br/></h7>
+      <h7> Select one piece of armor: <br/></h7>
         <select name="armor_name">
           {% for armor in armor_names %}
             <option value="{{ armor.armor_name }}">{{ armor.armor_name }}</option>
@@ -874,6 +906,7 @@
         </select>          
       </section>
     </div>
+  </div>
 
     <input type="submit" class="skillsubmit"/>
   </form><br>

@@ -11,20 +11,21 @@
 
 <div class="container p-3 rounded-3">
 
-    <center>
-    <div class="roll-stats">
-      <h5>Roll dice for stats: </h5>
-    </center>
+<center>
+  <div class="roll-stats">
+    Click dice to roll for stats:
+  </div>
+</center>
 
 <div class="row">
   <div class="button-container">
     <section id="dice_roll">
-      <input type="image" src="/static/img/rainbowD20.webp" height="50px" width="50px" id="button1" class="roll_dice" name="wisdom"/>
-      <input type="image" src="/static/img/rainbowD20.webp" height="50px" width="50px" id="button2" class="roll_dice" name="charisma"/>
-      <input type="image" src="/static/img/rainbowD20.webp" height="50px" width="50px" id="button3" class="roll_dice" name="intelligence"/>
-      <input type="image" src="/static/img/rainbowD20.webp" height="50px" width="50px" id="button4" class="roll_dice" name="dexterity"/>
-      <input type="image" src="/static/img/rainbowD20.webp" height="50px" width="50px" id="button5" class="roll_dice" name="constitution"/>
-      <input type="image" src="/static/img/rainbowD20.webp" height="50px" width="50px" id="button6" class="roll_dice" name="strength"/>
+      <input type="image" src="/static/img/rainbowD20.webp" height="75px" width="75px" id="button1" class="roll_dice" name="wisdom"/>
+      <input type="image" src="/static/img/rainbowD20.webp" height="75px" width="75px" id="button2" class="roll_dice" name="charisma"/>
+      <input type="image" src="/static/img/rainbowD20.webp" height="75px" width="75px" id="button3" class="roll_dice" name="intelligence"/>
+      <input type="image" src="/static/img/rainbowD20.webp" height="75px" width="75px" id="button4" class="roll_dice" name="dexterity"/>
+      <input type="image" src="/static/img/rainbowD20.webp" height="75px" width="75px" id="button5" class="roll_dice" name="constitution"/>
+      <input type="image" src="/static/img/rainbowD20.webp" height="75px" width="75px" id="button6" class="roll_dice" name="strength"/>
     </section>
   </div>
 </div>
@@ -53,7 +54,7 @@
 <center>
 
     <div class="selecttitle">
-      <h5 class="selecttitle">Select your character's:</h5> 
+      Select your character's:
     </div>
 
   <div class="namebox">
@@ -67,7 +68,7 @@
 
   <div class="classdrop">
     <section id="class">
-      <label for="dungeons_classes"> Class: </label>
+      <h7> Class: <br/></h7>
         <select id="dungeons_classes" name="dungeons_classes">
           {% for dungeons_class in dungeons_classes %}
             <option value="{{ dungeons_class }}">{{ dungeons_class }}</option>
@@ -78,7 +79,7 @@
 
   <div class="racedrop">
   <section id="dun_race">
-    <label for="dungeons_races"> Race: </label>
+    <h7> Race: <br/></h7>
       <select id="dungeons_races" name="dungeons_races">
         {% for dungeons_race in dungeons_races %}
           <option value="{{ dungeons_race }}">{{ dungeons_race }}</option>
@@ -89,7 +90,7 @@
 
   <div class="alignmentdrop">           
   <section id="alignment">
-      <h7> Alignment: </h7>
+      <h7> Alignment: <br/></h7>
         <select id="dungeons_alignments" name="dungeons_alignments">
           {% for dungeons_alignment in dungeons_alignments %}
             <option value="{{ dungeons_alignment }}">{{ dungeons_alignment }}</option>
@@ -100,7 +101,7 @@
 
   <div class="genderdrop">
     <section id="gender">
-      <h7> Gender: </h7>
+      <h7> Gender: <br/></h7>
         <select id="dungeons_genders" name="dungeons_genders">
           {% for dungeons_gender in dungeons_genders %}
             <option value="{{ dungeons_gender }}">{{ dungeons_gender }}</option>
@@ -111,7 +112,7 @@
 
   <div class="eyedrop">
     <section id="eye-color">
-      <h7> Eye color: </h7>
+      <h7> Eye color: <br/></h7>
         <select id="dungeons_eye_colors" name="dungeons_eye_colors">
           {% for dungeons_eye_color in dungeons_eye_colors %}
             <option value="{{ dungeons_eye_color }}">{{ dungeons_eye_color }}</option>
@@ -122,7 +123,7 @@
 
   <div class="hairdrop">           
     <section id="hair-color">
-      <h7> Hair color: </h7>
+      <h7> Hair color: <br/></h7>
         <select id="dungeons_hair_colors" name="dungeons_hair_colors">
           {% for dungeons_hair_color in dungeons_hair_colors %}
             <option value="{{ dungeons_hair_color }}">{{ dungeons_hair_color }}</option>
@@ -130,8 +131,8 @@
         </select>
     </section>
   </div>
-  <br> 
-  
+  <br/> 
+  <br/>
   </div>
   <input type="submit" class="createsubmit"/>
 </center>

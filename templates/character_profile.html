@@ -15,7 +15,7 @@ crossorigin="anonymous"></script>
 {% block body %}
 <link rel="stylesheet" type="text/css" href="/static/css/stylesheet.css">
 
-<div class="header">
+<div class="headerbanner">
     <figure class="text-center">
       <blockquote class="blockquote">
         <hi class="display-6">{{ character.character_name }}'s sheet</hi>
@@ -49,12 +49,12 @@ crossorigin="anonymous"></script>
       </div>
 
       <div class="statistics">
-        <p>wisdom: <br/><span id="dice_roll">{{ character.wisdom }}</span></p>
-        <p>charisma: <br/><span id="dice_roll">{{ character.charisma }}</span></p>
-        <p>intelligence: <br/><span id="dice_roll">{{ character.intelligence }}</span></p>
-        <p>dexterity: <br/><span id="dice_roll">{{ character.dexterity }}</span></p>
-        <p>constitution: <br/><span id="dice_roll">{{ character.constitution }}</span></p>
-        <p>strength: <br/><span id="dice_roll">{{ character.strength }}</span></p>
+        <p>wisdom: <span id="dice_roll">{{ character.wisdom }}</span></p>
+        <p>charisma: <span id="dice_roll">{{ character.charisma }}</span></p>
+        <p>intelligence: <span id="dice_roll">{{ character.intelligence }}</span></p>
+        <p>dexterity: <span id="dice_roll">{{ character.dexterity }}</span></p>
+        <p>constitution: <span id="dice_roll">{{ character.constitution }}</span></p>
+        <p>strength: <span id="dice_roll">{{ character.strength }}</span></p>
       </div>  
 
 </div>
@@ -122,6 +122,7 @@ crossorigin="anonymous"></script>
 </div>
 
 <div class="accordion" id="accordionPanelsStayOpenExample">
+
   <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
@@ -130,34 +131,21 @@ crossorigin="anonymous"></script>
         {% endfor %}
       </button>
     </h2>
+
     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
       <div class="accordion-body">
         <strong>        
           {% for weapon in character.character_weapons %} 
-            damage type: {{ weapon.weapons_table.damage_type }}
-          {% endfor %}
-        </strong>
-      <br />
-        <strong>        
-          {% for weapon in character.character_weapons %} 
-            weapon range: {{ weapon.weapons_table.weapon_range }}
-          {% endfor %}
-        </strong>
-      <br />
-        <strong>        
-          {% for weapon in character.character_weapons %} 
-            cost: {{ weapon.weapons_table.cost }}
-          {% endfor %}
-        </strong>
-      <br />
-        <strong>        
-          {% for weapon in character.character_weapons %} 
+            damage type: {{ weapon.weapons_table.damage_type }} <br/>
+            weapon range: {{ weapon.weapons_table.weapon_range }} <br/>
+            cost: {{ weapon.weapons_table.cost }} <br/>
             weight: {{ weapon.weapons_table.weight }}
           {% endfor %}
-        </strong> 
+        </strong>
       </div>      
     </div>
   </div>
+
   <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
@@ -166,6 +154,7 @@ crossorigin="anonymous"></script>
         {% endfor %}
       </button>      
     </h2>
+
     <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
       <div class="accordion-body">
         <strong>        
@@ -187,28 +176,14 @@ crossorigin="anonymous"></script>
         {% endfor %}
       </button>      
     </h2>
+
     <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
       <div class="accordion-body">
         <strong>        
           {% for armor in character.character_armor %} 
-            strength minimum: {{ armor.armor_table.str_minimum }}
-          {% endfor %}
-        </strong>
-      <br />
-        <strong>        
-          {% for armor in character.character_armor %} 
-            stealth disadvantage: {{ armor.armor_table.stealth_disadvantage }}
-          {% endfor %}
-        </strong>
-      <br />
-        <strong>        
-          {% for armor in character.character_armor %} 
-            cost: {{ armor.armor_table.cost }}
-          {% endfor %}
-        </strong>
-      <br />
-        <strong>        
-          {% for armor in character.character_armor %} 
+            strength minimum: {{ armor.armor_table.str_minimum }} <br/>
+            stealth disadvantage: {{ armor.armor_table.stealth_disadvantage }} <br/>
+            cost: {{ armor.armor_table.cost }} <br/>
             weight: {{ armor.armor_table.weight }}
           {% endfor %}
         </strong>
@@ -224,49 +199,24 @@ crossorigin="anonymous"></script>
         {% endfor %}
       </button>      
     </h2>
+
     <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
       <div class="accordion-body">
         <strong>        
           {% for spell in character.character_spells %} 
-            spell level: {{ spell.spells.spell_level }}
+            spell level: {{ spell.spells.spell_level }} <br/>
+            level: {{ spell.spells.spell_level }} <br/>
+            range: {{ spell.spells.spell_range }} <br/>
+            casting time: {{ spell.spells.cast_time }} <br/>
+            components: {{ spell.spells.components }} <br/>
+            higher level: {{ spell.spells.higher_level }} <br/>
           {% endfor %}
-        </strong>
-      <br />
-        <strong>        
-          {% for spell in character.character_spells %} 
-            level: {{ spell.spells.spell_level }}
-          {% endfor %}
-        </strong>
-      <br />
-        <strong>        
-          {% for spell in character.character_spells %} 
-            range: {{ spell.spells.spell_range }}
-          {% endfor %}
-        </strong>
-      <br />
-        <strong>        
-          {% for spell in character.character_spells %} 
-            casting time: {{ spell.spells.cast_time }}
-          {% endfor %}
-        </strong> 
-      <br />
-        <strong>        
-          {% for spell in character.character_spells %} 
-            components: {{ spell.spells.components }}
-          {% endfor %}
-        </strong>
-      <br />
-        <strong>        
-          {% for spell in character.character_spells %} 
-            higher level: {{ spell.spells.higher_level }}
-          {% endfor %}
-        </strong>
       </div>
     </div>    
   </div>
+
 </div>
 <br>
 <br>
-
 {% endblock %}
 
