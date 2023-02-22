@@ -242,9 +242,18 @@ input[type=username] {
   justify-content: space-around;
 }
 
-.classbubble{
-  background-image: url("/static/img/greenwatercolor.jpg");
+.classbubble, .racebubble, .alignmentbubble {
+  background: linear-gradient(#8B9556, #383307);
+  background-size:50%;
+  padding: 15px;
+  border-radius: 17px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-size: 17px;
 }
+
+
+
+
 .facial-features{
   display: flex;
   flex-direction: row;
