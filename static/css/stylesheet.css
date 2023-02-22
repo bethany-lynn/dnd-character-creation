@@ -230,45 +230,33 @@ input[type=username] {
   box-sizing: 0 0 4px rgba(0, 0, 0, 0.5);
 }
 
-.character-info{
-  font-size: 15px;
-  font-weight: 700;
-  color: #1C3A13;
+/* .character-info{
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-}
-
-.classbubble, .racebubble, .alignmentbubble, .genderbubble, .eyebubble, .hairbubble {
-  background: linear-gradient(#8aefe0, #185c4f);
+} */
+/* 
+.bubble1 {
+  background: linear-gradient(#adcb54, #247062);
   padding: 10px;
   border-radius: 17px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   font-size: 13px;
+} */
+
+
+.bubble1, .bubble2, .bubble3, .bubble4, .bubble5, .bubble6, .bubble7 {
+  background: linear-gradient(#8B9556, #185c4f);
+  padding: 10px;
+  border-radius: 17px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-size: 15px;
+  font-weight: 700;
+  color: #1C3A13;
 }
 
-/* 
-.starting-info{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-} */
-
-/* .facial-features{
-  /* display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-} */
-/* 
-.statistics{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-around;
-} */ */
 
 /* code for dropdown menus universally */
 .dropdown {
@@ -287,6 +275,24 @@ input[type=username] {
   box-sizing: border-box;
 }
 
+.container .dice-image{
+  width: 50%;
+  max-width: 50%;
+  box-sizing: border-box;
+  float: right;
+  margin-left: 10px;
+}
+
+.accordion-item{
+  color: #1C3A13;
+  background-color: #7e9378;
+  text-align: center;
+}
+
+.accordion-button{
+  background-color:#11330e;
+  text-align: center;
+}
 
 h7 {
   margin-bottom: 10px;

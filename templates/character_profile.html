@@ -34,66 +34,106 @@ crossorigin="anonymous"></script>
 
 <p></p>
 <div class="container p-3 rounded-3">
-  <div class="character-info">
 
-      <div class="starting-info">
-        <p class="classbubble">Class: <br/><span id="class">{{ character.character_class }}</span></p>
-        <p class="racebubble">Race: <br/><span id="race">{{ character.race }}</span></p>
-        <p class="alignmentbubble">Alignment: <br/><span id="alignment">{{ character.alignment }}</span></p>
+
+  <div class="row">
+    <div class="col-2">
+      <div class="bubble1">
+        <p>Class: <br/><span id="class">{{ character.character_class }}</span></p>
+        <p>Race: <br/><span id="race">{{ character.race }}</span></p>
       </div>
-
-      <div class="facial-features">
-        <p class="genderbubble">Gender: <br/><span id="gender">{{ character.gender }}</span></p>
-        <p class="eyebubble">Eye Color: <br/><span id="eye-color">{{ character.eye_color }}</span></p>
-        <p class="hairbubble">Hair Color: <br/><span id="hair-color">{{ character.hair_color }}</span></p>
+    </div>
+    <div class="col-2">
+      <div class="bubble2">
+        <p>Alignment: <br/><span id="alignment">{{ character.alignment }}</span></p>
+        <p>Gender: <br/><span id="gender">{{ character.gender }}</span></p>
       </div>
+    </div>
+    <div class="col-4">
+      <img src="/static/img/rainbowD20.webp" height="50px" width="50px"/>
+    </div>
+    <div class="col-2">
+      <div class="bubble3">
+        <p>Eyes: <br/><span id="eye-color">{{ character.eye_color }}</span></p>
+        <p>Hair: <br/><span id="hair-color">{{ character.hair_color }}</span></p>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="bubble4">
+        character level: <br/>
+        <span id="character_level">{{ character.char_level }}</span>
+      </div>
+    </div>    
+  </div>
 
-      <div class="statistics">
+  <br/>
+
+  <div class="row">
+    <div class="col-4">
+      <img src="/static/img/rainbowD20.webp" height="75px" width="75px"/>
+    </div>
+    <div class="col-4">
+      <div class="bubble5">
+        languages:
+        <span id="languages">
+        <ul>
+            {% for language in character.language.split("+") %}
+                <li>{{language}}</li>
+            {% endfor %}
+        </ul>
+        </span>
+        speed: <br/>
+        <span id="walking_speed">{{ character.char_walking_speed }}</span>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="bubble6">
+        current hit points:
+        <span id="hit_points">{{ character.current_hit_points }}</span> <br/>
+        total hit points:
+        <span id="total_hit_points">{{ character.total_hit_points }}</span> <br/>
+        hit die:
+        <span id="hit_dice">{{ character.char_hit_die }}</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-3">
+      <div class="bubble7">
         <p>wisdom: <span id="dice_roll">{{ character.wisdom }}</span></p>
         <p>charisma: <span id="dice_roll">{{ character.charisma }}</span></p>
         <p>intelligence: <span id="dice_roll">{{ character.intelligence }}</span></p>
         <p>dexterity: <span id="dice_roll">{{ character.dexterity }}</span></p>
         <p>constitution: <span id="dice_roll">{{ character.constitution }}</span></p>
         <p>strength: <span id="dice_roll">{{ character.strength }}</span></p>
-      </div>  
-
+      </div>
+    </div>
+    <div class="col-9">
+        <img src="https://s.clipartkey.com/mpngs/s/33-339887_this-is-a-ding-talk-shit-get-crit.png" class="img-fluid" alt="A D20 with florals">
+    </div>
   </div>
 
-<p></p>
-<div class="row"><div class="col-4">
-    <section>
-      character level:
-      <span id="character_level">{{ character.char_level }}</span>
-      <p></p>
-      hit die:
-      <span id="hit_dice">{{ character.char_hit_die }}</span>
-      <p></p>
-      walking speed:
-      <span id="walking_speed">{{ character.char_walking_speed }}</span>
-    </section>
-</div>
-<div class="col-4">
-    languages:
-    <p></p>
-    <span id="languages">
-    <ul>
-        {% for language in character.language.split("+") %}
-            <li>{{language}}</li>
-        {% endfor %}
-    </ul>
-    </span>
-</div>
-<div class="col-4">
-    current hit points:
-        <span id="hit_points">{{ character.current_hit_points }}</span>
-<p></p>
-    total hit points:
-        <span id="total_hit_points">{{ character.total_hit_points }}</span>
-</div></div>
+  <div class="row">
+    <div class-col-1></div>
+  </div>
 
-<p></p>
+
+
+
+
+      <div class="statistics">
+
+      </div>  
+
+
+
+
+
 <div class="row">
-  <div class="col-4">
+  <div class="bubble8">
+    <div class="col-4">
     <span id="skills"> skills:
       <p>Animal handling: {{ character.animal_handling }}</p>
       <p>Acrobatics: {{ character.acrobatics }}</p>
@@ -119,7 +159,9 @@ crossorigin="anonymous"></script>
       <p>Survival: {{ character.survival }}</p>
     </span>
     </div>
+  </div>
 </div>
+
 
 <div class="accordion" id="accordionPanelsStayOpenExample">
 
