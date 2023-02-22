@@ -36,7 +36,7 @@ crossorigin="anonymous"></script>
 <div class="container p-3 rounded-3">
 
 
-  <div class="row">
+  <div class="row one">
     <div class="col-2">
       <div class="bubble1">
         <p>Class: <br/><span id="class">{{ character.character_class }}</span></p>
@@ -50,7 +50,7 @@ crossorigin="anonymous"></script>
       </div>
     </div>
     <div class="col-4">
-      <img src="/static/img/rainbowD20.webp" height="50px" width="50px"/>
+      <img src="/static/img/rainbowD20.webp" height="200px" width="200px"/>
     </div>
     <div class="col-2">
       <div class="bubble3">
@@ -68,26 +68,44 @@ crossorigin="anonymous"></script>
 
   <br/>
 
-  <div class="row">
-    <div class="col-4">
-      <img src="/static/img/rainbowD20.webp" height="75px" width="75px"/>
-    </div>
-    <div class="col-4">
+  <div class="row two">
+    <div class="col-6">
       <div class="bubble5">
-        languages:
+        <p>wisdom: <span id="dice_roll">{{ character.wisdom }}</span></p>
+        <p>charisma: <span id="dice_roll">{{ character.charisma }}</span></p>
+        <p>intelligence: <span id="dice_roll">{{ character.intelligence }}</span></p>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="bubble6">
+        <p>dexterity: <span id="dice_roll">{{ character.dexterity }}</span></p>
+        <p>constitution: <span id="dice_roll">{{ character.constitution }}</span></p>
+        <p>strength: <span id="dice_roll">{{ character.strength }}</span></p>
+      </div>
+    </div>
+  </div>
+
+<br/>
+
+  <div class="row three">
+    <div class="col-4">
+      <div class="bubble6">
         <span id="languages">
-        <ul>
-            {% for language in character.language.split("+") %}
-                <li>{{language}}</li>
-            {% endfor %}
-        </ul>
-        </span>
-        speed: <br/>
-        <span id="walking_speed">{{ character.char_walking_speed }}</span>
+          languages:
+          <ul>
+              {% for language in character.language.split("+") %}
+                  <li>{{language}}</li>
+              {% endfor %}
+          </ul>
+          </span>
+          speed: <br/>
+          <span id="walking_speed">{{ character.char_walking_speed }}</span>
       </div>
     </div>
     <div class="col-4">
-      <div class="bubble6">
+
+
+      <div class="bubble8">
         current hit points:
         <span id="hit_points">{{ character.current_hit_points }}</span> <br/>
         total hit points:
@@ -95,164 +113,144 @@ crossorigin="anonymous"></script>
         hit die:
         <span id="hit_dice">{{ character.char_hit_die }}</span>
       </div>
+
+    </div>
+      <div class="col-4">
+      <img src="https://preview.redd.it/yhu2fxh4p1x51.png?auto=webp&s=e4f2e71f5dab1876921ead77c9f1cfe7fcb2a165" class="img-fluid"  height="155px" width="155px" alt="A D20 with florals">
     </div>
   </div>
 
+<br/>
 
-  <div class="row">
-    <div class="col-3">
-      <div class="bubble7">
-        <p>wisdom: <span id="dice_roll">{{ character.wisdom }}</span></p>
-        <p>charisma: <span id="dice_roll">{{ character.charisma }}</span></p>
-        <p>intelligence: <span id="dice_roll">{{ character.intelligence }}</span></p>
-        <p>dexterity: <span id="dice_roll">{{ character.dexterity }}</span></p>
-        <p>constitution: <span id="dice_roll">{{ character.constitution }}</span></p>
-        <p>strength: <span id="dice_roll">{{ character.strength }}</span></p>
+  <div class="row four">
+      <div class="col-4">
+        <p>Animal handling: {{ character.animal_handling }}</p>
+        <p>Acrobatics: {{ character.acrobatics }}</p>
+        <p>Arcana: {{ character.arcana }}</p>
+        <p>Athletics: {{ character.athletics }}</p>
+        <p>Deception: {{ character.deception }}</p>
+        <p>History: {{ character.history }}</p>
+      </div>
+      <div class="col-4">
+        <p>Insight: {{ character.insight }}</p>
+        <p>Intimidation: {{ character.intimidation }}</p>
+        <p>Investigation: {{ character.investigation }}</p>
+        <p>Medicine: {{ character.medicine }}</p>
+        <p>Nature: {{ character.nature }}</p>
+        <p>Perception: {{ character.perception }}</p>
+      </div>
+      <div class="col-4">
+        <p>Performance: {{ character.performance }}</p>
+        <p>Persuasion: {{ character.persuasion }}</p>
+        <p>Religion: {{ character.religion }}</p>
+        <p>Sleight of hand: {{ character.sleight_of_hand }}</p>
+        <p>Stealth: {{ character.stealth }}</p>
+        <p>Survival: {{ character.survival }}
+      </div>
+  </div>
+<br/>
+
+<div class="row five">
+  <div class="col-6">
+    <div class="bubble9">
+      <img src="https://www.freeiconspng.com/uploads/green-gothic-dragon-icon-0.png     " height="250" width="250" class="img-fluid"  height="50px" width="50px" alt="A D20 with florals">
+    </div>
+  </div>
+  <div class="col-6">
+  <div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+          {% for weapon in character.character_weapons %} 
+            {{ weapon.weapons_table.weapon_name }}
+          {% endfor %}
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+        <div class="accordion-body">
+          <strong>        
+            {% for weapon in character.character_weapons %} 
+              damage type: {{ weapon.weapons_table.damage_type }} <br/>
+              weapon range: {{ weapon.weapons_table.weapon_range }} <br/>
+              cost: {{ weapon.weapons_table.cost }} <br/>
+              weight: {{ weapon.weapons_table.weight }}
+            {% endfor %}
+          </strong>
+        </div>      
       </div>
     </div>
-    <div class="col-9">
-        <img src="https://s.clipartkey.com/mpngs/s/33-339887_this-is-a-ding-talk-shit-get-crit.png" class="img-fluid" alt="A D20 with florals">
+  
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+          {% for item in character.inventory_table %} 
+            {{ item.inventory_items.item_name }}
+          {% endfor %}
+        </button>      
+      </h2>
+      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+        <div class="accordion-body">
+          <strong>        
+            {% for item in character.inventory_table %} 
+              type: {{ item.inventory_items.item_type }} <br/>
+              cost: {{ item.inventory_items.tracking_cost }} <br/>
+              weight: {{ item.inventory_items.item_weight }}
+            {% endfor %}
+          </strong>
+        </div>
+      </div>    
     </div>
-  </div>
-
-  <div class="row">
-    <div class-col-1></div>
-  </div>
-
-
-
-
-
-      <div class="statistics">
-
-      </div>  
-
-
-
-
-
-<div class="row">
-  <div class="bubble8">
-    <div class="col-4">
-    <span id="skills"> skills:
-      <p>Animal handling: {{ character.animal_handling }}</p>
-      <p>Acrobatics: {{ character.acrobatics }}</p>
-      <p>Arcana: {{ character.arcana }}</p>
-      <p>Athletics: {{ character.athletics }}</p>
-      <p>Deception: {{ character.deception }}</p>
-      <p>History: {{ character.history }}</p>
-  </div>    
-    <div class="col-4">
-      <p>Insight: {{ character.insight }}</p>
-      <p>Intimidation: {{ character.intimidation }}</p>
-      <p>Investigation: {{ character.investigation }}</p>
-      <p>Medicine: {{ character.medicine }}</p>
-      <p>Nature: {{ character.nature }}</p>
-      <p>Perception: {{ character.perception }}</p>
+  
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+          {% for armor in character.character_armor %} 
+            {{ armor.armor_table.armor_name }}
+          {% endfor %}
+        </button>      
+      </h2>
+      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+        <div class="accordion-body">
+          <strong>        
+            {% for armor in character.character_armor %} 
+              strength minimum: {{ armor.armor_table.str_minimum }} <br/>
+              stealth disadvantage: {{ armor.armor_table.stealth_disadvantage }} <br/>
+              cost: {{ armor.armor_table.cost }} <br/>
+              weight: {{ armor.armor_table.weight }}
+            {% endfor %}
+          </strong>
+        </div>      
+      </div>    
     </div>
-    <div class="col-4">
-      <p>Performance: {{ character.performance }}</p>
-      <p>Persuasion: {{ character.persuasion }}</p>
-      <p>Religion: {{ character.religion }}</p>
-      <p>Sleight of hand: {{ character.sleight_of_hand }}</p>
-      <p>Stealth: {{ character.stealth }}</p>
-      <p>Survival: {{ character.survival }}</p>
-    </span>
+  
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+          {% for spell in character.character_spells %} 
+            {{ spell.spells.spell_name }}
+          {% endfor %}
+        </button>      
+      </h2>
+      <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+        <div class="accordion-body">
+          <strong>        
+            {% for spell in character.character_spells %} 
+              spell level: {{ spell.spells.spell_level }} <br/>
+              level: {{ spell.spells.spell_level }} <br/>
+              range: {{ spell.spells.spell_range }} <br/>
+              casting time: {{ spell.spells.cast_time }} <br/>
+              components: {{ spell.spells.components }} <br/>
+              higher level: {{ spell.spells.higher_level }} <br/>
+            {% endfor %}
+        </div>
+       </div>    
+      </div>
     </div>
-  </div>
+</div>
 </div>
 
 
-<div class="accordion" id="accordionPanelsStayOpenExample">
 
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
-        {% for weapon in character.character_weapons %} 
-          {{ weapon.weapons_table.weapon_name }}
-        {% endfor %}
-      </button>
-    </h2>
-    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
-      <div class="accordion-body">
-        <strong>        
-          {% for weapon in character.character_weapons %} 
-            damage type: {{ weapon.weapons_table.damage_type }} <br/>
-            weapon range: {{ weapon.weapons_table.weapon_range }} <br/>
-            cost: {{ weapon.weapons_table.cost }} <br/>
-            weight: {{ weapon.weapons_table.weight }}
-          {% endfor %}
-        </strong>
-      </div>      
-    </div>
-  </div>
-
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-        {% for item in character.inventory_table %} 
-          {{ item.inventory_items.item_name }}
-        {% endfor %}
-      </button>      
-    </h2>
-    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-      <div class="accordion-body">
-        <strong>        
-          {% for item in character.inventory_table %} 
-            type: {{ item.inventory_items.item_type }} <br/>
-            cost: {{ item.inventory_items.tracking_cost }} <br/>
-            weight: {{ item.inventory_items.item_weight }}
-          {% endfor %}
-        </strong>
-      </div>
-    </div>    
-  </div>
-
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-        {% for armor in character.character_armor %} 
-          {{ armor.armor_table.armor_name }}
-        {% endfor %}
-      </button>      
-    </h2>
-    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-      <div class="accordion-body">
-        <strong>        
-          {% for armor in character.character_armor %} 
-            strength minimum: {{ armor.armor_table.str_minimum }} <br/>
-            stealth disadvantage: {{ armor.armor_table.stealth_disadvantage }} <br/>
-            cost: {{ armor.armor_table.cost }} <br/>
-            weight: {{ armor.armor_table.weight }}
-          {% endfor %}
-        </strong>
-      </div>      
-    </div>    
-  </div>
-
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="panelsStayOpen-headingFour">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
-        {% for spell in character.character_spells %} 
-          {{ spell.spells.spell_name }}
-        {% endfor %}
-      </button>      
-    </h2>
-    <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
-      <div class="accordion-body">
-        <strong>        
-          {% for spell in character.character_spells %} 
-            spell level: {{ spell.spells.spell_level }} <br/>
-            level: {{ spell.spells.spell_level }} <br/>
-            range: {{ spell.spells.spell_range }} <br/>
-            casting time: {{ spell.spells.cast_time }} <br/>
-            components: {{ spell.spells.components }} <br/>
-            higher level: {{ spell.spells.higher_level }} <br/>
-          {% endfor %}
-      </div>
-    </div>    
-  </div>
- </div>
 </div>
 <br>
 <br>
