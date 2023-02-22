@@ -167,6 +167,22 @@ html {
   border-radius: 10px;
 }
 
+.savesheet {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.footer {
+  font-size: 30px;
+  color:#8B9556;
+  font-weight: 700;
+}
+
+.blockquote {
+  font-size: 25px;
+  color:#7e9378;
+  font-weight: 700;
+}
 
 input[type=text] {
   padding:10px;
@@ -174,6 +190,10 @@ input[type=text] {
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:10px;  
   width: 35%;
+}
+
+.savecharacterlink {
+  font-size: 35px;
 }
 
 input[type=email] {
@@ -230,22 +250,6 @@ input[type=username] {
   box-sizing: 0 0 4px rgba(0, 0, 0, 0.5);
 }
 
-/* .character-info{
-
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-} */
-/* 
-.bubble1 {
-  background: linear-gradient(#adcb54, #247062);
-  padding: 10px;
-  border-radius: 17px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  font-size: 13px;
-} */
-
 
 .bubble1, .bubble2, .bubble3, .bubble4, .bubble5, .bubble6, .bubble7, .bubble8, .row.four {
   background: linear-gradient(#8a955662, #185c503a);
@@ -257,8 +261,6 @@ input[type=username] {
   color: #1C3A13;
 }
 
-
-/* code for dropdown menus universally */
 .dropdown {
   display: flex;
   flex-wrap: wrap;
@@ -268,7 +270,6 @@ input[type=username] {
   margin-bottom: 10px;
   gap: 10px;
 }
-
 
 .container .dice-image{
   width: 50%;
