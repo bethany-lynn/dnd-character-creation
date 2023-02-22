@@ -34,9 +34,10 @@ function rollDie(numRolls, numToKeep, button) {
     for (let i = 0; i < numToKeep; i++) {
         total += rolls[i];
     }
-    const newElement = document.createElement("span");
-    newElement.innerHTML = total;
-    button.insertAdjacentElement("afterend", newElement);
+    // const newElement = document.createElement("span");
+    // newElement.innerHTML = total;
+    // button.insertAdjacentElement("afterend", newElement);
+    
     button.setAttribute("disabled", true);
     let stat = button.getAttribute("name");
     results[stat] = total;

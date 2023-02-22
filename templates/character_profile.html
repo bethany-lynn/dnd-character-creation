@@ -13,10 +13,8 @@ crossorigin="anonymous"></script>
 
 {% endblock %} 
 {% block body %}
-<link rel="stylesheet" type="text/css" href="/static/css/character-profile.css">
-<center>
-    <h1 class="display-5"></h1>
-</center>
+<link rel="stylesheet" type="text/css" href="/static/css/stylesheet.css">
+
 <div class="header">
     <figure class="text-center">
       <blockquote class="blockquote">
@@ -37,26 +35,28 @@ crossorigin="anonymous"></script>
 <p></p>
 <div class="container p-3 rounded-3">
   <div class="character-info">
-    <div class="row">
-    <div class="col-3">
-        <p>Class: <span id="class">{{ character.character_class }}</span></p>
-        <p>Race: <span id="race">{{ character.race }}</span></p>
-        <p>Alignment: <span id="alignment">{{ character.alignment }}</span></p>
-    </div>
-    <div class="col-3">
-        <p>Gender: <span id="gender">{{ character.gender }}</span></p>
-        <p>Eye Color: <span id="eye-color">{{ character.eye_color }}</span></p>
-        <p>Hair Color: <span id="hair-color">{{ character.hair_color }}</span></p>
-    </div>
-    <div class="col-6">
-        <p>wisdom: <span id="dice_roll">{{ character.wisdom }}</span></p>
-        <p>charisma: <span id="dice_roll">{{ character.charisma }}</span></p>
-        <p>intelligence: <span id="dice_roll">{{ character.intelligence }}</span></p>
-        <p>dexterity: <span id="dice_roll">{{ character.dexterity }}</span></p>
-        <p>constitution: <span id="dice_roll">{{ character.constitution }}</span></p>
-        <p>strength: <span id="dice_roll">{{ character.strength }}</span></p>
-    </div>
-</div>
+
+      <div class="starting-info">
+        <p>Class: <br/><span id="class">{{ character.character_class }}</span></p>
+        <p>Race: <br/><span id="race">{{ character.race }}</span></p>
+        <p>Alignment: <br/><span id="alignment">{{ character.alignment }}</span></p>
+      </div>
+
+      <div class="facial-features">
+        <p>Gender: <br/><span id="gender">{{ character.gender }}</span></p>
+        <p>Eye Color: <br/><span id="eye-color">{{ character.eye_color }}</span></p>
+        <p>Hair Color: <br/><span id="hair-color">{{ character.hair_color }}</span></p>
+      </div>
+
+      <div class="statistics">
+        <p>wisdom: <br/><span id="dice_roll">{{ character.wisdom }}</span></p>
+        <p>charisma: <br/><span id="dice_roll">{{ character.charisma }}</span></p>
+        <p>intelligence: <br/><span id="dice_roll">{{ character.intelligence }}</span></p>
+        <p>dexterity: <br/><span id="dice_roll">{{ character.dexterity }}</span></p>
+        <p>constitution: <br/><span id="dice_roll">{{ character.constitution }}</span></p>
+        <p>strength: <br/><span id="dice_roll">{{ character.strength }}</span></p>
+      </div>  
+
 </div>
 
 <p></p>
@@ -170,18 +170,8 @@ crossorigin="anonymous"></script>
       <div class="accordion-body">
         <strong>        
           {% for item in character.inventory_table %} 
-            type: {{ item.inventory_items.item_type }}
-          {% endfor %}
-        </strong>
-      <br />
-        <strong>        
-          {% for item in character.inventory_table %} 
-            cost: {{ item.inventory_items.tracking_cost }} 
-          {% endfor %}
-        </strong>
-      <br />
-        <strong>        
-          {% for item in character.inventory_table %} 
+            type: {{ item.inventory_items.item_type }} <br/>
+            cost: {{ item.inventory_items.tracking_cost }} <br/>
             weight: {{ item.inventory_items.item_weight }}
           {% endfor %}
         </strong>

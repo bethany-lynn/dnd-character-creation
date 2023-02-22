@@ -3,37 +3,36 @@
 
 {% block body %}
 <link rel="stylesheet" type="text/css" href="/static/css/stylesheet.css">
-<br>
-<br>
+
 
 <center>
-    <h1 class="display-6">Begin creating your character!</h1>
+  <h1 class="display-6">Begin creating your character!</h1>
 </center>
-<br>
-<br>
 
 <div class="container p-3 rounded-3">
-<center>
-  <div class="roll-stats">
-  <h5>Roll for stats: </h5>
-  </div>
-</center>    
+
+    <center>
+    <div class="roll-stats">
+      <h5>Roll dice for stats: </h5>
+    </center>
+
 <div class="row">
   <div class="button-container">
-  <section id="dice_roll">
-    <input type="image" src="/static/img/pinkD20.webp" height="40px" width="40px" id="button1" class="roll_dice" name="wisdom"/>
-    <input type="image" src="/static/img/pinkD20.webp" height="40px" width="40px" id="button2" class="roll_dice" name="charisma"/>
-    <input type="image" src="/static/img/pinkD20.webp" height="40px" width="40px" id="button3" class="roll_dice" name="intelligence"/>
-    <input type="image" src="/static/img/pinkD20.webp" height="40px" width="40px" id="button4" class="roll_dice" name="dexterity"/>
-    <input type="image" src="/static/img/pinkD20.webp" height="40px" width="40px" id="button5" class="roll_dice" name="constitution"/>
-    <input type="image" src="/static/img/pinkD20.webp" height="40px" width="40px" id="button6" class="roll_dice" name="strength"/>
-  </section>
+    <section id="dice_roll">
+      <input type="image" src="/static/img/rainbowD20.webp" height="50px" width="50px" id="button1" class="roll_dice" name="wisdom"/>
+      <input type="image" src="/static/img/rainbowD20.webp" height="50px" width="50px" id="button2" class="roll_dice" name="charisma"/>
+      <input type="image" src="/static/img/rainbowD20.webp" height="50px" width="50px" id="button3" class="roll_dice" name="intelligence"/>
+      <input type="image" src="/static/img/rainbowD20.webp" height="50px" width="50px" id="button4" class="roll_dice" name="dexterity"/>
+      <input type="image" src="/static/img/rainbowD20.webp" height="50px" width="50px" id="button5" class="roll_dice" name="constitution"/>
+      <input type="image" src="/static/img/rainbowD20.webp" height="50px" width="50px" id="button6" class="roll_dice" name="strength"/>
+    </section>
   </div>
 </div>
-  <form action="/create_character" method="POST">
+
+<form action="/create_character" method="POST">
   <div class="stat-container">
     <section class="stat-result-numbers">
-     <p></p>
+     <br>
      wisdom:
      <input type="number" id ="wisdom-stat" name="wisdom-stat" readonly="readonly">
      charisma:
@@ -49,82 +48,97 @@
      <input type="number" id="strength-stat" name="strength-stat" readonly="readonly">
     </section>
   </div> 
+
 <br>  
-  <center>
-  <div class="selecttitle">
-    <h5>Select your character's:</h5> 
-  </div>
-<div class="Julius-font">
-<section id="char_name">
-    <label for="char_name">  </label>
-    <input type="text" id="character-name" name="char_name" placeholder="Name" required />
-</section>
-<br>
-<div>
-<section id="class">
-    <label for="dungeons_classes"> Class: </label>
+<center>
+
+    <div class="selecttitle">
+      <h5 class="selecttitle">Select your character's:</h5> 
+    </div>
+
+  <div class="namebox">
+    <section id="char_name">
+      <label for="char_name">  </label>
+      <input type="text" id="character-name" name="char_name" placeholder="Name" required />
+    </section>
+  </div><br>
+
+ <div class="dropdown">
+
+  <div class="classdrop">
+    <section id="class">
+      <label for="dungeons_classes"> Class: </label>
         <select id="dungeons_classes" name="dungeons_classes">
-            {% for dungeons_class in dungeons_classes %}
-                <option value="{{ dungeons_class }}">{{ dungeons_class }}</option>
-            {% endfor %}
+          {% for dungeons_class in dungeons_classes %}
+            <option value="{{ dungeons_class }}">{{ dungeons_class }}</option>
+          {% endfor %}
         </select>
-</section>
-</div>
-<div>
-<section id="dun_race">
+    </section>
+  </div>
+
+  <div class="racedrop">
+  <section id="dun_race">
     <label for="dungeons_races"> Race: </label>
-        <select id="dungeons_races" name="dungeons_races">
-            {% for dungeons_race in dungeons_races %}
-                <option value="{{ dungeons_race }}">{{ dungeons_race }}</option>
+      <select id="dungeons_races" name="dungeons_races">
+        {% for dungeons_race in dungeons_races %}
+          <option value="{{ dungeons_race }}">{{ dungeons_race }}</option>
             {% endfor %}
-        </select>
-</section>
-</div>
-<div>           
-<section id="alignment">
-    <h7> Alignment: </h7>
+      </select>
+  </section>
+  </div>
+
+  <div class="alignmentdrop">           
+  <section id="alignment">
+      <h7> Alignment: </h7>
         <select id="dungeons_alignments" name="dungeons_alignments">
-            {% for dungeons_alignment in dungeons_alignments %}
-                <option value="{{ dungeons_alignment }}">{{ dungeons_alignment }}</option>
-            {% endfor %}
+          {% for dungeons_alignment in dungeons_alignments %}
+            <option value="{{ dungeons_alignment }}">{{ dungeons_alignment }}</option>
+          {% endfor %}
         </select>
-</section>
-</div>
-<div>            
-<section id="gender">
-    <h7> Gender: </h7>
+  </section>
+  </div>
+
+  <div class="genderdrop">
+    <section id="gender">
+      <h7> Gender: </h7>
         <select id="dungeons_genders" name="dungeons_genders">
-            {% for dungeons_gender in dungeons_genders %}
-                <option value="{{ dungeons_gender }}">{{ dungeons_gender }}</option>
-            {% endfor %}
+          {% for dungeons_gender in dungeons_genders %}
+            <option value="{{ dungeons_gender }}">{{ dungeons_gender }}</option>
+          {% endfor %}
         </select>
-</section>
-</div>
-<div>            
-<section id="eye-color">
-    <h7> Eye color: </h7>
+    </section>
+  </div>
+
+  <div class="eyedrop">
+    <section id="eye-color">
+      <h7> Eye color: </h7>
         <select id="dungeons_eye_colors" name="dungeons_eye_colors">
-            {% for dungeons_eye_color in dungeons_eye_colors %}
-                <option value="{{ dungeons_eye_color }}">{{ dungeons_eye_color }}</option>
-            {% endfor %}
+          {% for dungeons_eye_color in dungeons_eye_colors %}
+            <option value="{{ dungeons_eye_color }}">{{ dungeons_eye_color }}</option>
+          {% endfor %}
         </select>       
-</section>
-</div>
-<div>           
-<section id="hair-color">
-    <h7> Hair color: </h7>
+    </section>
+  </div>
+
+  <div class="hairdrop">           
+    <section id="hair-color">
+      <h7> Hair color: </h7>
         <select id="dungeons_hair_colors" name="dungeons_hair_colors">
-            {% for dungeons_hair_color in dungeons_hair_colors %}
-                <option value="{{ dungeons_hair_color }}">{{ dungeons_hair_color }}</option>
-            {% endfor %}
+          {% for dungeons_hair_color in dungeons_hair_colors %}
+            <option value="{{ dungeons_hair_color }}">{{ dungeons_hair_color }}</option>
+          {% endfor %}
         </select>
-</section>
-</div>        
-<input type="submit"/>
+    </section>
+  </div>
+  <br> 
+  
+  </div>
+  <input type="submit" class="createsubmit"/>
 </center>
 </div>
 </form>
-</div>    
+ 
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
 integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" 

@@ -1,10 +1,41 @@
-.container{
-  width: 100%;
+body {
+  height: 100vh;
+  background-image: url("https://images.unsplash.com/photo-1528604891270-c2d9c3d1fc0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+html {
+  background: url(static/img/ferns.jpg) no-repeat center center fixed;
+  background-size: cover;
   height: 100%;
+  overflow: hidden;
+}
+
+.container{
+  background-image: url("https://images.unsplash.com/photo-1532153259564-a5f24f261f51?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80.jpg");
+  background-size: cover;
+  width: 60%;
+  margin: 8% auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
+.flashes, .choose-two-skills {
+  display: flex;
+  background-color: transparent;
+  flex-wrap: wrap;
+  margin: 5% auto;
+  width: 60%;
+  justify-content: center;
+  color: #f7ffcc;
+  font-size:large;
+  text-align: center;
+}
+
 
 .col-6 h2.burgundy{
   color: #603140 !important;
@@ -17,58 +48,52 @@
 
 /* user profile */
 
-.display-5{
+/* welcome back */
+.display-5, .display-6, .skilltitle{
   color: #8B9556;
-  font-family: 'Julius Sans One', sans-serif;
   font-size:medium;
 }
 
+/* current characters, create new link */
 .characters, .characterlink{
   color:#6D545D;
-  font-family: 'Julius Sans One', sans-serif;
   font-weight: 600;
   font-size: large;
 }
 
+/* lists of character links */
 .namelist{
   color:#8B9556;
   font-family: 'Comic Neue', cursive;
 }
 
-
 /* create */
-
-h1{
-  font-family: 'Julius Sans One', sans-serif;
-  color: #8B9556
-}
-h5{
-  font-family:'Julius Sans One', sans-serif;
+/* select your character's: */
+.selecttitle{
   font-weight: 600;
+  color:#383307;
 }
 
-body {
-    background-color: #041B15;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0;
-  }
-  
-.container{
-  background-color: #c6dcba;
-  width: 80%;
-  height: 80%;
-  display: flex;
+
+.skill-form{
+  display:flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  font-size: large;
+  font-weight: 700;
 }
 
-.Julius-font{
-  font-family: 'Julius Sans One', sans-serif;
+/* dropdowns from the create page */
+.namebox{
   font-size: small;
-  font-weight: 500;
+  font-weight: 600;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
 }
 
+/* placement of dice buttons */
 .button-container {
   display: flex;
   flex-direction: row;
@@ -77,6 +102,7 @@ body {
   align-items: center;
 }
 
+/* names of the stats for rolls */
 .stat-container {
     display: flex;
     flex-direction: row;
@@ -85,15 +111,30 @@ body {
     align-items: center;
     font-family: 'Julius Sans One', sans-serif;
     font-size:small;
-    font-style: oblique;
     font-weight: 600;
 }
 
+/* numbers from the dice rolls */
 .stat-container input[type="number"] {
   width: 50px;
   background-color: transparent;
-  border-color: transparent;
+  border-color:transparent;
+  color:#383307;
+  font-weight: 800;
 }
+
+.item-drop{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: smaller;
+  font-weight: 600;
+  width: 50%;
+  padding: 10px;
+  border-radius: 10px;
+}
+
 
 input[type=text] {
   padding:10px;
@@ -104,7 +145,7 @@ input[type=text] {
 }
 
 input[type=email] {
-  padding:10px;
+  padding:5px;
   border:0;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:5px;  
@@ -112,7 +153,7 @@ input[type=email] {
 }
 
 input[type=password] {
-  padding:10px;
+  padding:5px;
   border:0;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:5px;  
@@ -120,22 +161,100 @@ input[type=password] {
 }
 
 input[type=username] {
-  padding:10px;
+  padding:5px;
   border:0;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:5px;  
   width: 100%;
 }
 
-input[type=submit] {
+.homepagesubmit {
   padding:8px;
   border:1;
-  border-color: #eafdd0;
+  border-color: #957964;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:50px;  
-  width: 50%;
-  font-family:  'Advent Pro', sans-serif;
-  font-weight: 500;
-  background-color: #83933B;
+  width: 65%;
+  font-weight: 600;
+  background: radial-gradient(#9db994, #1C3A13);
 }
 
+.createsubmit, .skillsubmit {
+  padding:8px;
+  border:1;
+  border-color: #957964;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  transition: .3s box-shadow;
+  border-radius:50px;  
+  width: 30%;
+  font-weight: 600;
+  background: radial-gradient(#9db994, #1C3A13);
+}
+
+.createsubmit:hover {
+  box-shadow: 0 0 4px rgba(0,0,0, 0.5);
+}
+.skillsubmit:hover{
+  box-sizing: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.character-info{
+  font-size: small;
+  font-weight: 700;
+  color: #1C3A13;
+}
+
+.starting-info{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.facial-features{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.statistics{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+
+/* input[type="checkbox"]{
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #dde9d5;
+  margin: 0;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+  background-color: CanvasText;
+} */
+
+/* .form-control + .form-control{
+  margin-top: 1em;
+} */

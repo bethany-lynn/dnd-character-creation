@@ -24,18 +24,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@200&family=Comic+Neue&family=Julius+Sans+One&display=swap" rel="stylesheet">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@200&family=Bungee+Spice&family=Comic+Neue&family=Julius+Sans+One&display=swap" rel="stylesheet">
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@200&family=Bungee+Spice&family=Comic+Neue&family=Julius+Sans+One&family=Tourney:wght@800&display=swap" rel="stylesheet">
+
     {% block head %}
+    <div class="header"></div>
   {% endblock %}
 
   </head>
 
   <body>
-    
+    <div class="flashes row">
+      {% for msg in get_flashed_messages() %}
+        <p class="flash-msg"> {{ msg }} </p>
+      {% endfor %}
+    </div>
     {% block body %}{% endblock %}
-    {% for msg in get_flashed_messages() %}
-    <p class="flash-msg">
-    {{ msg }}</p> 
-    {% endfor %}
   <br>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" 
