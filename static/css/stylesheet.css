@@ -23,6 +23,7 @@ html {
   margin: 8% auto;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -233,40 +234,41 @@ input[type=username] {
   font-size: 15px;
   font-weight: 700;
   color: #1C3A13;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
+.classbubble, .racebubble, .alignmentbubble, .genderbubble, .eyebubble, .hairbubble {
+  background: linear-gradient(#8aefe0, #185c4f);
+  padding: 10px;
+  border-radius: 17px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-size: 13px;
+}
+
+/* 
 .starting-info{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-}
+} */
 
-.classbubble, .racebubble, .alignmentbubble {
-  background: linear-gradient(#8B9556, #383307);
-  background-size:50%;
-  padding: 15px;
-  border-radius: 17px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  font-size: 17px;
-}
-
-
-
-
-.facial-features{
-  display: flex;
+/* .facial-features{
+  /* display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-}
-
+} */
+/* 
 .statistics{
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
-}
+} */ */
 
 /* code for dropdown menus universally */
 .dropdown {
@@ -278,6 +280,13 @@ input[type=username] {
   margin-bottom: 10px;
   gap: 10px;
 }
+
+.container .accordion {
+  width: 50%;
+  max-width: 50%;
+  box-sizing: border-box;
+}
+
 
 h7 {
   margin-bottom: 10px;
