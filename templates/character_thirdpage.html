@@ -41,9 +41,10 @@
     </div>  
   </div>
 
+<br/> 
 
   <div class="row two">
-    <div class="col-6">
+    <div class="col-4">
       <div class="bubble4">
         <span id="languages">
           languages:
@@ -57,37 +58,19 @@
           <span id="walking_speed">{{ character.char_walking_speed }}</span>
       </div>
     </div>
-    <div class="col-6">
+    <div class="col-4">
       <div class="bubble4">
-        current hit points:
+        current hp:
         <span id="hit_points">{{ character.current_hit_points }}</span> <br/>
-        total hit points:
+        total hp:
         <span id="total_hit_points">{{ character.total_hit_points }}</span> <br/>
         hit die:
         <span id="hit_dice">{{ character.char_hit_die }}</span> <br/>
-        level: <br/>
+        level:
         <span id="character_level">{{ character.char_level }}</span>
       </div>
     </div>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="row">
-  <div class="col-6">
+  <div class="col-4">
     <div class="bubble5">
       <span id="skills">
       <p></p>
@@ -164,33 +147,26 @@
         {% endif %}
     </span>
 
-
-    <p>
+    <div class="savesheetfonts">
         {% if selected_spell != None %}
-        <h2 class="savesheet">spell: </h2>
         <p>{{ selected_spell.spell_name }} 
         {% endif %}
-    </p>
-    <p>
-        <h2 class="savesheet">weapon:</h2>
+      <br/>
         {{ selected_weapon.weapon_name }}
-    </p>
-    <p>
-        <h2 class="savesheet">item:</h2>
+      <br/>
         {{ selected_item.item_name }}
-    </p>
-    <p>
-        <h2 class="savesheet">armor:</h2>
+      <br/>
         {{ selected_armor.armor_name }}
-    </p>
-</div>
-
+    </div>
+  </div>
 </div>
 </div>
 <br/>
 
 <div class="savecharacterlink">
-  <a href="{{ url_for('users_profile') }}">save this character</a>
+  <div class="newlink" style="text-align: center;">
+   <a href="{{ url_for('users_profile') }}">save this character</a>
+  </div>
 </div>
 
 {% endblock %}

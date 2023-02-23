@@ -17,48 +17,51 @@ crossorigin="anonymous"></script>
 
 <div class="headerbanner">
     <figure class="text-center">
+
       <blockquote class="blockquote">
         <hi class="display-6">{{ character.character_name }}'s sheet</hi>
       </blockquote>
+
       <figcaption class="blockquote-footer">
         good luck on your adventure!<cite title="Source Title"></cite>
-      </figcaption>
-      <figcaption class="blockquote-footer">
+      </figcaption> 
+
+      <div class="rainbow-dice">
+        <img src="/static/img/rainbowD20.webp" height="65px" width="65px"/>
+      </div>
+
         <div id="root"></div>
-        <div class="dice">
+        <div class="dice-buttons">
           <script type="text/jsx" src="/static/die_react.jsx"></script>
-        </div>  
-      </figcaption>
+        </div> 
+
     </figure>
 </div>
 
 <p></p>
-<div class="container p-3 rounded-3">
+<div class="container-fluid p-3 rounded-3">
 
 
   <div class="row one">
-    <div class="col-2">
+    <div class="col-3">
       <div class="bubble1">
         <p>Class: <br/><span id="class">{{ character.character_class }}</span></p>
         <p>Race: <br/><span id="race">{{ character.race }}</span></p>
       </div>
     </div>
-    <div class="col-2">
+    <div class="col-3">
       <div class="bubble2">
         <p>Alignment: <br/><span id="alignment">{{ character.alignment }}</span></p>
         <p>Gender: <br/><span id="gender">{{ character.gender }}</span></p>
       </div>
     </div>
-    <div class="col-4">
-      <img src="/static/img/rainbowD20.webp" height="200px" width="200px"/>
-    </div>
-    <div class="col-2">
+    <div class="col-3">
       <div class="bubble3">
         <p>Eyes: <br/><span id="eye-color">{{ character.eye_color }}</span></p>
         <p>Hair: <br/><span id="hair-color">{{ character.hair_color }}</span></p>
       </div>
     </div>
-    <div class="col-2">
+    <div class="col-3">
       <div class="bubble4">
         character level: <br/>
         <span id="character_level">{{ character.char_level }}</span>
@@ -89,10 +92,10 @@ crossorigin="anonymous"></script>
 
   <div class="row three">
     <div class="col-4">
-      <div class="bubble6">
+      <div class="bubble7">
         <span id="languages">
           languages:
-          <ul>
+          <ul class="no-bullet">
               {% for language in character.language.split("+") %}
                   <li>{{language}}</li>
               {% endfor %}
@@ -104,22 +107,22 @@ crossorigin="anonymous"></script>
     </div>
     <div class="col-4">
       <div class="bubble8">
-        current hit points:
-        <span id="hit_points">{{ character.current_hit_points }}</span> <br/>
-        total hit points:
-        <span id="total_hit_points">{{ character.total_hit_points }}</span> <br/>
+        hit points:
+        <span id="hit_points">{{ character.total_hit_points }}</span> <br/>
+        current:
+        <span id="total_hit_points">{{ character.current_hit_points }}</span> <br/>
         hit die:
         <span id="hit_dice">{{ character.char_hit_die }}</span>
       </div>
     </div>
       <div class="col-4">
-      <img src="https://preview.redd.it/yhu2fxh4p1x51.png?auto=webp&s=e4f2e71f5dab1876921ead77c9f1cfe7fcb2a165" class="img-fluid"  height="155px" width="155px" alt="A D20 with florals">
-    </div>
+        <img src="https://preview.redd.it/yhu2fxh4p1x51.png?auto=webp&s=e4f2e71f5dab1876921ead77c9f1cfe7fcb2a165" class="img-fluid"  max-height="80%" max-width="80%" alt="A D20 with florals">
+      </div>
   </div>
 
 <br/>
 
-  <div class="row four">
+  <div class="row four bubble10">
       <div class="col-4">
         <p>Animal handling: {{ character.animal_handling }}</p>
         <p>Acrobatics: {{ character.acrobatics }}</p>
@@ -148,13 +151,16 @@ crossorigin="anonymous"></script>
 <br/>
 
 <div class="row five">
+
   <div class="col-6">
-    <div class="bubble9">
-      <img src="https://www.freeiconspng.com/uploads/green-gothic-dragon-icon-0.png     " height="250" width="250" class="img-fluid"  height="50px" width="50px" alt="A D20 with florals">
+    <div class="bubble09">
+      <img src="https://www.freeiconspng.com/uploads/green-gothic-dragon-icon-0.png" height="250" width="250" class="img-fluid"  height="50px" width="50px" alt="A D20 with florals">
     </div>
   </div>
+
   <div class="col-6">
   <div class="accordion" id="accordionPanelsStayOpenExample">
+
     <div class="accordion-item">
       <h2 class="accordion-header" id="panelsStayOpen-headingOne">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
@@ -243,7 +249,7 @@ crossorigin="anonymous"></script>
        </div>    
       </div>
     </div>
-</div>
+  </div>
 </div>
 
 
