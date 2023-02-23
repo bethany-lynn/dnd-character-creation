@@ -1,3 +1,6 @@
+/* leaves: https://images.unsplash.com/photo-1528604891270-c2d9c3d1fc0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80.jpg */
+/* https://images.unsplash.com/photo-1521133573892-e44906baee46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80 */
+
 body {
   height: 100vh;
   background-image: url("https://images.unsplash.com/photo-1528604891270-c2d9c3d1fc0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80.jpg");
@@ -6,6 +9,7 @@ body {
   margin: 0;
   font-family: 'Julius Sans One', sans-serif;
   overflow: auto;
+  padding-top: 100px;
 }
 
 html {
@@ -19,12 +23,13 @@ html {
   background-image: url("https://images.unsplash.com/photo-1532153259564-a5f24f261f51?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80.jpg");
   background-size: cover;
   text-align: center;
-  width: 80%;
+  width: 1000px;
   margin: 8% auto;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
+  opacity: 0.9;
 }
 
 .flashes, .choose-two-skills {
@@ -34,15 +39,11 @@ html {
   margin: 5% auto;
   width: 60%;
   justify-content: center;
-  color: #f7ffcc;
+  color: #7ed3ab;
   font-size:large;
   text-align: center;
 }
 
-
-.col-6 h2.burgundy{
-  color: #603140 !important;
-}
 
 .h2{
   font-size:15px;
@@ -60,7 +61,7 @@ html {
 }
 
 .display-6, .skilltitle{
-  color: #8B9556;
+  color: #7ed3ab;
   font-size:45px;
   font-weight: 600;
 }
@@ -77,8 +78,8 @@ html {
   text-align: center;
   margin: 10px 0;
   padding: 10px 20px;
-  border: 2px solid #383307;
-  background-color:#383307;
+  border: 2px solid #07383370;
+  background-color:#073638;
   color:#f7ffcc;
   font-size: large;
   text-decoration: none;
@@ -88,11 +89,11 @@ html {
 .newlink a {
   display: inline-block;
   margin: 10px 0;
-  padding: 10px 20px;
-  border: 2px solid #8B9556;
-  background-color:#8B9556;
+  padding: 8px 20px;
+  border: 2px solid #18b59371;
+  background-color:#056b5a;
   color: #FFFFFF;
-  font-size: 23px;
+  font-size: 20px;
   text-decoration: none;
   border-radius: 5px;
 }
@@ -179,19 +180,19 @@ html {
 
 .footer {
   font-size: 30px;
-  color:#8B9556;
+  color:#569578;
   font-weight: 700;
 }
 
 .blockquote {
   font-size: 35px;
-  color:#7e9378;
+  color:#569578;
   font-weight: 700;
 }
 
 .blockquote-footer {
   font-size: 60;
-  color:#8B9556;
+  color:#569578;
   font-weight: 900;
 }
 
@@ -236,7 +237,7 @@ input[type=username] {
   border-radius:50px;  
   width: 65%;
   font-weight: 600;
-  background: radial-gradient(#9db994, #1C3A13);
+  background: radial-gradient(#57b39d, #28793c);
 }
 
 .createsubmit, .skillsubmit {
@@ -248,7 +249,7 @@ input[type=username] {
   border-radius:50px;  
   width: 30%;
   font-weight: 600;
-  background: radial-gradient(#9db994, #1C3A13);
+  background: radial-gradient(#57b39d, #28793c);
 }
 
 .createsubmit:hover {
@@ -260,17 +261,17 @@ input[type=username] {
 
 
 .bubble1, .bubble2, .bubble3, .bubble4, .bubble5, .bubble6, .bubble7, .bubble8, .bubble10 {
-  background: linear-gradient(#8a955662, #185c503a);
+  background: linear-gradient(#9fc2ed62, #40dfc23a);
   padding: 30px;
   border-radius: 30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  font-size:15px;
+  font-size:17px;
   font-weight: 800;
   color: #091106;
 }
 
 .four{
-  margin-top: 5%;
+  margin-top: 3%;
 }
 
 ul.no-bullet{
@@ -300,14 +301,14 @@ ul.no-bullet{
 }
 
 .accordion-item{
-  color: #1C3A13;
-  background-color: #64775f;
+  color: #5ea692;
+  background-color: #043433e7;
   text-align: center;
   font-size: 17px;
 }
 
 .accordion-button{
-  background-color:#7e9378;
+  background-color:#065454;
   text-align: center;
   font-size: 20px;
 }
@@ -326,7 +327,7 @@ select {
   border: 1px solid #ccc;
   border-radius: 4px;
   text-align: center;
-  background-color: #5D6244; 
+  background-color: #043433e7; 
   color: #000000;
 }
 
@@ -337,3 +338,28 @@ select:focus {
 }
 
 
+/* react dice */
+
+.die {
+  color: white;
+  background: linear-gradient(#f7ffcc, #FFFFFF);
+  width: 60px;
+  height: 60px;
+  border-radius: 10%;
+  position: relative;
+}
+
+.die:focus {
+  outline: none;
+}
+
+.die i {
+  background-image: url("/static/img/rainbowD20.webp");
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.die b {
+  font-size: 20px;
+}
