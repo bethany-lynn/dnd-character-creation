@@ -3,7 +3,7 @@
 
 body {
   height: 100vh;
-  background-image: url("https://images.unsplash.com/photo-1528604891270-c2d9c3d1fc0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80.jpg");
+  background-image: url("https://wallpaperaccess.com/full/1347872.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;
@@ -23,14 +23,41 @@ html {
   background-image: url("https://images.unsplash.com/photo-1532153259564-a5f24f261f51?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80.jpg");
   background-size: cover;
   text-align: center;
-  width: 1000px;
-  margin: 8% auto;
+  width: 40%;
+  margin: 2% auto;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   opacity: 0.9;
 }
+
+.container-fluid.big{
+  background-image: url("https://images.unsplash.com/photo-1532153259564-a5f24f261f51?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80.jpg");
+  background-size: cover;
+  text-align: center;
+  width: 65%;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0.9;
+}
+
+.container-fluid.biggest{
+  background-image: url("https://images.unsplash.com/photo-1532153259564-a5f24f261f51?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80.jpg");
+  background-size: cover;
+  text-align: center;
+  width: 1000px;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0.9;
+}
+
 
 .flashes, .choose-two-skills {
   display: flex;
@@ -39,9 +66,11 @@ html {
   margin: 5% auto;
   width: 60%;
   justify-content: center;
-  color: #7ed3ab;
-  font-size:large;
+  color: #78ffff;
+  font-size:50px;
   text-align: center;
+  font-weight: 700;
+  text-shadow: ;
 }
 
 
@@ -53,6 +82,7 @@ html {
 .choose-two-skills{
   font-size: 30px;
   font-weight: 700;
+  color:#05506b;
 }
 
 .characters{
@@ -61,9 +91,10 @@ html {
 }
 
 .display-6, .skilltitle{
-  color: #7ed3ab;
+  color: #022b37;
   font-size:45px;
   font-weight: 600;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 .roll-stats{
@@ -72,14 +103,20 @@ html {
   font-weight: 600;
 }
 
+.begin{
+  color:#3e5292;
+  font-size: 20px;
+  font-weight: 700;
+}
+
 .namelist li a {
   display: inline-block;
   text-align: center;
   text-align: center;
   margin: 10px 0;
   padding: 10px 20px;
-  border: 2px solid #07383370;
-  background-color:#073638;
+  border: 2px solid #1c5b6470;
+  background-color:#072c38;
   color:#f7ffcc;
   font-size: large;
   text-decoration: none;
@@ -90,8 +127,8 @@ html {
   display: inline-block;
   margin: 10px 0;
   padding: 8px 20px;
-  border: 2px solid #18b59371;
-  background-color:#056b5a;
+  border: 2px solid #18b2b571;
+  background-color:#05506b;
   color: #FFFFFF;
   font-size: 20px;
   text-decoration: none;
@@ -109,7 +146,7 @@ html {
 
 .selecttitle{
   font-weight: 600;
-  color:#383307;
+  color:#0e2156;
   font-size: 25px;
 }
 
@@ -156,7 +193,7 @@ html {
   width: 50px;
   background-color: transparent;
   border-color:transparent;
-  color:#383307;
+  color:#0e2156;
   font-size: 30px;
   font-weight: 800;
 }
@@ -180,21 +217,27 @@ html {
 
 .footer {
   font-size: 30px;
-  color:#569578;
+  color:#12376b;
   font-weight: 700;
+}
+
+.goodluck{
+  font-size: 30px;
 }
 
 .blockquote {
   font-size: 35px;
-  color:#569578;
+  color:#1f2e4f;
   font-weight: 700;
 }
 
 .blockquote-footer {
   font-size: 60;
-  color:#569578;
+  color:#20337e;
   font-weight: 900;
 }
+
+
 
 input[type=text] {
   padding:10px;
@@ -210,7 +253,7 @@ input[type=email] {
   border:0;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:5px;  
-  width: 100%;
+  width: 75%;
 }
 
 input[type=password] {
@@ -218,7 +261,7 @@ input[type=password] {
   border:0;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:5px;  
-  width: 100%;
+  width: 75%;
 }
 
 input[type=username] {
@@ -226,7 +269,7 @@ input[type=username] {
   border:0;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:5px;  
-  width: 100%;
+  width: 75%;
 }
 
 .homepagesubmit {
@@ -235,9 +278,9 @@ input[type=username] {
   border-color: #5d5c5b;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:50px;  
-  width: 65%;
+  width: 35%;
   font-weight: 600;
-  background: radial-gradient(#57b39d, #28793c);
+  background: radial-gradient(#5d736f, #313963);
 }
 
 .createsubmit, .skillsubmit {
@@ -246,10 +289,10 @@ input[type=username] {
   border-color: #5d5c5b;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   transition: .3s box-shadow;
-  border-radius:50px;  
+  border-radius:30px;  
   width: 30%;
   font-weight: 600;
-  background: radial-gradient(#57b39d, #28793c);
+  background: radial-gradient(#5d736f, #313963);
 }
 
 .createsubmit:hover {
@@ -258,7 +301,6 @@ input[type=username] {
 .skillsubmit:hover{
   box-sizing: 0 0 4px rgba(0, 0, 0, 0.5);
 }
-
 
 .bubble1, .bubble2, .bubble3, .bubble4, .bubble5, .bubble6, .bubble7, .bubble8, .bubble10 {
   background: linear-gradient(#9fc2ed62, #40dfc23a);
@@ -300,9 +342,15 @@ ul.no-bullet{
   font-size: 40px;
 }
 
+.homepage-greet{
+  font-family: fantasy;
+  color: #056b5a;
+  text-align: center;
+  font-size: 30px;
+}
 .accordion-item{
   color: #5ea692;
-  background-color: #043433e7;
+  background-color: #313963;
   text-align: center;
   font-size: 17px;
 }
@@ -327,7 +375,7 @@ select {
   border: 1px solid #ccc;
   border-radius: 4px;
   text-align: center;
-  background-color: #043433e7; 
+  background-color: #152f58e7; 
   color: #000000;
 }
 
