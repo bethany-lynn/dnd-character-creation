@@ -59,7 +59,7 @@ html {
 }
 
 
-.flashes, .choose-two-skills {
+.choose-two-skills {
   display: flex;
   background-color: transparent;
   flex-wrap: wrap;
@@ -70,7 +70,20 @@ html {
   font-size:50px;
   text-align: center;
   font-weight: 700;
-  text-shadow: ;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5) ;
+}
+
+.flashes {
+  display: flex;
+  background-color: transparent;
+  flex-wrap: wrap;
+  margin: 5% auto;
+  width: 60%;
+  justify-content: center;
+  color: #53d0ec;
+  font-size:25px;
+  text-align: center;
+  font-weight: 900;
 }
 
 
@@ -249,27 +262,27 @@ input[type=text] {
 
 
 input[type=email] {
-  padding:5px;
+  padding:7px;
   border:0;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:5px;  
-  width: 75%;
+  width: 100%;
 }
 
 input[type=password] {
-  padding:5px;
+  padding:7px;
   border:0;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:5px;  
-  width: 75%;
+  width: 100%;
 }
 
 input[type=username] {
-  padding:5px;
+  padding:7px;
   border:0;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:5px;  
-  width: 75%;
+  width: 100%;
 }
 
 .homepagesubmit {
@@ -278,7 +291,7 @@ input[type=username] {
   border-color: #5d5c5b;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:50px;  
-  width: 35%;
+  width: 60%;
   font-weight: 600;
   background: radial-gradient(#5d736f, #313963);
 }
