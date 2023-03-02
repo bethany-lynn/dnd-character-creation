@@ -344,19 +344,12 @@ def selected_traits():
                            spell_names=spell_names, weapon_names=weapon_names,
                            item_names=item_names, armor_names=armor_names)
 
-    # if len(spell_names) > 4:
-    #     return "You can only select 4 spells!"
-    # else:
 
 @app.route('/characters/<int:character_id>')
 def character_info(character_id):
     """displaying all character data from sessions"""
 
     character = crud.get_character_by_id(character_id)
-    # spell_name = session['spell_name']
-
-    # print("this is spell name")
-    # print(spell_name)
 
     if character is None:
         abort(404)

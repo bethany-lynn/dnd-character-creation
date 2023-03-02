@@ -8,11 +8,16 @@
 {% endblock %}
 
 {% block body %}
-
+<div class="welcome">
+  Fantasy Dungeon <br/>
+  <div class="divider-image">
+    <input type="image" src="https://www.freepnglogos.com/uploads/divider-png/divider-ornament-transparent-png-svg-vector-9.png" height="300px" width="300px"/>
+  </div>
+</div>
 <div class="container-fluid p-3 rounded-3">
   <div class="row">
     <div class="col mx-auto" style="text-align: center;">
-      <h2 style="color:#ffffff !important"> Log In </h2>
+      <h4 style="color:#100238 !important"> Log In </h4>
     </div>
   </div>
   <div class="row">
@@ -46,7 +51,7 @@
 <br/>
   <div class="row">
     <div class="col mx-auto" style="text-align: center;">  
-      <h2 style="color:#ffffff !important">Create an Account</h2>
+      <h4 style="color:#100238  !important">Create an Account</h4>
     </div>
   </div>
   <div class="row">
@@ -58,26 +63,27 @@
         </center>
     </div>
   </div>  
-  <div class="row g-3">
-    <div class="col-4" style="margin-left:auto;margin-right:auto;">
-      <center>
-        <label for="inputUsernmae5" class="form-label">  </label>
-          <input type="username" class="form-control" name="username" placeholder="username" />
-        </center>
-    </div>
-  </div>  
   <div class="row g-3 ">
     <div class="col-4" style="margin-left:auto;margin-right:auto;">
       <center>
         <label for="inputPassword5" class="form-label">  </label>
           <input type="password" class="form-control" name="password" placeholder="password" />
-          <br>
-          <input type="submit" value="create" class="homepagesubmit">
       </center>
     </div>
   </div> 
+  <div class="row g-3">
+    <div class="col-4" style="margin-left:auto;margin-right:auto;">
+      <center>
+        <label for="inputUsernmae5" class="form-label">  </label>
+          <input type="username" class="form-control" name="username" placeholder="username" />
+          <br>
+          <input type="submit" value="create" class="homepagesubmit">
+        </center>
+    </div>
+  </div>
   </form>
  </div>
 </div>
-{% endblock %}
+
  
+{% endblock %}

@@ -7,7 +7,6 @@ let results = {
     strength: 0
 };
 
-// selecting the class with roll_dice in html
 const buttons = document.querySelectorAll('.roll_dice');
 
 // adding event listener to button clicks
@@ -21,9 +20,6 @@ buttons.forEach(button => {
     });
 });
 
-
-// dice roll functions with disabling
-// roll 4 times, keep 3 highest rolls, average results
 function rollDie(numRolls, numToKeep, button) {
     let rolls = []
     for (let i = 0; i < numRolls; i++) {
@@ -45,10 +41,8 @@ function rollDie(numRolls, numToKeep, button) {
     return total;   
 }
 
-// disabling check boxes after 2 clicks
 const skillForms = document.querySelectorAll('.skill-form');
 console.log(skillForms)
-
 
 skillForms.forEach((skillForm) => {
     const skillCheckboxes = skillForm.querySelectorAll('input[type=checkbox]');

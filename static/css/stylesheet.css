@@ -1,6 +1,6 @@
 /* leaves: https://images.unsplash.com/photo-1528604891270-c2d9c3d1fc0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80.jpg */
 /* https://images.unsplash.com/photo-1521133573892-e44906baee46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80 */
-
+/* brown paper https://images.unsplash.com/photo-1532153259564-a5f24f261f51?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80.jpg */
 body {
   height: 100vh;
   background-image: url("https://wallpaperaccess.com/full/1347872.jpg");
@@ -20,7 +20,7 @@ html {
 }
 
 .container-fluid{
-  background-image: url("https://images.unsplash.com/photo-1532153259564-a5f24f261f51?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80.jpg");
+  background-image: url("https://images.unsplash.com/photo-1549396563-73701bbb8f20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80");
   background-size: cover;
   text-align: center;
   width: 40%;
@@ -33,7 +33,7 @@ html {
 }
 
 .container-fluid.big{
-  background-image: url("https://images.unsplash.com/photo-1532153259564-a5f24f261f51?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80.jpg");
+  background-image: url("https://images.unsplash.com/photo-1549396563-73701bbb8f20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80");
   background-size: cover;
   text-align: center;
   width: 65%;
@@ -46,7 +46,7 @@ html {
 }
 
 .container-fluid.biggest{
-  background-image: url("https://images.unsplash.com/photo-1532153259564-a5f24f261f51?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80.jpg");
+  background-image: url("https://images.unsplash.com/photo-1549396563-73701bbb8f20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80");
   background-size: cover;
   text-align: center;
   width: 1000px;
@@ -58,6 +58,23 @@ html {
   opacity: 0.9;
 }
 
+.welcome {
+  text-align: center;
+  font-size: 25px;
+  color: #ebf9ff;
+  position: relative;
+  z-index: -1;
+  margin-bottom: 40px;
+  font-weight: 800;
+}
+
+.divider-image {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -2;
+}
 
 .choose-two-skills {
   display: flex;
@@ -90,6 +107,10 @@ html {
 .h2{
   font-size:15px;
   font-family: 'Julius Sans One', sans-serif;
+}
+
+.col-md-6 {
+  padding: 10px;
 }
 
 .choose-two-skills{
@@ -258,6 +279,8 @@ input[type=text] {
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:10px;  
   width: 35%;
+  color:#072c38;
+  font-weight: 800;
 }
 
 
@@ -267,6 +290,7 @@ input[type=email] {
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:5px;  
   width: 100%;
+  font-weight: 700;
 }
 
 input[type=password] {
@@ -275,6 +299,7 @@ input[type=password] {
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:5px;  
   width: 100%;
+  font-weight: 700;
 }
 
 input[type=username] {
@@ -283,6 +308,7 @@ input[type=username] {
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:5px;  
   width: 100%;
+    font-weight: 700;
 }
 
 .homepagesubmit {
@@ -291,7 +317,7 @@ input[type=username] {
   border-color: #5d5c5b;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius:50px;  
-  width: 60%;
+  width: 70%;
   font-weight: 600;
   background: radial-gradient(#5d736f, #313963);
 }
@@ -316,7 +342,7 @@ input[type=username] {
 }
 
 .bubble1, .bubble2, .bubble3, .bubble4, .bubble5, .bubble6, .bubble7, .bubble8, .bubble10 {
-  background: linear-gradient(#9fc2ed62, #40dfc23a);
+  background: linear-gradient(#85b1f862, #4d80aa3a);
   padding: 30px;
   border-radius: 30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -357,21 +383,23 @@ ul.no-bullet{
 
 .homepage-greet{
   font-family: fantasy;
-  color: #056b5a;
+  color: #05536b;
   text-align: center;
   font-size: 30px;
 }
 .accordion-item{
-  color: #5ea692;
+  color: #5ea1a6;
   background-color: #313963;
   text-align: center;
   font-size: 17px;
+  opacity: 0.9;
 }
 
 .accordion-button{
-  background-color:#065454;
+  background-color:#061754;
   text-align: center;
   font-size: 20px;
+  opacity: 0.9;
 }
 
 h7 {
@@ -388,7 +416,7 @@ select {
   border: 1px solid #ccc;
   border-radius: 4px;
   text-align: center;
-  background-color: #152f58e7; 
+  background-color: #c2d8fce7; 
   color: #000000;
 }
 
@@ -403,11 +431,12 @@ select:focus {
 
 .die {
   color: white;
-  background: linear-gradient(#f7ffcc, #FFFFFF);
+  background: linear-gradient(#a9d8ff, #ffffff);
   width: 60px;
   height: 60px;
-  border-radius: 10%;
+  border-radius: 20%;
   position: relative;
+  margin: 2px;
 }
 
 .die:focus {
